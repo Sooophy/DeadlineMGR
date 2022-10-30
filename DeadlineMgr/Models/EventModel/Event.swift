@@ -138,7 +138,6 @@ struct Event : Codable, Identifiable {
             }
         }
         do {
-            let decoder = JSONDecoder()
             let colorCode = try container.decode(ColorCode.self, forKey: .color)
             self.color = Color(red: colorCode.r, green: colorCode.g, blue: colorCode.b, opacity: colorCode.alpha)
         } catch {
