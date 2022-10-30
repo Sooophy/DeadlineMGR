@@ -13,11 +13,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $tabSelection) {
-                Text("Events").tabItem {
+                Text("Events View").tabItem {
                     Image(systemName: "list.dash")
                     Text("Events")
                 }.tag(1)
-                Text("Calendar").tabItem {
+                Text("Calendar View").tabItem {
                     Image(systemName: "calendar")
                     Text("Calendar")
 
@@ -26,6 +26,14 @@ struct ContentView: View {
                     Image(systemName: "arrow.triangle.2.circlepath")
                     Text("Sync")
                 }.tag(3)
+                Text("Timeline View").tabItem {
+                    Image(systemName: "calendar.day.timeline.trailing")
+                    Text("Timeline")
+                }
+                Text("Settings").tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
             }
         }
     }
