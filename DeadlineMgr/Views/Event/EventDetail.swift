@@ -8,8 +8,46 @@
 import SwiftUI
 
 struct EventDetail: View {
+    
+    @State private var tag:String = "ECE564"
+    @State private var date:Date = Date.now
+    @State private var description = "Sprint 1 (Complete on Nov 1). Design and Architecture done.  Data model developed and implementation started (Server / File / DB / 3rd party / etc).  Flow of UI completed (look and feel and flow of Views) and decision made on UI model (code / storyboard / .xib / SwiftUI).  Basic UI screens with VCs completed."
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text("564 Project Sprint1")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 1)
+                HStack {
+                    DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
+                        Text("Due:")
+                    }
+
+                    Spacer()
+                    
+                    HStack {
+                        Text("Tag:")
+                        TextField("Tag", text: $tag)
+                    }
+                    .padding(.leading, 50)
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .padding(.bottom, 10)
+                
+                Divider()
+                Text("Description:")
+                    .padding(.bottom, 10)
+                TextField("Description", text: $description, axis: .vertical)
+//                    .textFieldStyle(.roundedBorder)
+                    .multilineTextAlignment(.leading)
+                    
+                
+            }
+            .padding()
+        }
     }
 }
 
