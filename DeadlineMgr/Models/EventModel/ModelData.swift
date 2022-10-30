@@ -9,7 +9,7 @@ import Foundation
 
 
 final class ModelData: ObservableObject {
-    @Published var dataBase = [Event]()
+    @Published var dataBase : [String: Event] = [:]
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
@@ -21,7 +21,7 @@ final class ModelData: ObservableObject {
     func saveData(){
         var outputData = Data()
         let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(dataBase) {
+        if let encoded = try? encoder.encode(Array(dataBase.values)) {
             if let _ = String(data: encoded, encoding: .utf8) {
                 outputData = encoded
             }
@@ -51,11 +51,16 @@ final class ModelData: ObservableObject {
         }
         
         if let decoded = try? decoder.decode([Event].self, from: tempData) {
-            dataBase = decoded.filter {
+            let eventArray = decoded.filter {
                 $0.id != "badData"
             }
-            
+            for event in eventArray {
+                dataBase[event.id] = event
+            }
         }
     }
     
+    func addEvent(event: Event) {
+        dataBase[event.id] = event
+    }
 }

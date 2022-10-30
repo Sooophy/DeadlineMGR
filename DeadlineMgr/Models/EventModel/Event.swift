@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
 
 enum Source : String, Codable {
     case Default
@@ -20,7 +21,34 @@ struct ColorCode : Codable{
     var alpha : CGFloat
 }
 
-
+struct Location : Codable {
+    var locationName: String
+    var coordinate: CLLocationCoordinate2D
+    
+    private enum CodingKeys : String, CodingKey {case locationName, latitude, longitude}
+    
+    init(locationName: String,
+         latitude: CLLocationDegrees,
+         longitude: CLLocationDegrees) {
+        self.locationName = locationName
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.locationName = try container.decode(String.self, forKey: .locationName)
+        let latitude = try container.decode(CLLocationDegrees.self, forKey: .latitude)
+        let longitude = try container.decode(CLLocationDegrees.self, forKey: .longitude)
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.locationName, forKey: .locationName)
+        try container.encode(self.coordinate.latitude, forKey: .latitude)
+        try container.encode(self.coordinate.longitude, forKey: .longitude)
+    }
+}
 
 struct Event : Codable, Identifiable {
     var id : String
@@ -30,7 +58,7 @@ struct Event : Codable, Identifiable {
     var completedAt: Date?
     var tag : [String] = []
     var description : String = ""
-    var location : String?
+    var location : Location?
     var isCompleted : Bool = false
     var isDeleted : Bool = false
     var source : Source
@@ -50,7 +78,7 @@ struct Event : Codable, Identifiable {
     init(title: String,
          dueAt: Date?,
          description: String,
-         location: String?,
+         location: Location?,
          source: Source,
          sourceUrl: String?,
          sourceId: String?,
@@ -106,7 +134,7 @@ struct Event : Codable, Identifiable {
         } catch {
             self.description = ""
         }
-        self.location = try? container.decode(String.self, forKey: .location)
+        self.location = try? container.decode(Location.self, forKey: .location)
         do {
             self.isCompleted = try container.decode(Bool.self, forKey: .isCompleted)
         } catch {
@@ -154,6 +182,7 @@ struct Event : Codable, Identifiable {
         try container.encode(self.completedAt?.timeIntervalSince1970, forKey: .completedAt)
         try container.encode(self.tag, forKey: .tag)
         try container.encode(self.description, forKey: .description)
+        try container.encode(self.location, forKey: .location)
         try container.encode(self.isCompleted, forKey: .isCompleted)
         try container.encode(self.isDeleted, forKey: .isDeleted)
         try container.encode(self.source, forKey: .source)
