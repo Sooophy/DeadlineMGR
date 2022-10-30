@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $tabSelection) {
-                Text("Events View").tabItem {
+                EventList().tabItem {
                     Image(systemName: "list.dash")
                     Text("Events")
                 }.tag(1)
