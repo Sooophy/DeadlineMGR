@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct SakaiSite {
+struct SakaiSite: Hashable {
     var id: String
+    var title: String
 }

@@ -15,22 +15,46 @@ struct SakaiSync: View {
         self._sakaiStore = StateObject(wrappedValue: SakaiStore.shared)
     }
 
-    var cookiesStr: String {
-        sakaiStore.cookies.map { key, value in "\(key):\(value)" }.reduce("") { partialResult, s in
-            partialResult + "; " + s
-        }
-    }
-
     var statusStr: String {
         "Status:" + ""
     }
 
+//
+//    let dateFormatter = dateFormatter()
+//
+//    func ()
+
     var body: some View {
         VStack {
-            Text(cookiesStr)
-            Button("Auth") {
-                isLoginModalShow = true
-            }
+            List {
+                Group {
+                    Text("User: \(sakaiStore.user?.name ?? "Not login yet")")
+                    Text("Auth Status: \(sakaiStore.user != nil ? "OK" : "Not Authed")")
+                    Button("Auth") {
+                        isLoginModalShow = true
+                    }
+                    Button("Reload") {
+                        sakaiStore.fetchInfo()
+                    }
+                }
+                ForEach(sakaiStore.sites, id: \.self.id) {
+                    site in
+                    Section(site.title) {
+                        ForEach(sakaiStore.events[site] ?? [], id: \.self.id) {
+                            event in
+                            VStack {
+                                HStack {
+                                    Text(event.title)
+                                    Spacer()
+                                }
+
+                                Text("Due: \(event.dueDate.description(with: Locale.current))").font(.caption2)
+                            }
+                        }
+                    }
+                }
+            }.listStyle(.insetGrouped)
+
         }.navigationTitle("Sync").navigationBarTitleDisplayMode(.large)
 
             .sheet(isPresented: $isLoginModalShow, content: {

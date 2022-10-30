@@ -28,7 +28,6 @@ struct SakaiAuth: View {
 
     var body: some View {
         VStack {
-            Text("cookies: \(cookiesStr)")
             WebView(webView: webViewStore.webView).onAppear {
                 self.webViewStore.webView.load(URLRequest(url: URL(string: "https://sakai.duke.edu/")!))
             }
@@ -57,6 +56,8 @@ public class SakaiWKNavigationDelegate: NSObject, WKNavigationDelegate {
                         SakaiStore.shared.cookies[cookie.name] = cookie.value
                     }
                 }
+                SakaiStore.shared.saveCookies()
+                SakaiStore.shared.fetchInfo()
             }
         }
         print(webView.url!.absoluteString, "finish")

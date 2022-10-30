@@ -17,6 +17,8 @@
 		B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B86290E1B54000CF95B /* SakaiSync.swift */; };
 		B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B89290E1E87000CF95B /* SakaiEvent.swift */; };
 		B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */; };
+		B3B34B8E290E254C000CF95B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* Server.swift */; };
+		B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8F290E31E0000CF95B /* SakaiUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		B3B34B86290E1B54000CF95B /* SakaiSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSync.swift; sourceTree = "<group>"; };
 		B3B34B89290E1E87000CF95B /* SakaiEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiEvent.swift; sourceTree = "<group>"; };
 		B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSite.swift; sourceTree = "<group>"; };
+		B3B34B8D290E254C000CF95B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		B3A6E129290DFCB000F9767B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B3B34B8D290E254C000CF95B /* Server.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 				B3B34B84290E1ACA000CF95B /* SakaiStore.swift */,
 				B3B34B89290E1E87000CF95B /* SakaiEvent.swift */,
 				B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */,
+				B3B34B8F290E31E0000CF95B /* SakaiUser.swift */,
 			);
 			path = Sakai;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 				B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */,
 				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
+				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
+				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
