@@ -11,6 +11,12 @@
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
 		B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE619290DFC6F00850A5A /* Assets.xcassets */; };
 		B39BE61D290DFC6F00850A5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE61C290DFC6F00850A5A /* Preview Assets.xcassets */; };
+		B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B80290E1AB7000CF95B /* WebView.swift */; };
+		B3B34B83290E1AB7000CF95B /* SakaiAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B81290E1AB7000CF95B /* SakaiAuth.swift */; };
+		B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B84290E1ACA000CF95B /* SakaiStore.swift */; };
+		B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B86290E1B54000CF95B /* SakaiSync.swift */; };
+		B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B89290E1E87000CF95B /* SakaiEvent.swift */; };
+		B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		B39BE619290DFC6F00850A5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B39BE61C290DFC6F00850A5A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B3B34B7E290DFD64000CF95B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B3B34B80290E1AB7000CF95B /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		B3B34B81290E1AB7000CF95B /* SakaiAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SakaiAuth.swift; sourceTree = "<group>"; };
+		B3B34B84290E1ACA000CF95B /* SakaiStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SakaiStore.swift; sourceTree = "<group>"; };
+		B3B34B86290E1B54000CF95B /* SakaiSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSync.swift; sourceTree = "<group>"; };
+		B3B34B89290E1E87000CF95B /* SakaiEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiEvent.swift; sourceTree = "<group>"; };
+		B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,7 @@
 		B39BE623290DFC7900850A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3B34B7F290E1AA9000CF95B /* Sync */,
 				B39BE617290DFC6E00850A5A /* ContentView.swift */,
 			);
 			path = Views;
@@ -82,6 +95,7 @@
 		B39BE624290DFC8200850A5A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3B34B88290E1E79000CF95B /* Sakai */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -91,6 +105,26 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B3B34B7F290E1AA9000CF95B /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				B3B34B81290E1AB7000CF95B /* SakaiAuth.swift */,
+				B3B34B80290E1AB7000CF95B /* WebView.swift */,
+				B3B34B86290E1B54000CF95B /* SakaiSync.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		B3B34B88290E1E79000CF95B /* Sakai */ = {
+			isa = PBXGroup;
+			children = (
+				B3B34B84290E1ACA000CF95B /* SakaiStore.swift */,
+				B3B34B89290E1E87000CF95B /* SakaiEvent.swift */,
+				B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */,
+			);
+			path = Sakai;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
+				B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */,
+				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
+				B3B34B83290E1AB7000CF95B /* SakaiAuth.swift in Sources */,
 				B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */,
+				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
+				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
