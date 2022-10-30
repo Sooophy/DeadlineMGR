@@ -20,6 +20,8 @@
 		B3B34B8E290E254C000CF95B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* Server.swift */; };
 		B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8F290E31E0000CF95B /* SakaiUser.swift */; };
 		E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C6290ECCE6008DDFF3 /* EventRow.swift */; };
+		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
+		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		B3B34B8D290E254C000CF95B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
 		E4E559C6290ECCE6008DDFF3 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		E4E559C8290ECDA2008DDFF3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				E4E559C6290ECCE6008DDFF3 /* EventRow.swift */,
+				E4E559C8290ECDA2008DDFF3 /* EventList.swift */,
+				E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */,
+				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
 				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
 				B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */,
 				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
