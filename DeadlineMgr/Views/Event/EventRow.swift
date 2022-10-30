@@ -13,13 +13,13 @@ struct EventRow: View {
 //            add checkmark when comleted
 //            Image(systemName: event.isComplete ? "checkmark.square" : "square")
             Image(systemName: "checkmark.square")
-                .foregroundColor(.blue) // will be event.color ?? .black
+                .foregroundColor(.blue) // will be event.color ?? .blue
             
             VStack(alignment: .leading, spacing: 2) {
                 Text("564 Project sprint1")
                     .fontWeight(.bold)
 
-//                Text(event.date.formatted(date: .abbreviated, time: .shortened))
+//                Text(event.due.formatted(date: .abbreviated, time: .shortened))
                 Text("Nov 02, 2022, 13:45")
                     .font(.caption2)
                     .foregroundColor(.gray)
