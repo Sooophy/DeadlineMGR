@@ -31,11 +31,11 @@ struct SakaiSync: View {
             Button("Auth") {
                 isLoginModalShow = true
             }
-        }
+        }.navigationTitle("Sync").navigationBarTitleDisplayMode(.large)
 
-        .sheet(isPresented: $isLoginModalShow, content: {
-            SakaiAuth(isModalShow: $isLoginModalShow)
-        })
+            .sheet(isPresented: $isLoginModalShow, content: {
+                SakaiAuth(isModalShow: $isLoginModalShow)
+            })
     }
 }
 

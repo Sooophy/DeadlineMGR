@@ -51,7 +51,6 @@ struct SakaiAuth_Previews: PreviewProvider {
 public class SakaiWKNavigationDelegate: NSObject, WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if webView.url!.absoluteString.starts(with: "https://sakai.duke.edu/portal/site") {
-            webView.configuration.websiteDataStore.httpCookieStore
             webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
                 for cookie in cookies {
                     if cookie.domain == "sakai.duke.edu" {
