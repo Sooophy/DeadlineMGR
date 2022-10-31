@@ -17,7 +17,7 @@ struct ContentView: View {
                     Image(systemName: "list.dash")
                     Text("Events")
                 }.tag(1)
-                Text("Calendar View").tabItem {
+                CalendarView().tabItem {
                     Image(systemName: "calendar")
                     Text("Calendar")
 
