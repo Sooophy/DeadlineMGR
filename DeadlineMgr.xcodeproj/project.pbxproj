@@ -21,6 +21,11 @@
 		B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */; };
 		B3B34B8E290E254C000CF95B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* Server.swift */; };
 		B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8F290E31E0000CF95B /* SakaiUser.swift */; };
+		E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B3E290EFAE6004531B7 /* CalendarView.swift */; };
+		E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B42290F280F004531B7 /* CalendarHelper.swift */; };
+		E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B44290F2DC5004531B7 /* CalendarTitle.swift */; };
+		E4713B47290F3890004531B7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B46290F3890004531B7 /* CalendarCell.swift */; };
+		E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B48290F3E3A004531B7 /* MonthStruct.swift */; };
 		E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C6290ECCE6008DDFF3 /* EventRow.swift */; };
 		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
 		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
@@ -43,6 +48,11 @@
 		B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSite.swift; sourceTree = "<group>"; };
 		B3B34B8D290E254C000CF95B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
+		E4713B3E290EFAE6004531B7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		E4713B42290F280F004531B7 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		E4713B44290F2DC5004531B7 /* CalendarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitle.swift; sourceTree = "<group>"; };
+		E4713B46290F3890004531B7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		E4713B48290F3E3A004531B7 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		E4E559C6290ECCE6008DDFF3 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		E4E559C8290ECDA2008DDFF3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
@@ -109,7 +119,7 @@
 		B39BE623290DFC7900850A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E4E559C3290EC983008DDFF3 /* HelperViews */,
+				E4713B3D290EFAC2004531B7 /* Calendar */,
 				E4E559C0290EC565008DDFF3 /* Event */,
 				B3B34B7F290E1AA9000CF95B /* Sync */,
 				B39BE617290DFC6E00850A5A /* ContentView.swift */,
@@ -130,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				B3B34B8D290E254C000CF95B /* Server.swift */,
+				E4713B42290F280F004531B7 /* CalendarHelper.swift */,
+				E4713B48290F3E3A004531B7 /* MonthStruct.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -155,6 +167,16 @@
 			path = Sakai;
 			sourceTree = "<group>";
 		};
+		E4713B3D290EFAC2004531B7 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				E4713B3E290EFAE6004531B7 /* CalendarView.swift */,
+				E4713B46290F3890004531B7 /* CalendarCell.swift */,
+				E4713B44290F2DC5004531B7 /* CalendarTitle.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		E4E559C0290EC565008DDFF3 /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,13 +185,6 @@
 				E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */,
 			);
 			path = Event;
-			sourceTree = "<group>";
-		};
-		E4E559C3290EC983008DDFF3 /* HelperViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HelperViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,16 +258,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */,
+				E4713B47290F3890004531B7 /* CalendarCell.swift in Sources */,
 				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
 				2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */,
 				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
 				B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */,
 				2E7EB22B290EF97B002DC982 /* Event.swift in Sources */,
+				E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */,
 				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
 				B3B34B83290E1AB7000CF95B /* SakaiAuth.swift in Sources */,
 				B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */,
 				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
+				E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */,
 				E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */,
+				E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */,
+				E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
 				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,

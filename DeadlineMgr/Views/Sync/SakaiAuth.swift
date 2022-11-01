@@ -20,12 +20,6 @@ struct SakaiAuth: View {
         self._isModalShow = isModalShow
     }
 
-    var cookiesStr: String {
-        sakaiStore.cookies.map { key, value in "\(key):\(value)" }.reduce("") { partialResult, s in
-            partialResult + "; " + s
-        }
-    }
-
     var body: some View {
         VStack {
             WebView(webView: webViewStore.webView).onAppear {
@@ -51,8 +45,9 @@ public class SakaiWKNavigationDelegate: NSObject, WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if webView.url!.absoluteString.starts(with: "https://sakai.duke.edu/portal/site") {
             webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+                SakaiStore.shared.cookies.removeAll()
                 for cookie in cookies {
-                    if cookie.domain == "sakai.duke.edu" {
+                    if cookie.domain == "sakai.duke.edu" && cookie.name == "SAKAIID" {
                         SakaiStore.shared.cookies[cookie.name] = cookie.value
                     }
                 }

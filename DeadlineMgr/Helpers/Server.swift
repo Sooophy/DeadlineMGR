@@ -19,7 +19,9 @@ class Server {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = method
         request.httpBody = body
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if method == "POST"{
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
         if headers != nil {
             for (key, value) in headers! {
                 request.setValue(value, forHTTPHeaderField: key)

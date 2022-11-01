@@ -15,21 +15,13 @@ struct SakaiSync: View {
         self._sakaiStore = StateObject(wrappedValue: SakaiStore.shared)
     }
 
-    var statusStr: String {
-        "Status:" + ""
-    }
-
-//
-//    let dateFormatter = dateFormatter()
-//
-//    func ()
-
     var body: some View {
         VStack {
             List {
                 Group {
                     Text("User: \(sakaiStore.user?.name ?? "Not login yet")")
                     Text("Auth Status: \(sakaiStore.user != nil ? "OK" : "Not Authed")")
+                    Text("Cookies: \(sakaiStore.cookieStr)")
                     Button("Auth") {
                         isLoginModalShow = true
                     }
