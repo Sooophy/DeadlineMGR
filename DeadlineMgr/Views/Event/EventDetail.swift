@@ -10,6 +10,9 @@ import SwiftUI
 
 struct EventDetail: View {
     @Environment(\.presentationMode) var presentationMode
+//    @EnvironmentObject var modelData: ModelData
+//    @State var event: Event
+//
     
     @State private var eventTitle: String = "564 Project Sprint1"
     @State private var tag:String = "ECE564"
