@@ -13,6 +13,7 @@ final class ModelData: ObservableObject {
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
+    static let DefaultURL = Bundle.main.url(forResource: "DefaultEvent", withExtension: "json")!
     
     init() {
         loadData()
@@ -32,7 +33,7 @@ final class ModelData: ObservableObject {
             do {
                 try outputData.write(to: ModelData.ArchiveURL)
             } catch let error as NSError {
-                print (error)
+                print(error)
             }
         }
     }
@@ -40,14 +41,21 @@ final class ModelData: ObservableObject {
     func loadData() {
         let decoder = JSONDecoder()
         let tempData: Data
+        var firstLoad = false
                 
         do {
             //Try to load from ArchiveURL
             tempData = try Data(contentsOf: ModelData.ArchiveURL)
         } catch {
-            print("First time load")
-            saveData()
-            return
+            do {
+                //ArchiveURL not found, try to load from default JSON file
+                print("First time load, try load from default JSON file")
+                firstLoad = true
+                tempData = try Data(contentsOf: ModelData.DefaultURL)
+            } catch let error as NSError {
+                print(error)
+                return
+            }
         }
         
         if let decoded = try? decoder.decode([Event].self, from: tempData) {
@@ -56,6 +64,11 @@ final class ModelData: ObservableObject {
             }
             for event in eventArray {
                 dataBase[event.id] = event
+            }
+            
+            if firstLoad {
+                saveData()
+                print("First time save to sandbox")
             }
         }
     }
