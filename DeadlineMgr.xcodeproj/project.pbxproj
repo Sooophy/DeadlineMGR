@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E7EB22B290EF97B002DC982 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22A290EF97B002DC982 /* Event.swift */; };
+		2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22C290F3581002DC982 /* ModelData.swift */; };
 		B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */; };
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
 		B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE619290DFC6F00850A5A /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E7EB22A290EF97B002DC982 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2E7EB22C290F3581002DC982 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		B39BE612290DFC6E00850A5A /* DeadlineMgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadlineMgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgrApp.swift; sourceTree = "<group>"; };
 		B39BE617290DFC6E00850A5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E7EB227290EF340002DC982 /* EventModel */ = {
+			isa = PBXGroup;
+			children = (
+				2E7EB22A290EF97B002DC982 /* Event.swift */,
+				2E7EB22C290F3581002DC982 /* ModelData.swift */,
+			);
+			path = EventModel;
+			sourceTree = "<group>";
+		};
 		B39BE609290DFC6E00850A5A = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 		B39BE624290DFC8200850A5A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2E7EB227290EF340002DC982 /* EventModel */,
 				B3B34B88290E1E79000CF95B /* Sakai */,
 			);
 			path = Models;
@@ -246,8 +260,10 @@
 				E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */,
 				E4713B47290F3890004531B7 /* CalendarCell.swift in Sources */,
 				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
+				2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */,
 				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
 				B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */,
+				2E7EB22B290EF97B002DC982 /* Event.swift in Sources */,
 				E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */,
 				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
 				B3B34B83290E1AB7000CF95B /* SakaiAuth.swift in Sources */,
