@@ -35,6 +35,12 @@ class SakaiStore: ObservableObject {
         }
 
     }}
+
+    var cookieStr: String {
+        cookies.map { key, value in "\(key)=\(value);" }
+            .joined(separator: " ")
+    }
+
     @Published var events: [SakaiSite: [SakaiEvent]] = [:]
     @Published var user: SakaiUser? = nil
 
@@ -62,12 +68,7 @@ class SakaiStore: ObservableObject {
                          _ args: CVarArg...) async -> (Data?, HTTPURLResponse?, Error?)
     {
         let url = getUrl(endpoint, args)
-        let headers = ["cookie":
-            cookies.map { key, value in
-                key + "=" + value
-            }.reduce("") { a, b in
-                a + "; " + b
-            }]
+        let headers = ["cookie": cookieStr]
         return await Server.request(url, method, headers)
     }
 
