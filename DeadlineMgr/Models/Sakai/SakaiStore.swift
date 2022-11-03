@@ -120,6 +120,17 @@ class SakaiStore: ObservableObject {
     func saveCookies() {
         let defaults = UserDefaults.standard
         defaults.set(cookies, forKey: "cookies")
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        for (key, value) in cookies {
+            var props = [HTTPCookiePropertyKey: Any]()
+            props[HTTPCookiePropertyKey.name] = key
+            props[HTTPCookiePropertyKey.value] = value
+            props[HTTPCookiePropertyKey.path] = "/"
+            props[HTTPCookiePropertyKey.domain] = "sakai.duke.edu"
+            let cookie = HTTPCookie(properties: props)
+
+            HTTPCookieStorage.shared.setCookie(cookie!)
+        }
     }
 
     func loadCookies() {

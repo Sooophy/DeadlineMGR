@@ -16,10 +16,10 @@ class Server {
     }
 
     private static func genRequest(_ url: String, _ method: String, _ headers: [String: String]? = nil, _ body: Data? = nil) -> URLRequest {
-        var request = URLRequest(url: URL(string: url)!)
+        var request = URLRequest(url: URL(string: url)!, cachePolicy: .reloadIgnoringLocalCacheData)
         request.httpMethod = method
         request.httpBody = body
-        if method == "POST"{
+        if method == "POST" {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         if headers != nil {
