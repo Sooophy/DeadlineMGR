@@ -17,7 +17,7 @@ struct ContentView: View {
                     Image(systemName: "list.dash")
                     Text("Events")
                 }.tag(1)
-                CalendarView().tabItem {
+                Calendar2View().tabItem {
                     Image(systemName: "calendar")
                     Text("Calendar")
 
@@ -26,7 +26,7 @@ struct ContentView: View {
                     Image(systemName: "arrow.triangle.2.circlepath")
                     Text("Sync")
                 }.tag(3)
-                Text("Timeline View").tabItem {
+                CalendarView().tabItem {
                     Image(systemName: "calendar.day.timeline.trailing")
                     Text("Timeline")
                 }
