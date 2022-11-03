@@ -37,7 +37,7 @@ class SakaiStore: ObservableObject {
     }}
 
     var cookieStr: String {
-        cookies.map { key, value in "\(key)=\(value);" }
+        cookies.map { key, value in "\(key)=\(value)" }
             .joined(separator: " ")
     }
 
@@ -68,8 +68,7 @@ class SakaiStore: ObservableObject {
                          _ args: CVarArg...) async -> (Data?, HTTPURLResponse?, Error?)
     {
         let url = getUrl(endpoint, args)
-        let headers = ["cookie": cookieStr]
-        return await Server.request(url, method, headers)
+        return await Server.request(url, method)
     }
 
     func genUser() async -> SakaiUser? {
@@ -126,6 +125,18 @@ class SakaiStore: ObservableObject {
     func loadCookies() {
         let defaults = UserDefaults.standard
         cookies = defaults.object(forKey: "cookies") as? [String: String] ?? [:]
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        // set cookie
+        for (key, value) in cookies {
+            var props = [HTTPCookiePropertyKey: Any]()
+            props[HTTPCookiePropertyKey.name] = key
+            props[HTTPCookiePropertyKey.value] = value
+            props[HTTPCookiePropertyKey.path] = "/"
+            props[HTTPCookiePropertyKey.domain] = "sakai.duke.edu"
+            let cookie = HTTPCookie(properties: props)
+
+            HTTPCookieStorage.shared.setCookie(cookie!)
+        }
     }
 
     func fetchInfo() {

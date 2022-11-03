@@ -21,7 +21,6 @@ struct SakaiSync: View {
                 Group {
                     Text("User: \(sakaiStore.user?.name ?? "Not login yet")")
                     Text("Auth Status: \(sakaiStore.user != nil ? "OK" : "Not Authed")")
-                    Text("Cookies: \(sakaiStore.cookieStr)")
                     Button("Auth") {
                         isLoginModalShow = true
                     }
