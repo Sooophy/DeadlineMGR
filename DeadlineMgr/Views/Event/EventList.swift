@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct EventList: View {
     
@@ -36,7 +37,15 @@ struct EventList: View {
                         }
                     }
                 }
+                Section(header: Text("Already past due")){
+                    ForEach(currentEvents[3]) { event in
+                        NavigationLink(destination: EventDetail()) {
+                            EventRow()
+                        }
+                    }
+                }
                 Button(action: {
+                    print("a")
                     for (_, tempEvent) in modelData.dataBase {
                         print("\(tempEvent.dueAt)")
                     }
@@ -51,19 +60,26 @@ struct EventList: View {
     func filterTodayEvents() -> [[Event]]{
         let current = Date()
 //        let current = 1667361599
-        var currentEvents:[[Event]] = [[],[],[]]
+        var currentEvents:[[Event]] = [[],[],[],[]]
         
         for (_, tempEvent) in modelData.dataBase {
-            print("\(tempEvent.dueAt)")
-            let dateDiff = Calendar.current.dateComponents([.month], from: tempEvent.dueAt, to: current)
-            if dateDiff.day == 0{
+//            print("\(tempEvent.dueAt)")
+//            let dateDiff = Calendar.current.dateComponents([.month], from: tempEvent.dueAt, to: current)
+            let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
+            let fromDate = Calendar.current.startOfDay(for: current)
+            let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
+//            print(numberOfDays.day!) as Any
+            if numberOfDays.day! == 0{
                 currentEvents[0].append(tempEvent)
             }
-            if dateDiff.day == 3{
+            if numberOfDays.day! == 3 {
                 currentEvents[1].append(tempEvent)
             }
-            if dateDiff.day == 7{
+            if numberOfDays.day! == 7{
                 currentEvents[2].append(tempEvent)
+            }
+            if numberOfDays.day! < 0{
+                currentEvents[3].append(tempEvent)
             }
         }
         return currentEvents
