@@ -106,6 +106,18 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func eventIsCompletedToggle(id: String) {
+        if dataBase[id] == nil {return}
+        if dataBase[id]!.isCompleted {
+            dataBase[id]!.isCompleted = false
+            dataBase[id]!.completedAt = nil
+        }
+        else {
+            dataBase[id]!.isCompleted = true
+            dataBase[id]!.completedAt = Date()
+        }
+    }
+    
     func addEvent(title: String,
                   dueAt: Date?,
                   tag: String,
