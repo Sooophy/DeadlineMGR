@@ -70,23 +70,20 @@ struct EventDetail: View {
     
     func saveEvent(event: Event) {
         // save event
-        let newEvent = modifyEvent(event: event, eventTitle: eventTitle, tag: tag, due: due, description: description, isCompleted: isCompleted)
-        modelData.dataBase[newEvent.id] = newEvent
+        modelData.addUpdatdEvent(id: event.id,
+                                 title: eventTitle,
+                                 dueAt: due,
+                                 tag: tag,
+                                 description: description,
+                                 location: nil,
+                                 source: event.source,
+                                 sourceUrl: event.sourceUrl,
+                                 sourceId: event.sourceId)
         presentationMode.wrappedValue.dismiss()
     }
     
     func showEventDetail(event: Event) -> (String, String, Date, String, Bool) {
         return (event.title, event.tag.joined(separator: ","), event.dueAt, event.description, event.isCompleted)
-    }
-    
-    func modifyEvent(event: Event, eventTitle: String, tag: String, due: Date, description: String, isCompleted: Bool) -> Event {
-        var newEvent = event
-        newEvent.title = eventTitle
-        newEvent.tag = tag.components(separatedBy: ",")
-        newEvent.dueAt = due
-        newEvent.description = description
-        newEvent.isCompleted = isCompleted
-        return newEvent
     }
 }
 
