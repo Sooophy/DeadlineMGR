@@ -76,6 +76,36 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func addUpdatdEvent(id: String,
+                        title: String,
+                        dueAt: Date?,
+                        tag: String,
+                        description: String,
+                        location: Location?,
+                        source: Source,
+                        sourceUrl: String?,
+                        sourceId: String?,
+                        color: Color = .blue) {
+        if dataBase[id] != nil {
+            updateEvent(id: id,
+                        title: title,
+                        dueAt: dueAt,
+                        tag: tag,
+                        description: description,
+                        location: location)
+        }
+        else {
+            addEvent(title: title,
+                     dueAt: dueAt,
+                     tag: tag,
+                     description: description,
+                     location: location,
+                     source: source,
+                     sourceUrl: sourceUrl,
+                     sourceId: sourceId)
+        }
+    }
+    
     func addEvent(title: String,
                   dueAt: Date?,
                   tag: String,
