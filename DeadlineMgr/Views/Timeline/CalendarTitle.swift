@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CalendarTitle: View {
     
-//    @EnvironmentObject var date: Date = Date()
+    @EnvironmentObject var dateHolder: DateHolder
     // Use today as example
-    @State var date = Date()
+//    @State var date = Date()
     
     var body: some View {
         HStack {
@@ -21,7 +21,7 @@ struct CalendarTitle: View {
                     .font(.title)
             }
             
-            Text(CalendarHelper().monthYearString(date))
+            Text(CalendarHelper().monthYearString(dateHolder.date))
                 .font(.title)
             
             Button(action: nextMonth){
@@ -34,11 +34,11 @@ struct CalendarTitle: View {
     
     func prevMonth(){
         // go to last month
-        date = CalendarHelper().minusMonth(date)
+        dateHolder.date = CalendarHelper().minusMonth(dateHolder.date)
     }
     func nextMonth(){
         // go to next month
-        date = CalendarHelper().plusMonth(date)
+        dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
     }
 }
 

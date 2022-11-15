@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct CalendarCell: View {
-//    @EnvironmentObject var event
+    @EnvironmentObject var dateHolder: DateHolder
     let count:Int
     let startingSpace : Int
     let daysCountInMonth : Int
     let daysCountprevMonth : Int
     
     var body: some View {
-        Text(monthStruct().day())
-            .foregroundColor(textColor(type: monthStruct().monthType))
+        VStack {
+            Text(monthStruct().day())
+                .foregroundColor(textColor(type: monthStruct().monthType))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            Image(systemName: "phone.bubble.left.fill")// will be replaced by event cell
+        }
     }
     
     func textColor(type: MonthType) -> Color {
