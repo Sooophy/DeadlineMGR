@@ -7,9 +7,12 @@
 
 import Foundation
 
-
 final class ModelData: ObservableObject {
-    @Published var dataBase : [String: Event] = [:]
+    @Published var dataBase: [String: Event] = [:] {
+        didSet {
+            saveData()
+        }
+    }
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
@@ -19,14 +22,13 @@ final class ModelData: ObservableObject {
         loadData()
     }
     
-    func saveData(){
+    func saveData() {
         var outputData = Data()
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Array(dataBase.values)) {
             if let _ = String(data: encoded, encoding: .utf8) {
                 outputData = encoded
-            }
-            else {
+            } else {
                 return
             }
                 
@@ -44,11 +46,11 @@ final class ModelData: ObservableObject {
         var firstLoad = false
                 
         do {
-            //Try to load from ArchiveURL
+            // Try to load from ArchiveURL
             tempData = try Data(contentsOf: ModelData.ArchiveURL)
         } catch {
             do {
-                //ArchiveURL not found, try to load from default JSON file
+                // ArchiveURL not found, try to load from default JSON file
                 print("First time load, try load from default JSON file")
                 firstLoad = true
                 tempData = try Data(contentsOf: ModelData.DefaultURL)

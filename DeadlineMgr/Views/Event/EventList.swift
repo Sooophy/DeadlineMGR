@@ -76,17 +76,14 @@ struct EventList: View {
             let fromDate = Calendar.current.startOfDay(for: current)
             let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
 //            print(numberOfDays.day!) as Any
-            if numberOfDays.day! == 0 {
-                currentEvents[0].append(tempEvent)
-            }
-            if numberOfDays.day! == 3 {
-                currentEvents[1].append(tempEvent)
-            }
-            if numberOfDays.day! == 7 {
-                currentEvents[2].append(tempEvent)
-            }
             if numberOfDays.day! < 0 {
                 currentEvents[3].append(tempEvent)
+            } else if numberOfDays.day! == 0 {
+                currentEvents[0].append(tempEvent)
+            } else if numberOfDays.day! <= 3 {
+                currentEvents[1].append(tempEvent)
+            } else if numberOfDays.day! <= 7 {
+                currentEvents[2].append(tempEvent)
             }
         }
         return currentEvents

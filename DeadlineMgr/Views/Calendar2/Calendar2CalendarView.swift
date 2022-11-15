@@ -12,24 +12,16 @@ import SwiftUI
 struct Calendar2CalendarView: View, UIViewRepresentable {
     @Binding var date: Date
     var events: [Event]
-    var ckEvents: [CalendarKit.EventDescriptor] {
-        events.filter {
-            event in
-            Calendar.current.isDate(date, inSameDayAs: event.dueAt)
-        }.map { event in
-            let ckEvent = CalendarKit.Event()
-            ckEvent.dateInterval = DateInterval(start: event.dueAt, duration: TimeInterval(60 * 24))
-            ckEvent.text = event.title
-            return ckEvent
-        }
-    }
 
     var dataSource: DataSource?
     
-    init(date: Binding<Date>, events: [Event]) {
+    var eventTappedCallback: ((String) -> Void)?
+    
+    init(date: Binding<Date>, events: [Event], eventTappedCallback: ((String) -> Void)?) {
         self._date = date
         self.events = events
         self.dataSource = DataSource(events: events)
+        self.eventTappedCallback = eventTappedCallback
     }
 
     func makeUIView(context: Context) -> DayView {
@@ -56,6 +48,7 @@ struct Calendar2CalendarView: View, UIViewRepresentable {
                 ckEvent.dateInterval = DateInterval(start: event.dueAt.addingTimeInterval(TimeInterval(-3600)), duration: TimeInterval(3600))
                 ckEvent.text = event.title
                 ckEvent.color = UIColor(event.color)
+                ckEvent.userInfo = ["id": event.id]
                 return ckEvent
             }
             
@@ -65,14 +58,18 @@ struct Calendar2CalendarView: View, UIViewRepresentable {
 
     func updateUIView(_ uiView: DayView, context: Context) {
         uiView.move(to: date)
+        let dataSource = DataSource(events: events)
+        uiView.dataSource = dataSource
         uiView.reloadData()
     }
     
     final class Coordinator: NSObject, DayViewDelegate {
         @Binding var date: Date
+        var eventTappedCallback: ((String) -> Void)?
         
-        init(date: Binding<Date>) {
+        init(date: Binding<Date>, eventTappedCallback: ((String) -> Void)?) {
             self._date = date
+            self.eventTappedCallback = eventTappedCallback
         }
         
         func dayViewDidLongPressEventView(_ eventView: CalendarKit.EventView) {}
@@ -94,11 +91,14 @@ struct Calendar2CalendarView: View, UIViewRepresentable {
         
         func dayView(dayView: CalendarKit.DayView, didUpdate event: CalendarKit.EventDescriptor) {}
         
-        func dayViewDidSelectEventView(_ eventView: EventView) {}
+        func dayViewDidSelectEventView(_ eventView: EventView) {
+            let tappedEventId = ((eventView.descriptor as! CalendarKit.Event).userInfo as! [String: String])["id"]!
+            if eventTappedCallback != nil { eventTappedCallback!(tappedEventId) }
+        }
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(date: $date)
+        Coordinator(date: $date, eventTappedCallback: eventTappedCallback)
     }
 }
 
