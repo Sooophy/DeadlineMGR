@@ -9,12 +9,11 @@ import SwiftUI
 
 
 struct CalendarView: View {
-    @EnvironmentObject var dateHolder: DateHolder
-//    @State var date:Date = Date()
+    @State var date:Date = Date()
     
     var body: some View {
         VStack(spacing:1) {
-            CalendarTitle()
+            CalendarTitle(date: $date)
             //will add environment object later
                 .padding()
             dayOfWeekStack
@@ -38,10 +37,10 @@ struct CalendarView: View {
     var calendarGrid: some View {
         VStack(spacing: 2){
             
-            let daysCountInMonth = CalendarHelper().daysCountInMonth(dateHolder.date)
-            let firstDayInMonth = CalendarHelper().firstDayInMonth(dateHolder.date)
+            let daysCountInMonth = CalendarHelper().daysCountInMonth(date)
+            let firstDayInMonth = CalendarHelper().firstDayInMonth(date)
             let startingSpace = CalendarHelper().weekDay(firstDayInMonth)
-            let prevMonth = CalendarHelper().minusMonth(dateHolder.date)
+            let prevMonth = CalendarHelper().minusMonth(date)
             let daysCountLastMonth = CalendarHelper().daysCountInMonth(prevMonth)
             
             ForEach(0..<6){
@@ -50,7 +49,7 @@ struct CalendarView: View {
                     ForEach(1..<8) {
                         column in
                         let count = column + row * 7
-                        CalendarCell(count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
+                        CalendarCell(date: $date, count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
                     }
                 }
             }

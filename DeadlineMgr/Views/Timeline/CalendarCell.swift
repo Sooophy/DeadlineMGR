@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarCell: View {
-    @EnvironmentObject var dateHolder: DateHolder
+    @Binding var date:Date
     let count:Int
     let startingSpace : Int
     let daysCountInMonth : Int
@@ -49,6 +49,6 @@ struct CalendarCell: View {
 
 struct CalendarCell_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarCell(count: 6, startingSpace: 5, daysCountInMonth: 31, daysCountprevMonth: 30)
+        CalendarCell(date: .constant(Date()),count: 6, startingSpace: 5, daysCountInMonth: 31, daysCountprevMonth: 30)
     }
 }
