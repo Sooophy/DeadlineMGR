@@ -18,41 +18,49 @@ struct EventList: View {
             List(){
                 Section(header: Text("Today")){
                     ForEach(currentEvents[0]) { event in
-                        NavigationLink(destination: EventDetail()) {
-                            EventRow()
+                        NavigationLink(destination: EventDetail(event: event)) {
+                            EventRow(event:event)
                         }
                     }
                 }
                 Section(header: Text("Due in 3 days")){
                     ForEach(currentEvents[1]) { event in
-                        NavigationLink(destination: EventDetail()) {
-                            EventRow()
+                        NavigationLink(destination: EventDetail(event: event)) {
+                            EventRow(event:event)
                         }
                     }
                 }
                 Section(header: Text("Due in a week")){
                     ForEach(currentEvents[2]) { event in
-                        NavigationLink(destination: EventDetail()) {
-                            EventRow()
+                        NavigationLink(destination: EventDetail(event: event)) {
+                            EventRow(event:event)
                         }
                     }
                 }
                 Section(header: Text("Already past due")){
                     ForEach(currentEvents[3]) { event in
-                        NavigationLink(destination: EventDetail()) {
-                            EventRow()
+                        NavigationLink(destination: EventDetail(event: event)) {
+                            EventRow(event:event)
                         }
                     }
                 }
+                
+                // button for test
                 Button(action: {
-                    print("a")
                     for (_, tempEvent) in modelData.dataBase {
-                        print("\(tempEvent.dueAt)")
+                        print("\(tempEvent.title)")
                     }
+                    print(currentEvents)
                 }, label: {
-                    Text("a")
+                    Text("test")
                 })
             }
+//            List(modelData.dataBase.sorted(by: >), id: \.key) { tempEvent in
+//                let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
+//                let fromDate = Calendar.current.startOfDay(for: Date())
+//                let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
+//
+//            }
         }
     }
     
