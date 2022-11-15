@@ -136,8 +136,8 @@
 		B39BE623290DFC7900850A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4713B4A2923E87F004531B7 /* Timeline */,
 				B3B34B9129119E13000CF95B /* Calendar2 */,
-				E4713B3D290EFAC2004531B7 /* Calendar */,
 				E4E559C0290EC565008DDFF3 /* Event */,
 				B3B34B7F290E1AA9000CF95B /* Sync */,
 				B39BE617290DFC6E00850A5A /* ContentView.swift */,
@@ -194,14 +194,14 @@
 			path = Calendar2;
 			sourceTree = "<group>";
 		};
-		E4713B3D290EFAC2004531B7 /* Calendar */ = {
+		E4713B4A2923E87F004531B7 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
 				E4713B3E290EFAE6004531B7 /* CalendarView.swift */,
 				E4713B46290F3890004531B7 /* CalendarCell.swift */,
 				E4713B44290F2DC5004531B7 /* CalendarTitle.swift */,
 			);
-			path = Calendar;
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		E4E559C0290EC565008DDFF3 /* Event */ = {
