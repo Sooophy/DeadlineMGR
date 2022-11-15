@@ -23,7 +23,6 @@ struct Calendar2View: View {
         NavigationView {
             ZStack {
                 Calendar2CalendarView(date: $selected_date, events: events)
-//                Text(String(describing: events))
 
             }.navigationBarTitle("Calendar", displayMode: .inline).toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -47,7 +46,6 @@ struct Calendar2View: View {
                 Text("date")
             }
             .datePickerStyle(.graphical)
-//            .frame(height: 330)
             .presentationDetents([.height(400)])
         }
     }

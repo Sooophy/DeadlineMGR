@@ -10,8 +10,12 @@ import Foundation
 class SakaiStore: ObservableObject {
     static let shared: SakaiStore = .init()
     @Published var cookies: [String: String] = [:]
+    @Published var isLoading: Bool = false
     @Published var sites: [SakaiSite] = [] { didSet {
         Task {
+            DispatchQueue.main.async {
+                self.isLoading = true
+            }
             let newEvents = await withTaskGroup(of: (SakaiSite, [SakaiEvent]).self, body: { group in
                 var newEvents = events
                 for site in sites {
@@ -31,6 +35,7 @@ class SakaiStore: ObservableObject {
             })
             DispatchQueue.main.async {
                 self.events = newEvents
+                self.isLoading = false
             }
         }
 
@@ -43,6 +48,17 @@ class SakaiStore: ObservableObject {
 
     @Published var events: [SakaiSite: [SakaiEvent]] = [:]
     @Published var user: SakaiUser? = nil
+
+    var filteredEvents: [SakaiSite: [SakaiEvent]] {
+        events.mapValues { events in
+            events.filter {
+                event in
+                event.dueDate > Date.now.advanced(by: TimeInterval(-3600 * 24 * 7))
+            }
+        }.filter { _, events in
+            !events.isEmpty
+        }
+    }
 
     var isAuth: Bool {
         cookies.count != 0
@@ -133,6 +149,16 @@ class SakaiStore: ObservableObject {
         }
     }
 
+    func deleteCookies() {
+        cookies.removeAll()
+        let defaults = UserDefaults.standard
+        defaults.set(cookies, forKey: "cookies")
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        self.user = nil
+        self.sites.removeAll()
+        self.events.removeAll()
+    }
+
     func loadCookies() {
         let defaults = UserDefaults.standard
         cookies = defaults.object(forKey: "cookies") as? [String: String] ?? [:]
@@ -157,6 +183,7 @@ class SakaiStore: ObservableObject {
         }
         DispatchQueue.main.async {
             Task {
+                self.isLoading = true
                 self.events = [:]
                 self.user = await self.genUser()
                 self.sites = await self.genAllSites() ?? []
