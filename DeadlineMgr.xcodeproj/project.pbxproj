@@ -10,6 +10,7 @@
 		2E7EB22B290EF97B002DC982 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22A290EF97B002DC982 /* Event.swift */; };
 		2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22C290F3581002DC982 /* ModelData.swift */; };
 		2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */; };
+		B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */; };
 		B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */; };
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
 		B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE619290DFC6F00850A5A /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		2E7EB22A290EF97B002DC982 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		2E7EB22C290F3581002DC982 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultEvent.json; sourceTree = "<group>"; };
+		B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiDetail.swift; sourceTree = "<group>"; };
 		B39BE612290DFC6E00850A5A /* DeadlineMgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadlineMgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgrApp.swift; sourceTree = "<group>"; };
 		B39BE617290DFC6E00850A5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				B3B34B81290E1AB7000CF95B /* SakaiAuth.swift */,
 				B3B34B80290E1AB7000CF95B /* WebView.swift */,
 				B3B34B86290E1B54000CF95B /* SakaiSync.swift */,
+				B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
+				B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,8 @@ import SwiftUI
 struct SakaiSync: View {
     @StateObject var sakaiStore: SakaiStore
     @State var isLoginModalShow = false
+    @State var isDetailWebView = false
+    @State var showingEvent: SakaiEvent? = nil
 
     init() {
         self._sakaiStore = StateObject(wrappedValue: SakaiStore.shared)
@@ -35,13 +37,16 @@ struct SakaiSync: View {
                             Section(site.title) {
                                 ForEach(events, id: \.self.id) {
                                     event in
-                                    VStack {
-                                        HStack {
-                                            Text(event.title)
-                                            Spacer()
-                                        }
 
-                                        Text("Due: \(event.dueDate.description(with: Locale.current))").font(.caption2)
+                                    VStack {
+                                        NavigationLink(destination: SakaiDetail(event.url)) {
+                                            HStack {
+                                                Text(event.title)
+                                                Spacer()
+                                            }
+
+                                            Text("Due: \(event.dueDate.description(with: Locale.current))").font(.caption2).multilineTextAlignment(.leading)
+                                        }
                                     }
                                 }
                             }

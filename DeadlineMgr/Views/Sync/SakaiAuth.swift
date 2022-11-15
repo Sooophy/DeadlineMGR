@@ -9,9 +9,7 @@ import SwiftUI
 import WebKit
 
 struct SakaiAuth: View {
-    @StateObject var webViewStore = WebViewStore(
-        navigationDelegate: SakaiWKNavigationDelegate()
-    )
+    @StateObject var webViewStore = WebViewStore()
     @StateObject var sakaiStore: SakaiStore
     @Binding var isModalShow: Bool
 

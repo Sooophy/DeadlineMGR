@@ -10,9 +10,8 @@ public class WebViewStore: ObservableObject {
         }
     }
   
-    public init(webView: WKWebView = WKWebView(), navigationDelegate: WKNavigationDelegate? = nil) {
+    public init(webView: WKWebView = WKWebView()) {
         self.webView = webView
-//        webView.navigationDelegate = navigationDelegate
         setupObservers()
     }
   
