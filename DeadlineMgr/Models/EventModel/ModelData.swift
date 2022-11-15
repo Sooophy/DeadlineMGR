@@ -96,4 +96,21 @@ final class ModelData: ObservableObject {
                              color: color)
         dataBase[newEvent.id] = newEvent
     }
+    
+    func updateEvent(id: String,
+                     title: String,
+                     dueAt: Date?,
+                     tag: String,
+                     description: String,
+                     location: Location?,
+                     color: Color = .blue) {
+        dataBase[id]!.title = title
+        if dueAt != nil {
+            dataBase[id]!.dueAt = dueAt!
+        }
+        dataBase[id]!.tag = tag.components(separatedBy: ",")
+        dataBase[id]!.description = description
+        dataBase[id]!.location = location
+        dataBase[id]!.color = color
+    }
 }
