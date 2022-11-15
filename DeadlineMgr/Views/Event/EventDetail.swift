@@ -10,11 +10,15 @@ import SwiftUI
 
 struct EventDetail: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var modelData: ModelData
+    var event: Event
     
-    @State private var eventTitle: String = "564 Project Sprint1"
-    @State private var tag:String = "ECE564"
-    @State private var date:Date = Date.now
-    @State private var description = "Sprint 1 (Complete on Nov 1). Design and Architecture done.  Data model developed and implementation started (Server / File / DB / 3rd party / etc).  Flow of UI completed (look and feel and flow of Views) and decision made on UI model (code / storyboard / .xib / SwiftUI).  Basic UI screens with VCs completed."
+    @State private var eventTitle: String = ""
+    @State private var tag:String  = ""
+    @State private var due:Date = Date()
+    @State private var description : String = ""
+    @State private var isCompleted : Bool = false
+    
     
     var body: some View {
         NavigationView {
@@ -25,7 +29,8 @@ struct EventDetail: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 1)
                     HStack {
-                        DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
+                        
+                        DatePicker(selection: $due, in: ...Date()) {
                             Text("Due:")
                         }
 
@@ -52,7 +57,9 @@ struct EventDetail: View {
                 .padding()
             }
         }
-        
+        .onAppear(){
+            (eventTitle, tag, due, description, isCompleted) = showEventDetail(event: event)
+        }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading:
@@ -60,14 +67,30 @@ struct EventDetail: View {
                 Text("Cancel")
             },
             trailing:
-            Button(action : { saveEvent() }){
+                Button(action : { saveEvent(event: event) }){
                 Text("Save")
         })
     }
     
-    func saveEvent(){
+    func saveEvent(event : Event){
         //save event
+        let newEvent = modifyEvent(event: event, eventTitle: eventTitle, tag: tag, due: due, description: description, isCompleted: isCompleted)
+        modelData.dataBase[newEvent.id] = newEvent
         self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    func showEventDetail(event: Event) -> (String, String, Date, String, Bool) {
+        return (event.title, event.tag.joined(separator: ","), event.dueAt, event.description, event.isCompleted)
+    }
+    
+    func modifyEvent(event: Event, eventTitle: String, tag: String, due: Date, description: String, isCompleted: Bool) -> Event {
+        var newEvent = event
+        newEvent.title = eventTitle
+        newEvent.tag = tag.components(separatedBy: ",")
+        newEvent.dueAt = due
+        newEvent.description = description
+        newEvent.isCompleted = isCompleted
+        return newEvent
     }
     
 }
@@ -75,6 +98,6 @@ struct EventDetail: View {
 
 struct EventDetail_Previews: PreviewProvider {
     static var previews: some View {
-        EventDetail()
+        EventDetail(event: ModelData().dataBase["C8F55DF8-BE79-451E-8F66-9318CA0A686C"]!)
     }
 }
