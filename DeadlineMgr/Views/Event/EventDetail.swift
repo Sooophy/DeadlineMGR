@@ -28,19 +28,18 @@ struct EventDetail: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.bottom, 1)
-                    HStack {
-                        
+                    VStack(alignment: .leading) {
                         DatePicker(selection: $due, in: ...Date()) {
                             Text("Due:")
                         }
 
-                        Spacer()
+//                        Spacer()
                         
                         HStack {
                             Text("Tag:")
                             TextField("Tag", text: $tag)
                         }
-                        .padding(.leading, 50)
+//                        .padding(.leading, 50)
                     }
                     .font(.subheadline)
                     .foregroundColor(.gray)
