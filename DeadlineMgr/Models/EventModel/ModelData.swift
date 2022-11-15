@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class ModelData: ObservableObject {
     @Published var dataBase: [String: Event] = [:] {
@@ -75,7 +76,83 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func addEvent(event: Event) {
-        dataBase[event.id] = event
+    func addUpdatdEvent(id: String,
+                        title: String,
+                        dueAt: Date?,
+                        tag: String,
+                        description: String,
+                        location: Location?,
+                        source: Source,
+                        sourceUrl: String?,
+                        sourceId: String?,
+                        color: Color = .blue) {
+        if dataBase[id] != nil {
+            updateEvent(id: id,
+                        title: title,
+                        dueAt: dueAt,
+                        tag: tag,
+                        description: description,
+                        location: location)
+        }
+        else {
+            addEvent(title: title,
+                     dueAt: dueAt,
+                     tag: tag,
+                     description: description,
+                     location: location,
+                     source: source,
+                     sourceUrl: sourceUrl,
+                     sourceId: sourceId)
+        }
+    }
+    
+    func eventIsCompletedToggle(id: String) {
+        if dataBase[id] == nil {return}
+        if dataBase[id]!.isCompleted {
+            dataBase[id]!.isCompleted = false
+            dataBase[id]!.completedAt = nil
+        }
+        else {
+            dataBase[id]!.isCompleted = true
+            dataBase[id]!.completedAt = Date()
+        }
+    }
+    
+    func addEvent(title: String,
+                  dueAt: Date?,
+                  tag: String,
+                  description: String,
+                  location: Location?,
+                  source: Source,
+                  sourceUrl: String?,
+                  sourceId: String?,
+                  color: Color = .blue) {
+        let newEvent = Event(title: title,
+                             dueAt: dueAt,
+                             tag: tag.components(separatedBy: ","),
+                             description: description,
+                             location: location,
+                             source: source,
+                             sourceUrl: sourceUrl,
+                             sourceId: sourceId,
+                             color: color)
+        dataBase[newEvent.id] = newEvent
+    }
+    
+    func updateEvent(id: String,
+                     title: String,
+                     dueAt: Date?,
+                     tag: String,
+                     description: String,
+                     location: Location?,
+                     color: Color = .blue) {
+        dataBase[id]!.title = title
+        if dueAt != nil {
+            dataBase[id]!.dueAt = dueAt!
+        }
+        dataBase[id]!.tag = tag.components(separatedBy: ",")
+        dataBase[id]!.description = description
+        dataBase[id]!.location = location
+        dataBase[id]!.color = color
     }
 }

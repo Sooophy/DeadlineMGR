@@ -15,6 +15,7 @@ struct EventRow: View {
 //            add checkmark when comleted
             Image(systemName: event.isCompleted ? "checkmark.square" : "square")
                 .onTapGesture {
+                    modelData.eventIsCompletedToggle(id: event.id)
 //                    event.isCompleted.toggle()
                 }
 //            Image(systemName: "checkmark.square")
