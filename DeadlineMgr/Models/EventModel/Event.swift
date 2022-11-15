@@ -78,6 +78,7 @@ struct Event: Codable, Identifiable {
     
     init(title: String,
          dueAt: Date?,
+         tag: [String],
          description: String,
          location: Location?,
          source: Source,
