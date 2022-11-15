@@ -7,21 +7,19 @@
 
 import SwiftUI
 
-
 struct EventDetail: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var modelData: ModelData
     var event: Event
     
     @State private var eventTitle: String = ""
-    @State private var tag:String  = ""
-    @State private var due:Date = Date()
-    @State private var description : String = ""
-    @State private var isCompleted : Bool = false
-    
+    @State private var tag: String = ""
+    @State private var due: Date = .init()
+    @State private var description: String = ""
+    @State private var isCompleted: Bool = false
     
     var body: some View {
-        NavigationView {
+        Group {
             ScrollView {
                 VStack(alignment: .leading) {
                     TextField("Event Title", text: $eventTitle, axis: .vertical)
@@ -29,7 +27,7 @@ struct EventDetail: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 1)
                     VStack(alignment: .leading) {
-                        DatePicker(selection: $due, in: ...Date()) {
+                        DatePicker(selection: $due) {
                             Text("Due:")
                         }
 
@@ -49,33 +47,32 @@ struct EventDetail: View {
                     Text("Description:")
                         .padding(.bottom, 10)
                     TextField("Description", text: $description, axis: .vertical)
-    //                    .textFieldStyle(.roundedBorder)
+                        //                    .textFieldStyle(.roundedBorder)
                         .multilineTextAlignment(.leading)
-                    
                 }
                 .padding()
             }
         }
-        .onAppear(){
+        .onAppear {
             (eventTitle, tag, due, description, isCompleted) = showEventDetail(event: event)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading:
-            Button(action : { self.presentationMode.wrappedValue.dismiss() }){
+            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Cancel")
             },
             trailing:
-                Button(action : { saveEvent(event: event) }){
+            Button(action: { saveEvent(event: event) }) {
                 Text("Save")
-        })
+            })
     }
     
-    func saveEvent(event : Event){
-        //save event
+    func saveEvent(event: Event) {
+        // save event
         let newEvent = modifyEvent(event: event, eventTitle: eventTitle, tag: tag, due: due, description: description, isCompleted: isCompleted)
         modelData.dataBase[newEvent.id] = newEvent
-        self.presentationMode.wrappedValue.dismiss()
+        presentationMode.wrappedValue.dismiss()
     }
     
     func showEventDetail(event: Event) -> (String, String, Date, String, Bool) {
@@ -91,9 +88,7 @@ struct EventDetail: View {
         newEvent.isCompleted = isCompleted
         return newEvent
     }
-    
 }
-
 
 struct EventDetail_Previews: PreviewProvider {
     static var previews: some View {

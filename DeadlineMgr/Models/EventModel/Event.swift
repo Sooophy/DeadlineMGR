@@ -5,31 +5,32 @@
 //  Created by Loaner on 10/30/22.
 //
 
+import CoreLocation
 import Foundation
 import SwiftUI
-import CoreLocation
 
-enum Source : String, Codable {
+enum Source: String, Codable {
     case Default
     case Sakai
 }
 
-struct ColorCode : Codable{
-    var r : CGFloat
-    var g : CGFloat
-    var b : CGFloat
-    var alpha : CGFloat
+struct ColorCode: Codable {
+    var r: CGFloat
+    var g: CGFloat
+    var b: CGFloat
+    var alpha: CGFloat
 }
 
-struct Location : Codable {
+struct Location: Codable {
     var locationName: String
     var coordinate: CLLocationCoordinate2D
     
-    private enum CodingKeys : String, CodingKey {case locationName, latitude, longitude}
+    private enum CodingKeys: String, CodingKey { case locationName, latitude, longitude }
     
     init(locationName: String,
          latitude: CLLocationDegrees,
-         longitude: CLLocationDegrees) {
+         longitude: CLLocationDegrees)
+    {
         self.locationName = locationName
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
@@ -50,23 +51,23 @@ struct Location : Codable {
     }
 }
 
-struct Event : Codable, Identifiable {
-    var id : String
-    var title : String = ""
-    var createdAt : Date
-    var dueAt : Date
+struct Event: Codable, Identifiable {
+    var id: String
+    var title: String = ""
+    var createdAt: Date
+    var dueAt: Date
     var completedAt: Date?
-    var tag : [String] = []
-    var description : String = ""
-    var location : Location?
-    var isCompleted : Bool = false
-    var isDeleted : Bool = false
-    var source : Source
-    var sourceUrl : String?
-    var sourceId : String?
-    var color : Color = .blue
+    var tag: [String] = []
+    var description: String = ""
+    var location: Location?
+    var isCompleted: Bool = false
+    var isDeleted: Bool = false
+    var source: Source
+    var sourceUrl: String?
+    var sourceId: String?
+    var color: Color = .blue
     
-    private enum CodingKeys : String, CodingKey {case id, title, createdAt, dueAt, completedAt, tag,  description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color}
+    private enum CodingKeys: String, CodingKey { case id, title, createdAt, dueAt, completedAt, tag, description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color }
     
     init() {
         self.id = UUID().uuidString
@@ -82,7 +83,8 @@ struct Event : Codable, Identifiable {
          source: Source,
          sourceUrl: String?,
          sourceId: String?,
-         color: Color?) {
+         color: Color?)
+    {
         self.id = UUID().uuidString
         self.title = title
         self.createdAt = Date()
@@ -189,10 +191,10 @@ struct Event : Codable, Identifiable {
         try container.encode(self.sourceUrl, forKey: .sourceUrl)
         try container.encode(self.sourceId, forKey: .sourceId)
         let uiColor = UIColor(self.color)
-        var r : CGFloat = 0
-        var g : CGFloat = 0
-        var b : CGFloat = 0
-        var alpha : CGFloat = 0
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var alpha: CGFloat = 0
         uiColor.getRed(&r, green: &g, blue: &b, alpha: &alpha)
         let colorCode = ColorCode(r: r, g: g, b: b, alpha: alpha)
         try container.encode(colorCode, forKey: .color)
