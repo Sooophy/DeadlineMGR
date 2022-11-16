@@ -70,7 +70,7 @@ class SakaiStore: ObservableObject {
     }
 
     private enum SakaiAPIEndpoint: String {
-        case SITES = "https://sakai.duke.edu/direct/site.json"
+        case SITES = "https://sakai.duke.edu/direct/site.json?_limit=1000"
         case ASSIGNMENTS = "https://sakai.duke.edu/direct/assignment/site/%@.json"
         case USER = "https://sakai.duke.edu/direct/user/current.json"
     }
