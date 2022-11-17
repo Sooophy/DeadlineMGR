@@ -28,7 +28,7 @@ struct CalendarCell: View {
                 .foregroundColor(textColor(type: monthStruct().monthType))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-//            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
+            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
             
             VStack(alignment: .leading) {
                 ForEach(filteredEvents){tempEvent in
@@ -37,8 +37,8 @@ struct CalendarCell: View {
 //                            print(tempEvent)
 //                        }
                 }
+                Spacer()
             }
-            
         }
     }
     
@@ -100,12 +100,13 @@ struct CalendarCell: View {
         }
 //        let cellDate = Calendar.current.date(bySetting: .day, value: day, of: tempDate) ?? Date()
 //        print(tempDate)
-//        print(cellDate)
+        
         var dateComponents = Calendar.current.dateComponents([.hour, .minute, .second, .month, .year], from: tempDate)
 
         dateComponents.day = day
 
         let cellDate = Calendar.current.date(from: dateComponents) ?? Date()
+        print(cellDate)
         return cellDate
     }
     

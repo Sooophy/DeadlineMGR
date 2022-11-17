@@ -46,9 +46,9 @@ struct CalendarView: View {
             ForEach(0..<6){
                 row in
                 HStack{
-                    ForEach(1..<8) {
+                    ForEach(1..<7) {
                         column in
-                        let count = column + row * 7
+                        let count = column + row * 6
                         CalendarCell(date: $date, count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
                     }
                 }
