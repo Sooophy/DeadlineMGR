@@ -33,10 +33,9 @@ struct CalendarCell: View {
             VStack(alignment: .leading) {
                 ForEach(filteredEvents){tempEvent in
                 CalendarEventCell(event:tempEvent)
-    //            Image(systemName: "phone.bubble.left.fill")
-                        .onAppear(){
-                            print(tempEvent)
-                        }
+//                        .onAppear(){
+//                            print(tempEvent)
+//                        }
                 }
             }
             
@@ -107,7 +106,6 @@ struct CalendarCell: View {
         dateComponents.day = day
 
         let cellDate = Calendar.current.date(from: dateComponents) ?? Date()
-        print(cellDate)
         return cellDate
     }
     

@@ -12,9 +12,10 @@ class CalendarHelper {
     let dateFormatter = DateFormatter()
     
     func monthYearString(_ date: Date) -> String{
-//        dateFormatter.dateFormat = "LLL yyyy"
-//        return dateFormatter.string(from:date)
-        return date.formatted(date: .abbreviated, time: .omitted)
+        dateFormatter.dateFormat = "MMMM yy"
+        return dateFormatter.string(from:date)
+        
+//        return date.formatted(date: .abbreviated, time: .omitted)
     }
     
     func plusMonth(_ date: Date) -> Date {
