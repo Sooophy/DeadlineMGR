@@ -43,12 +43,12 @@ struct CalendarView: View {
             let prevMonth = CalendarHelper().minusMonth(date)
             let daysCountLastMonth = CalendarHelper().daysCountInMonth(prevMonth)
             
-            ForEach(0..<6){
+            ForEach(0..<5){
                 row in
                 HStack{
-                    ForEach(1..<7) {
+                    ForEach(1..<8) {
                         column in
-                        let count = column + row * 6
+                        let count = column + row * 7
                         CalendarCell(date: $date, count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
                     }
                 }

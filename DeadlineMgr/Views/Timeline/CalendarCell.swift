@@ -99,7 +99,6 @@ struct CalendarCell: View {
             day = count - start
         }
 //        let cellDate = Calendar.current.date(bySetting: .day, value: day, of: tempDate) ?? Date()
-//        print(tempDate)
         
         var dateComponents = Calendar.current.dateComponents([.hour, .minute, .second, .month, .year], from: tempDate)
 
