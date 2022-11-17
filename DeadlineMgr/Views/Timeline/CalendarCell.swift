@@ -30,12 +30,14 @@ struct CalendarCell: View {
             
 //            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
             
-            ForEach(filteredEvents){tempEvent in
-//            CalendarEventCell(event:tempEvent)
-            Image(systemName: "phone.bubble.left.fill")
-                    .onAppear(){
-                        print(tempEvent)
-                    }
+            VStack(alignment: .leading) {
+                ForEach(filteredEvents){tempEvent in
+                CalendarEventCell(event:tempEvent)
+    //            Image(systemName: "phone.bubble.left.fill")
+                        .onAppear(){
+                            print(tempEvent)
+                        }
+                }
             }
             
         }

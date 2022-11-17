@@ -12,6 +12,7 @@ struct CalendarEventCell: View {
     var event:Event
     var body: some View {
         Text(event.title)
+            .background(event.color)
         
     }
     
