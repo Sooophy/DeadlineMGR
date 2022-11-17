@@ -94,7 +94,7 @@ final class ModelData: ObservableObject {
                         source: Source,
                         sourceUrl: String?,
                         sourceId: String?,
-                        color: Color = .blue)
+                        color: Color)
     {
         if dataBase[id] != nil {
             updateEvent(id: id,
@@ -102,7 +102,8 @@ final class ModelData: ObservableObject {
                         dueAt: dueAt,
                         tag: tag,
                         description: description,
-                        location: location)
+                        location: location,
+                        color: color)
         } else {
             addEvent(title: title,
                      dueAt: dueAt,
@@ -111,7 +112,8 @@ final class ModelData: ObservableObject {
                      location: location,
                      source: source,
                      sourceUrl: sourceUrl,
-                     sourceId: sourceId)
+                     sourceId: sourceId,
+                     color: color)
         }
     }
     
@@ -134,7 +136,7 @@ final class ModelData: ObservableObject {
                   source: Source,
                   sourceUrl: String?,
                   sourceId: String?,
-                  color: Color = .blue)
+                  color: Color)
     {
         let newEvent = Event(title: title,
                              dueAt: dueAt,
@@ -154,7 +156,7 @@ final class ModelData: ObservableObject {
                      tag: String,
                      description: String,
                      location: Location?,
-                     color: Color = .blue)
+                     color: Color)
     {
         dataBase[id]!.title = title
         if dueAt != nil {
