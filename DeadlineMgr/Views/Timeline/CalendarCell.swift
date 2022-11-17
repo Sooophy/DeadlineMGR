@@ -14,7 +14,7 @@ struct CalendarCell: View {
 //    @State var date:Date = Date()
     
     var filteredEvents : [Event] {
-        filterEvents(date: date)
+        filterEvents(date: getCellDate())
     }
     
     let count:Int
@@ -28,7 +28,7 @@ struct CalendarCell: View {
                 .foregroundColor(textColor(type: monthStruct().monthType))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            Button(action: {_ = getCellDate()}, label: {Text("test")})
+//            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
             
             ForEach(filteredEvents){tempEvent in
 //            CalendarEventCell(event:tempEvent)
