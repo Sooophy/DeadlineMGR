@@ -26,6 +26,19 @@
 		B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = B3B34B9329119E89000CF95B /* CalendarKit */; };
 		B3B34B962911A096000CF95B /* Calendar2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B952911A096000CF95B /* Calendar2View.swift */; };
 		B3B34B982911A0AE000CF95B /* Calendar2CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B972911A0AE000CF95B /* Calendar2CalendarView.swift */; };
+		B3C3186129257FDF000CD0B6 /* DeadlineMgr_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */; };
+		B3C3186329257FDF000CD0B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186229257FDF000CD0B6 /* ContentView.swift */; };
+		B3C3186529257FE0000CD0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C3186429257FE0000CD0B6 /* Assets.xcassets */; };
+		B3C3186829257FE0000CD0B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C3186729257FE0000CD0B6 /* Preview Assets.xcassets */; };
+		B3C3186D292586DC000CD0B6 /* WatchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186C292586DC000CD0B6 /* WatchChannel.swift */; };
+		B3C3186E292586DC000CD0B6 /* WatchChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186C292586DC000CD0B6 /* WatchChannel.swift */; };
+		B3C318702925F66F000CD0B6 /* DeadlineMgr_watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3C318752925F6F1000CD0B6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22A290EF97B002DC982 /* Event.swift */; };
+		B3C3187A2925FB3A000CD0B6 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C318782925FB3A000CD0B6 /* ModelData.swift */; };
+		B3C3187B2925FC23000CD0B6 /* DefaultEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */; };
+		B3C3187D2925FC6E000CD0B6 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3187C2925FC6E000CD0B6 /* EventList.swift */; };
+		B3C3187F2925FDDE000CD0B6 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3187E2925FDDE000CD0B6 /* EventRow.swift */; };
+		B3C318812925FDF6000CD0B6 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C318802925FDF6000CD0B6 /* EventDetail.swift */; };
 		E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B3E290EFAE6004531B7 /* CalendarView.swift */; };
 		E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B42290F280F004531B7 /* CalendarHelper.swift */; };
 		E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B44290F2DC5004531B7 /* CalendarTitle.swift */; };
@@ -36,6 +49,30 @@
 		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
 		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3C318712925F66F000CD0B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B39BE60A290DFC6E00850A5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3C3185D29257FDF000CD0B6;
+			remoteInfo = "DeadlineMgr_watch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B3C318732925F670000CD0B6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B3C318702925F66F000CD0B6 /* DeadlineMgr_watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2E7EB22A290EF97B002DC982 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -58,6 +95,16 @@
 		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
 		B3B34B952911A096000CF95B /* Calendar2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2View.swift; sourceTree = "<group>"; };
 		B3B34B972911A0AE000CF95B /* Calendar2CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2CalendarView.swift; sourceTree = "<group>"; };
+		B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeadlineMgr_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgr_watchApp.swift; sourceTree = "<group>"; };
+		B3C3186229257FDF000CD0B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B3C3186429257FE0000CD0B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3C3186729257FE0000CD0B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B3C3186C292586DC000CD0B6 /* WatchChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchChannel.swift; sourceTree = "<group>"; };
+		B3C318782925FB3A000CD0B6 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		B3C3187C2925FC6E000CD0B6 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		B3C3187E2925FDDE000CD0B6 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		B3C318802925FDF6000CD0B6 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
 		E4713B3E290EFAE6004531B7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		E4713B42290F280F004531B7 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		E4713B44290F2DC5004531B7 /* CalendarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitle.swift; sourceTree = "<group>"; };
@@ -75,6 +122,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3C3185B29257FDF000CD0B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +157,9 @@
 			children = (
 				B3B34B7E290DFD64000CF95B /* README.md */,
 				B39BE614290DFC6E00850A5A /* DeadlineMgr */,
+				B3C3185F29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */,
 				B39BE613290DFC6E00850A5A /* Products */,
+				B3C3186F2925F66F000CD0B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				B39BE612290DFC6E00850A5A /* DeadlineMgr.app */,
+				B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,6 +256,53 @@
 			path = Calendar2;
 			sourceTree = "<group>";
 		};
+		B3C3185F29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				B3C318772925FB1E000CD0B6 /* Views */,
+				B3C318762925FB12000CD0B6 /* Models */,
+				B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */,
+				B3C3186C292586DC000CD0B6 /* WatchChannel.swift */,
+				B3C3186229257FDF000CD0B6 /* ContentView.swift */,
+				B3C3186429257FE0000CD0B6 /* Assets.xcassets */,
+				B3C3186629257FE0000CD0B6 /* Preview Content */,
+			);
+			path = "DeadlineMgr_watch Watch App";
+			sourceTree = "<group>";
+		};
+		B3C3186629257FE0000CD0B6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B3C3186729257FE0000CD0B6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B3C3186F2925F66F000CD0B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3C318762925FB12000CD0B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3C318782925FB3A000CD0B6 /* ModelData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B3C318772925FB1E000CD0B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3C3187C2925FC6E000CD0B6 /* EventList.swift */,
+				B3C3187E2925FDDE000CD0B6 /* EventRow.swift */,
+				B3C318802925FDF6000CD0B6 /* EventDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E4713B4A2923E87F004531B7 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,10 +334,12 @@
 				B39BE60E290DFC6E00850A5A /* Sources */,
 				B39BE60F290DFC6E00850A5A /* Frameworks */,
 				B39BE610290DFC6E00850A5A /* Resources */,
+				B3C318732925F670000CD0B6 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B3C318722925F66F000CD0B6 /* PBXTargetDependency */,
 			);
 			name = DeadlineMgr;
 			packageProductDependencies = (
@@ -243,6 +349,23 @@
 			productReference = B39BE612290DFC6E00850A5A /* DeadlineMgr.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B3C3185D29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3C3186B29257FE0000CD0B6 /* Build configuration list for PBXNativeTarget "DeadlineMgr_watch Watch App" */;
+			buildPhases = (
+				B3C3185A29257FDF000CD0B6 /* Sources */,
+				B3C3185B29257FDF000CD0B6 /* Frameworks */,
+				B3C3185C29257FDF000CD0B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DeadlineMgr_watch Watch App";
+			productName = "DeadlineMgr_watch Watch App";
+			productReference = B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -250,11 +373,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					B39BE611290DFC6E00850A5A = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					B3C3185D29257FDF000CD0B6 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -275,6 +401,7 @@
 			projectRoot = "";
 			targets = (
 				B39BE611290DFC6E00850A5A /* DeadlineMgr */,
+				B3C3185D29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -287,6 +414,16 @@
 				2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */,
 				B39BE61D290DFC6F00850A5A /* Preview Assets.xcassets in Resources */,
 				B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3C3185C29257FDF000CD0B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3C3186829257FE0000CD0B6 /* Preview Assets.xcassets in Resources */,
+				B3C3186529257FE0000CD0B6 /* Assets.xcassets in Resources */,
+				B3C3187B2925FC23000CD0B6 /* DefaultEvent.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,11 +457,35 @@
 				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
+				B3C3186D292586DC000CD0B6 /* WatchChannel.swift in Sources */,
 				B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3C3185A29257FDF000CD0B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3C3187D2925FC6E000CD0B6 /* EventList.swift in Sources */,
+				B3C318812925FDF6000CD0B6 /* EventDetail.swift in Sources */,
+				B3C3186329257FDF000CD0B6 /* ContentView.swift in Sources */,
+				B3C3186129257FDF000CD0B6 /* DeadlineMgr_watchApp.swift in Sources */,
+				B3C3186E292586DC000CD0B6 /* WatchChannel.swift in Sources */,
+				B3C3187F2925FDDE000CD0B6 /* EventRow.swift in Sources */,
+				B3C318752925F6F1000CD0B6 /* Event.swift in Sources */,
+				B3C3187A2925FB3A000CD0B6 /* ModelData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3C318722925F66F000CD0B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3C3185D29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */;
+			targetProxy = B3C318712925F66F000CD0B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B39BE61E290DFC6F00850A5A /* Debug */ = {
@@ -452,6 +613,7 @@
 				DEVELOPMENT_TEAM = 97569SGGTN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DealineMgr;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -481,6 +643,7 @@
 				DEVELOPMENT_TEAM = 97569SGGTN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DealineMgr;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,6 +659,66 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3C3186929257FE0000CD0B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 97569SGGTN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DeadlineMgr_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.duke.DeadlineMgr;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		B3C3186A29257FE0000CD0B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 97569SGGTN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DeadlineMgr_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.duke.DeadlineMgr;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -516,6 +739,15 @@
 			buildConfigurations = (
 				B39BE621290DFC6F00850A5A /* Debug */,
 				B39BE622290DFC6F00850A5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3C3186B29257FE0000CD0B6 /* Build configuration list for PBXNativeTarget "DeadlineMgr_watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3C3186929257FE0000CD0B6 /* Debug */,
+				B3C3186A29257FE0000CD0B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

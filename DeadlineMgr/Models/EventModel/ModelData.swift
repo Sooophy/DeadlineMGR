@@ -9,9 +9,18 @@ import Foundation
 import SwiftUI
 
 final class ModelData: ObservableObject {
+    var lastDatabaseUpdate: Date = .init()
     @Published var dataBase: [String: Event] = [:] {
         didSet {
-            saveData()
+            Task {
+                // debounce with 1 second
+                try! await Task.sleep(nanoseconds: 1 * 1000 * 1000 * 1000)
+                if lastDatabaseUpdate < Date() - 1 {
+                    lastDatabaseUpdate = Date()
+                    saveData()
+                    WatchChannel.shared.push(action: .sync)
+                }
+            }
         }
     }
     
@@ -85,7 +94,8 @@ final class ModelData: ObservableObject {
                         source: Source,
                         sourceUrl: String?,
                         sourceId: String?,
-                        color: Color = .blue) {
+                        color: Color = .blue)
+    {
         if dataBase[id] != nil {
             updateEvent(id: id,
                         title: title,
@@ -93,8 +103,7 @@ final class ModelData: ObservableObject {
                         tag: tag,
                         description: description,
                         location: location)
-        }
-        else {
+        } else {
             addEvent(title: title,
                      dueAt: dueAt,
                      tag: tag,
@@ -107,12 +116,11 @@ final class ModelData: ObservableObject {
     }
     
     func eventIsCompletedToggle(id: String) {
-        if dataBase[id] == nil {return}
+        if dataBase[id] == nil { return }
         if dataBase[id]!.isCompleted {
             dataBase[id]!.isCompleted = false
             dataBase[id]!.completedAt = nil
-        }
-        else {
+        } else {
             dataBase[id]!.isCompleted = true
             dataBase[id]!.completedAt = Date()
         }
@@ -126,7 +134,8 @@ final class ModelData: ObservableObject {
                   source: Source,
                   sourceUrl: String?,
                   sourceId: String?,
-                  color: Color = .blue) {
+                  color: Color = .blue)
+    {
         let newEvent = Event(title: title,
                              dueAt: dueAt,
                              tag: tag.components(separatedBy: ","),
@@ -145,7 +154,8 @@ final class ModelData: ObservableObject {
                      tag: String,
                      description: String,
                      location: Location?,
-                     color: Color = .blue) {
+                     color: Color = .blue)
+    {
         dataBase[id]!.title = title
         if dueAt != nil {
             dataBase[id]!.dueAt = dueAt!
