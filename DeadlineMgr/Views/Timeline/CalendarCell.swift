@@ -26,9 +26,10 @@ struct CalendarCell: View {
         VStack {
             Text(monthStruct().day())
                 .foregroundColor(textColor(type: monthStruct().monthType))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(height:10)
             
-            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
+//            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
             
             VStack(alignment: .leading) {
                 ForEach(filteredEvents){tempEvent in
@@ -105,7 +106,7 @@ struct CalendarCell: View {
         dateComponents.day = day
 
         let cellDate = Calendar.current.date(from: dateComponents) ?? Date()
-        print(cellDate)
+//        print(cellDate)
         return cellDate
     }
     

@@ -17,6 +17,8 @@ struct CalendarView: View {
             //will add environment object later
                 .padding()
             dayOfWeekStack
+                .padding(.bottom, 40)
+//            Spacer()
             calendarGrid
         }
         
@@ -24,14 +26,15 @@ struct CalendarView: View {
     
     var dayOfWeekStack: some View {
         HStack(){
-            Text("Sun").dayOfWeek()
-            Text("Mon").dayOfWeek()
-            Text("Tue").dayOfWeek()
-            Text("Wed").dayOfWeek()
-            Text("Thu").dayOfWeek()
-            Text("Fri").dayOfWeek()
-            Text("Sat").dayOfWeek()
+            Text("Sun").fontWeight(.black).dayOfWeek()
+            Text("Mon").fontWeight(.black).dayOfWeek()
+            Text("Tue").fontWeight(.black).dayOfWeek()
+            Text("Wed").fontWeight(.black).dayOfWeek()
+            Text("Thu").fontWeight(.black).dayOfWeek()
+            Text("Fri").fontWeight(.black).dayOfWeek()
+            Text("Sat").fontWeight(.black).dayOfWeek()
         }
+        
     }
     
     var calendarGrid: some View {
