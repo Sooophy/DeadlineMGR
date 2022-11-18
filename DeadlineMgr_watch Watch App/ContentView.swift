@@ -16,8 +16,8 @@ struct ContentView: View {
             WatchChannel.shared.registerReceiver(receiveAction: .hello) { msg, _ in
                 print("received!", msg)
             }
+            // Firebase.shared.getUser()
         }
-        .padding()
     }
 }
 

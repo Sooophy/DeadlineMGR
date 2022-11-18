@@ -11,6 +11,14 @@
 		2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22C290F3581002DC982 /* ModelData.swift */; };
 		2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */; };
 		B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */; };
+		B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33243C029275B260096D96E /* GoogleService-Info.plist */; };
+		B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C42926CAC100FF69FE /* FirebaseAuth */; };
+		B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C62926CAC100FF69FE /* FirebaseFirestore */; };
+		B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683CE2926CAF700FF69FE /* Firebase.swift */; };
+		B34683D52926EBC000FF69FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34683D42926EBC000FF69FE /* GoogleService-Info.plist */; };
+		B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683DB292732C100FF69FE /* FirebaseAuth */; };
+		B34683DE292732C100FF69FE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B34683DD292732C100FF69FE /* FirebaseFirestore */; };
+		B34683E32927357900FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683E22927357900FF69FE /* Firebase.swift */; };
 		B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */; };
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
 		B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE619290DFC6F00850A5A /* Assets.xcassets */; };
@@ -79,6 +87,14 @@
 		2E7EB22C290F3581002DC982 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultEvent.json; sourceTree = "<group>"; };
 		B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiDetail.swift; sourceTree = "<group>"; };
+		B33243C029275B260096D96E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B34683CE2926CAF700FF69FE /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B34683D42926EBC000FF69FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B34683D7292714B700FF69FE /* DeadlineMgr_watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DeadlineMgr_watch Watch App.entitlements"; sourceTree = "<group>"; };
+		B34683D8292714E400FF69FE /* DeadlineMgr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlineMgr.entitlements; sourceTree = "<group>"; };
+		B34683DA292732A600FF69FE /* DeadlineMgr-watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DeadlineMgr-watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B34683E22927357900FF69FE /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B34683E62927565D00FF69FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B39BE612290DFC6E00850A5A /* DeadlineMgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadlineMgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgrApp.swift; sourceTree = "<group>"; };
 		B39BE617290DFC6E00850A5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */,
+				B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */,
+				B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */,
+				B34683DE292732C100FF69FE /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +195,9 @@
 		B39BE614290DFC6E00850A5A /* DeadlineMgr */ = {
 			isa = PBXGroup;
 			children = (
+				B34683E62927565D00FF69FE /* Info.plist */,
+				B34683D8292714E400FF69FE /* DeadlineMgr.entitlements */,
+				B34683D42926EBC000FF69FE /* GoogleService-Info.plist */,
 				2ECF38112911A5A600A6E6E0 /* Resources */,
 				B3A6E129290DFCB000F9767B /* Helpers */,
 				B39BE624290DFC8200850A5A /* Models */,
@@ -221,6 +244,7 @@
 				B3B34B8D290E254C000CF95B /* Server.swift */,
 				E4713B42290F280F004531B7 /* CalendarHelper.swift */,
 				E4713B48290F3E3A004531B7 /* MonthStruct.swift */,
+				B34683CE2926CAF700FF69FE /* Firebase.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -259,6 +283,9 @@
 		B3C3185F29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B34683DA292732A600FF69FE /* DeadlineMgr-watch-Watch-App-Info.plist */,
+				B33243C029275B260096D96E /* GoogleService-Info.plist */,
+				B34683D7292714B700FF69FE /* DeadlineMgr_watch Watch App.entitlements */,
 				B3C318772925FB1E000CD0B6 /* Views */,
 				B3C318762925FB12000CD0B6 /* Models */,
 				B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */,
@@ -289,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C318782925FB3A000CD0B6 /* ModelData.swift */,
+				B34683E22927357900FF69FE /* Firebase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +372,8 @@
 			name = DeadlineMgr;
 			packageProductDependencies = (
 				B3B34B9329119E89000CF95B /* CalendarKit */,
+				B34683C42926CAC100FF69FE /* FirebaseAuth */,
+				B34683C62926CAC100FF69FE /* FirebaseFirestore */,
 			);
 			productName = DeadlineMgr;
 			productReference = B39BE612290DFC6E00850A5A /* DeadlineMgr.app */;
@@ -362,6 +392,10 @@
 			dependencies = (
 			);
 			name = "DeadlineMgr_watch Watch App";
+			packageProductDependencies = (
+				B34683DB292732C100FF69FE /* FirebaseAuth */,
+				B34683DD292732C100FF69FE /* FirebaseFirestore */,
+			);
 			productName = "DeadlineMgr_watch Watch App";
 			productReference = B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -395,6 +429,7 @@
 			mainGroup = B39BE609290DFC6E00850A5A;
 			packageReferences = (
 				B3B34B9229119E89000CF95B /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B39BE613290DFC6E00850A5A /* Products */;
 			projectDirPath = "";
@@ -412,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */,
+				B34683D52926EBC000FF69FE /* GoogleService-Info.plist in Resources */,
 				B39BE61D290DFC6F00850A5A /* Preview Assets.xcassets in Resources */,
 				B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */,
 			);
@@ -422,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C3186829257FE0000CD0B6 /* Preview Assets.xcassets in Resources */,
+				B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */,
 				B3C3186529257FE0000CD0B6 /* Assets.xcassets in Resources */,
 				B3C3187B2925FC23000CD0B6 /* DefaultEvent.json in Resources */,
 			);
@@ -450,6 +487,7 @@
 				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
 				E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */,
 				E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */,
+				B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */,
 				E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */,
 				E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
@@ -472,6 +510,7 @@
 				B3C3186129257FDF000CD0B6 /* DeadlineMgr_watchApp.swift in Sources */,
 				B3C3186E292586DC000CD0B6 /* WatchChannel.swift in Sources */,
 				B3C3187F2925FDDE000CD0B6 /* EventRow.swift in Sources */,
+				B34683E32927357900FF69FE /* Firebase.swift in Sources */,
 				B3C318752925F6F1000CD0B6 /* Event.swift in Sources */,
 				B3C3187A2925FB3A000CD0B6 /* ModelData.swift in Sources */,
 			);
@@ -607,12 +646,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeadlineMgr/DeadlineMgr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr/Preview Content\"";
-				DEVELOPMENT_TEAM = 97569SGGTN;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeadlineMgr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DealineMgr;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -637,12 +678,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeadlineMgr/DeadlineMgrRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr/Preview Content\"";
-				DEVELOPMENT_TEAM = 97569SGGTN;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeadlineMgr/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DealineMgr;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -667,12 +710,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DeadlineMgr_watch Watch App/DeadlineMgr_watch Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr_watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 97569SGGTN;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DeadlineMgr-watch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DeadlineMgr_watch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.duke.DeadlineMgr;
@@ -681,8 +727,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -697,12 +744,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DeadlineMgr_watch Watch App/DeadlineMgr_watch Watch AppRelease.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeadlineMgr_watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 97569SGGTN;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DeadlineMgr-watch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DeadlineMgr_watch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.duke.DeadlineMgr;
@@ -711,8 +761,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DeadlineMgr.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -755,6 +806,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		B3B34B9229119E89000CF95B /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
@@ -766,6 +825,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B34683C42926CAC100FF69FE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B34683C62926CAC100FF69FE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B34683DB292732C100FF69FE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B34683DD292732C100FF69FE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		B3B34B9329119E89000CF95B /* CalendarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3B34B9229119E89000CF95B /* XCRemoteSwiftPackageReference "CalendarKit" */;
