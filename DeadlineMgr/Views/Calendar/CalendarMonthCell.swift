@@ -7,44 +7,36 @@
 
 import SwiftUI
 
-
-struct CalendarCell: View {
+struct CalendarMonthCell: View {
     @EnvironmentObject var modelData: ModelData
-    @Binding var date:Date
-//    @State var date:Date = Date()
+    @Binding var date: Date
     
-    var filteredEvents : [Event] {
+    var filteredEvents: [Event] {
         filterEvents(date: getCellDate())
     }
     
-    let count:Int
-    let startingSpace : Int
-    let daysCountInMonth : Int
-    let daysCountprevMonth : Int
+    let count: Int
+    let startingSpace: Int
+    let daysCountInMonth: Int
+    let daysCountprevMonth: Int
     
     var body: some View {
-        VStack {
-            Text(monthStruct().day())
-                .foregroundColor(textColor(type: monthStruct().monthType))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-//            Button(action: {let cellDate = getCellDate()}, label: {Text("test")})
-            
-            VStack(alignment: .leading) {
-                ForEach(filteredEvents){tempEvent in
-                CalendarEventCell(event:tempEvent)
-//                        .onAppear(){
-//                            print(tempEvent)
-//                        }
+        NavigationLink(destination: CalendarDay(date: getCellDate())) {
+            VStack {
+                Text(monthStruct().day())
+                    .foregroundColor(textColor(type: monthStruct().monthType))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                VStack(alignment: .leading) {
+                    ForEach(filteredEvents) { tempEvent in
+                        CalendarMonthEventCell(event: tempEvent)
+                    }
                 }
             }
-            
         }
     }
     
-    
-    func filterEvents(date:Date)-> [Event] {
-        var filteredEvents : [Event] = []
+    func filterEvents(date: Date) -> [Event] {
+        var filteredEvents: [Event] = []
         for (_, tempEvent) in modelData.dataBase {
             let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
             let fromDate = Calendar.current.startOfDay(for: date)
@@ -54,7 +46,7 @@ struct CalendarCell: View {
                 filteredEvents.append(tempEvent)
             }
         }
-        return  filteredEvents
+        return filteredEvents
     }
     
     func textColor(type: MonthType) -> Color {
@@ -64,14 +56,14 @@ struct CalendarCell: View {
     
     func monthStruct() -> MonthStruct {
         let start = startingSpace == 0 ? startingSpace + 7 : startingSpace
-        if(count <= start) {
+        if count <= start {
             // fill with date in prev month
             let day = daysCountprevMonth + count - start
             return MonthStruct(monthType: MonthType.Previous, dayInt: day)
         }
-        else if(count - start > daysCountInMonth) {
+        else if count - start > daysCountInMonth {
             // fill with date in next month
-            let day =  count - start - daysCountInMonth
+            let day = count - start - daysCountInMonth
             return MonthStruct(monthType: MonthType.Next, dayInt: day)
         }
         let day = count - start
@@ -80,21 +72,21 @@ struct CalendarCell: View {
     
     func getCellDate() -> Date {
         var tempDate = date
-        var day:Int = 0
+        var day = 0
         let start = startingSpace == 0 ? startingSpace + 7 : startingSpace
-        if(count <= start) {
+        if count <= start {
             // fill with date in prev month
 //            print("previous month")
             day = daysCountprevMonth + count - start
             tempDate = CalendarHelper().minusMonth(tempDate)
         }
-        else if(count - start > daysCountInMonth) {
+        else if count - start > daysCountInMonth {
 //            print("next month")
             // fill with date in next month
-            day =  count - start - daysCountInMonth
+            day = count - start - daysCountInMonth
             tempDate = CalendarHelper().plusMonth(tempDate)
         }
-        else{
+        else {
 //            print("current month")
             day = count - start
         }
@@ -108,11 +100,10 @@ struct CalendarCell: View {
         let cellDate = Calendar.current.date(from: dateComponents) ?? Date()
         return cellDate
     }
-    
 }
 
 struct CalendarCell_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarCell(date: .constant(Date()), count: 6, startingSpace: 5, daysCountInMonth: 31, daysCountprevMonth: 30)
+        CalendarMonthCell(date: .constant(Date()), count: 6, startingSpace: 5, daysCountInMonth: 31, daysCountprevMonth: 30)
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalendarTitle: View {
+struct CalendarMonthTitle: View {
     
 //    @EnvironmentObject var dateHolder: DateHolder
     // Use today as example
@@ -44,6 +44,6 @@ struct CalendarTitle: View {
 
 struct CalendarTitle_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarTitle(date: .constant(Date()))
+        CalendarMonthTitle(date: .constant(Date()))
     }
 }

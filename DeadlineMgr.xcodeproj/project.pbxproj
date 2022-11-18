@@ -32,8 +32,8 @@
 		B3B34B8E290E254C000CF95B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* Server.swift */; };
 		B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8F290E31E0000CF95B /* SakaiUser.swift */; };
 		B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = B3B34B9329119E89000CF95B /* CalendarKit */; };
-		B3B34B962911A096000CF95B /* Calendar2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B952911A096000CF95B /* Calendar2View.swift */; };
-		B3B34B982911A0AE000CF95B /* Calendar2CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B972911A0AE000CF95B /* Calendar2CalendarView.swift */; };
+		B3B34B962911A096000CF95B /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B952911A096000CF95B /* CalendarDay.swift */; };
+		B3B34B982911A0AE000CF95B /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B972911A0AE000CF95B /* CalendarDayView.swift */; };
 		B3C3186129257FDF000CD0B6 /* DeadlineMgr_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */; };
 		B3C3186329257FDF000CD0B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3186229257FDF000CD0B6 /* ContentView.swift */; };
 		B3C3186529257FE0000CD0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C3186429257FE0000CD0B6 /* Assets.xcassets */; };
@@ -47,12 +47,12 @@
 		B3C3187D2925FC6E000CD0B6 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3187C2925FC6E000CD0B6 /* EventList.swift */; };
 		B3C3187F2925FDDE000CD0B6 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3187E2925FDDE000CD0B6 /* EventRow.swift */; };
 		B3C318812925FDF6000CD0B6 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C318802925FDF6000CD0B6 /* EventDetail.swift */; };
-		E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B3E290EFAE6004531B7 /* CalendarView.swift */; };
+		E4713B3F290EFAE6004531B7 /* CalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B3E290EFAE6004531B7 /* CalendarMonth.swift */; };
 		E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B42290F280F004531B7 /* CalendarHelper.swift */; };
-		E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B44290F2DC5004531B7 /* CalendarTitle.swift */; };
-		E4713B47290F3890004531B7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B46290F3890004531B7 /* CalendarCell.swift */; };
+		E4713B45290F2DC5004531B7 /* CalendarMonthTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B44290F2DC5004531B7 /* CalendarMonthTitle.swift */; };
+		E4713B47290F3890004531B7 /* CalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B46290F3890004531B7 /* CalendarMonthCell.swift */; };
 		E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B48290F3E3A004531B7 /* MonthStruct.swift */; };
-		E4713B4E29241C6A004531B7 /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4D29241C6A004531B7 /* CalendarEventCell.swift */; };
+		E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */; };
 		E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C6290ECCE6008DDFF3 /* EventRow.swift */; };
 		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
 		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
@@ -109,8 +109,8 @@
 		B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSite.swift; sourceTree = "<group>"; };
 		B3B34B8D290E254C000CF95B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
-		B3B34B952911A096000CF95B /* Calendar2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2View.swift; sourceTree = "<group>"; };
-		B3B34B972911A0AE000CF95B /* Calendar2CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar2CalendarView.swift; sourceTree = "<group>"; };
+		B3B34B952911A096000CF95B /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		B3B34B972911A0AE000CF95B /* CalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
 		B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeadlineMgr_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C3186029257FDF000CD0B6 /* DeadlineMgr_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgr_watchApp.swift; sourceTree = "<group>"; };
 		B3C3186229257FDF000CD0B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,12 +121,12 @@
 		B3C3187C2925FC6E000CD0B6 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		B3C3187E2925FDDE000CD0B6 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		B3C318802925FDF6000CD0B6 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
-		E4713B3E290EFAE6004531B7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		E4713B3E290EFAE6004531B7 /* CalendarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonth.swift; sourceTree = "<group>"; };
 		E4713B42290F280F004531B7 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
-		E4713B44290F2DC5004531B7 /* CalendarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitle.swift; sourceTree = "<group>"; };
-		E4713B46290F3890004531B7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		E4713B44290F2DC5004531B7 /* CalendarMonthTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthTitle.swift; sourceTree = "<group>"; };
+		E4713B46290F3890004531B7 /* CalendarMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthCell.swift; sourceTree = "<group>"; };
 		E4713B48290F3E3A004531B7 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
-		E4713B4D29241C6A004531B7 /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
+		E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthEventCell.swift; sourceTree = "<group>"; };
 		E4E559C6290ECCE6008DDFF3 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		E4E559C8290ECDA2008DDFF3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
@@ -170,6 +170,19 @@
 				2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B33243C22927EAAB0096D96E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				E4713B3E290EFAE6004531B7 /* CalendarMonth.swift */,
+				E4713B46290F3890004531B7 /* CalendarMonthCell.swift */,
+				E4713B44290F2DC5004531B7 /* CalendarMonthTitle.swift */,
+				E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */,
+				B3B34B952911A096000CF95B /* CalendarDay.swift */,
+				B3B34B972911A0AE000CF95B /* CalendarDayView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		B39BE609290DFC6E00850A5A = {
@@ -220,8 +233,7 @@
 		B39BE623290DFC7900850A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E4713B4A2923E87F004531B7 /* Timeline */,
-				B3B34B9129119E13000CF95B /* Calendar2 */,
+				B33243C22927EAAB0096D96E /* Calendar */,
 				E4E559C0290EC565008DDFF3 /* Event */,
 				B3B34B7F290E1AA9000CF95B /* Sync */,
 				B39BE617290DFC6E00850A5A /* ContentView.swift */,
@@ -269,15 +281,6 @@
 				B3B34B8F290E31E0000CF95B /* SakaiUser.swift */,
 			);
 			path = Sakai;
-			sourceTree = "<group>";
-		};
-		B3B34B9129119E13000CF95B /* Calendar2 */ = {
-			isa = PBXGroup;
-			children = (
-				B3B34B952911A096000CF95B /* Calendar2View.swift */,
-				B3B34B972911A0AE000CF95B /* Calendar2CalendarView.swift */,
-			);
-			path = Calendar2;
 			sourceTree = "<group>";
 		};
 		B3C3185F29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */ = {
@@ -329,17 +332,6 @@
 				B3C318802925FDF6000CD0B6 /* EventDetail.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E4713B4A2923E87F004531B7 /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				E4713B3E290EFAE6004531B7 /* CalendarView.swift */,
-				E4713B46290F3890004531B7 /* CalendarCell.swift */,
-				E4713B44290F2DC5004531B7 /* CalendarTitle.swift */,
-				E4713B4D29241C6A004531B7 /* CalendarEventCell.swift */,
-			);
-			path = Timeline;
 			sourceTree = "<group>";
 		};
 		E4E559C0290EC565008DDFF3 /* Event */ = {
@@ -472,7 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */,
-				E4713B47290F3890004531B7 /* CalendarCell.swift in Sources */,
+				E4713B47290F3890004531B7 /* CalendarMonthCell.swift in Sources */,
 				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
 				2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */,
 				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
@@ -480,20 +472,20 @@
 				2E7EB22B290EF97B002DC982 /* Event.swift in Sources */,
 				E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */,
 				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
-				B3B34B982911A0AE000CF95B /* Calendar2CalendarView.swift in Sources */,
-				B3B34B962911A096000CF95B /* Calendar2View.swift in Sources */,
+				B3B34B982911A0AE000CF95B /* CalendarDayView.swift in Sources */,
+				B3B34B962911A096000CF95B /* CalendarDay.swift in Sources */,
 				B3B34B83290E1AB7000CF95B /* SakaiAuth.swift in Sources */,
 				B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */,
 				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
-				E4713B3F290EFAE6004531B7 /* CalendarView.swift in Sources */,
+				E4713B3F290EFAE6004531B7 /* CalendarMonth.swift in Sources */,
 				E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */,
 				B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */,
-				E4713B45290F2DC5004531B7 /* CalendarTitle.swift in Sources */,
+				E4713B45290F2DC5004531B7 /* CalendarMonthTitle.swift in Sources */,
 				E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
 				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
-				E4713B4E29241C6A004531B7 /* CalendarEventCell.swift in Sources */,
+				E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
 				B3C3186D292586DC000CD0B6 /* WatchChannel.swift in Sources */,
 				B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */,
