@@ -17,7 +17,7 @@ struct ContentView: View {
                 Image(systemName: "list.dash")
                 Text("Events")
             }.tag(1)
-            Calendar2View().tabItem {
+            CalendarMonth().tabItem {
                 Image(systemName: "calendar")
                 Text("Calendar")
 
@@ -26,10 +26,6 @@ struct ContentView: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                 Text("Sync")
             }.tag(3)
-            CalendarView().tabItem {
-                Image(systemName: "calendar.day.timeline.trailing")
-                Text("Timeline")
-            }
             Text("Settings").tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
@@ -44,6 +40,7 @@ struct ContentView: View {
                 let isCompleted = msg["isCompleted"] as! Bool
                 modelData.dataBase[eventId]!.isCompleted = isCompleted
             }
+            // print(Firebase.shared.user)
         }
     }
 }

@@ -7,23 +7,23 @@
 
 import SwiftUI
 
+struct CalendarMonth: View {
+    @State var date: Date = .init()
 
-struct CalendarView: View {
-    @State var date:Date = Date()
-    
     var body: some View {
-        VStack(spacing:1) {
-            CalendarTitle(date: $date)
-            //will add environment object later
-                .padding()
-            dayOfWeekStack
-                .padding(.bottom, 40)
+        NavigationView {
+            VStack(spacing: 1) {
+                CalendarMonthTitle(date: $date)
+                    // will add environment object later
+                    .padding()
+                dayOfWeekStack
+                    .padding(.bottom, 40)
 //            Spacer()
             calendarGrid
+            }
         }
-        
     }
-    
+
     var dayOfWeekStack: some View {
         HStack(){
             Text("Sun").fontWeight(.black).dayOfWeek()
@@ -36,10 +36,9 @@ struct CalendarView: View {
         }
         
     }
-    
+
     var calendarGrid: some View {
-        VStack(spacing: 2){
-            
+        VStack(spacing: 2) {
             let daysCountInMonth = CalendarHelper().daysCountInMonth(date)
             let firstDayInMonth = CalendarHelper().firstDayInMonth(date)
             let startingSpace = CalendarHelper().weekDay(firstDayInMonth)
@@ -48,22 +47,22 @@ struct CalendarView: View {
             
             ForEach(0..<5){
                 row in
-                HStack{
+                HStack {
                     ForEach(1..<8) {
                         column in
                         let count = column + row * 7
-                        CalendarCell(date: $date, count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
+                        CalendarMonthCell(date: $date, count: count, startingSpace: startingSpace, daysCountInMonth: daysCountInMonth, daysCountprevMonth: daysCountLastMonth)
                     }
                 }
             }
         }
-        .frame(maxHeight:.infinity) // to fill the screen
+        .frame(maxHeight: .infinity) // to fill the screen
     }
 }
 
 extension Text {
-    func dayOfWeek() -> some View{
-        self.frame(maxWidth:.infinity)
+    func dayOfWeek() -> some View {
+        self.frame(maxWidth: .infinity)
             .padding(.top, 1)
             .lineLimit(1)
     }
@@ -71,6 +70,6 @@ extension Text {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarMonth()
     }
 }

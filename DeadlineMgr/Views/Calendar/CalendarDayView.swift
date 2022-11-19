@@ -9,7 +9,7 @@ import CalendarKit
 import Foundation
 import SwiftUI
 
-struct Calendar2CalendarView: View, UIViewRepresentable {
+struct CalendarDayView: View, UIViewRepresentable {
     @Binding var date: Date
     var events: [Event]
 
@@ -99,12 +99,5 @@ struct Calendar2CalendarView: View, UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         Coordinator(date: $date, eventTappedCallback: eventTappedCallback)
-    }
-}
-
-extension DayViewController {
-    func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        print("evnets")
-        return []
     }
 }
