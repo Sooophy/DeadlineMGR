@@ -59,7 +59,6 @@ class WatchChannel: NSObject, WCSessionDelegate, ObservableObject {
     #endif
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print(activationState)
         isAvailable = true
         sendMessages()
     }
@@ -68,21 +67,28 @@ class WatchChannel: NSObject, WCSessionDelegate, ObservableObject {
         guard isAvailable else {
             return
         }
-        #if os(watchOS)
-            guard WCSession.default.isCompanionAppInstalled else {
-                return
-            }
-        #else
-            guard WCSession.default.isWatchAppInstalled else {
-                return
-            }
-        #endif
-        
         while !buffer.isEmpty {
-            let (message, replyHandler) = buffer.popLast()!
+            let (message, replyHandler) = buffer.removeFirst()
+            #if os(watchOS)
+                guard WCSession.default.isCompanionAppInstalled else {
+                    debugPrint("WatchChannel: Companion App Not Installed")
+                    continue
+                }
+            #else
+                guard WCSession.default.isWatchAppInstalled else {
+                    debugPrint("WatchChannel: Watch App Not Installed")
+                    continue
+                }
+            #endif
+            guard WCSession.default.isReachable else {
+                debugPrint("WatchChannel: Not Reachable")
+                continue
+            }
+
             WCSession.default.sendMessage(message, replyHandler: replyHandler) {
                 err in
-                debugPrint("WatchChannel Error:", err)
+                let wcerror = err as! WCError
+                debugPrint("WatchChannel", wcerror.userInfo["NSLocalizedDescription"]!)
                 self.errBuffer.append((message, err))
             }
         }

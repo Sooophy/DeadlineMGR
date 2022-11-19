@@ -40,7 +40,6 @@ struct ContentView: View {
                 let isCompleted = msg["isCompleted"] as! Bool
                 modelData.dataBase[eventId]!.isCompleted = isCompleted
             }
-            // print(Firebase.shared.user)
         }
     }
 }

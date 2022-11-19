@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var modelData: ModelData
     var body: some View {
         VStack {
             EventList()
         }.task {
-            WatchChannel.shared.push(action: .hello, message: ["msg": "hello world from watch"])
+            FirebaseWatch.shared.onInitCompleted {
+                modelData.fetchEvents()
+            }
+            WatchChannel.shared.push(action: .hello, message: ["msg": "hello from watch"])
             WatchChannel.shared.registerReceiver(receiveAction: .hello) { msg, _ in
                 print("received!", msg)
             }
-            // Firebase.shared.getUser()
+            WatchChannel.shared.registerReceiver(receiveAction: .sync) { _, _ in
+                modelData.fetchEvents()
+            }
         }
     }
 }

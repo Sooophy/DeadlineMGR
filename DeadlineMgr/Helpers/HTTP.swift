@@ -1,5 +1,5 @@
 //
-//  Server.swift
+//  HTTP.swift
 //  DeadlineMgr
 //
 //  Created by Tianjun Mo on 2022/10/29.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Server {
+class HTTP {
     enum Method: String {
         case GET
         case POST
@@ -38,8 +38,8 @@ class Server {
                     continuation.resume(returning: (nil, resp as? HTTPURLResponse, err))
                     return
                 }
-                assert((resp as! HTTPURLResponse).statusCode == 200)
-                print(request.httpMethod!, request.url!, "\nbody:", (request.httpBody != nil) ? String(data: request.httpBody!, encoding: .utf8)! : "nil" as Any, "\nresp:", String(data: data!, encoding: .utf8) as Any)
+//                if (resp as! HTTPURLResponse).statusCode != 200:
+//                print(request.httpMethod!, request.url!, "\nbody:", (request.httpBody != nil) ? String(data: request.httpBody!, encoding: .utf8)! : "nil" as Any, "\nresp:", String(data: data!, encoding: .utf8) as Any)
                 continuation.resume(returning: (data, resp as? HTTPURLResponse, err))
             }
             task.resume()
@@ -52,7 +52,7 @@ class Server {
                         _ body: Data? = nil)
         async -> (Data?, HTTPURLResponse?, Error?)
     {
-        let request = Server.genRequest(url, method.rawValue, headers, body)
+        let request = HTTP.genRequest(url, method.rawValue, headers, body)
         return await performRequest(request)
     }
 }

@@ -11,14 +11,16 @@
 		2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EB22C290F3581002DC982 /* ModelData.swift */; };
 		2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */; };
 		B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */; };
+		B32634DA2929584000F06C6D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B32634D92929584000F06C6D /* SwiftyJSON */; };
 		B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33243C029275B260096D96E /* GoogleService-Info.plist */; };
+		B33243C62928562A0096D96E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B33243C52928562A0096D96E /* FirebaseFirestoreSwift */; };
+		B33243CA292857E00096D96E /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* HTTP.swift */; };
 		B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C42926CAC100FF69FE /* FirebaseAuth */; };
 		B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C62926CAC100FF69FE /* FirebaseFirestore */; };
 		B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683CE2926CAF700FF69FE /* Firebase.swift */; };
 		B34683D52926EBC000FF69FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34683D42926EBC000FF69FE /* GoogleService-Info.plist */; };
 		B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683DB292732C100FF69FE /* FirebaseAuth */; };
-		B34683DE292732C100FF69FE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B34683DD292732C100FF69FE /* FirebaseFirestore */; };
-		B34683E32927357900FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683E22927357900FF69FE /* Firebase.swift */; };
+		B34683E32927357900FF69FE /* FirebaseWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683E22927357900FF69FE /* FirebaseWatch.swift */; };
 		B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */; };
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
 		B39BE61A290DFC6F00850A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39BE619290DFC6F00850A5A /* Assets.xcassets */; };
@@ -29,7 +31,7 @@
 		B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B86290E1B54000CF95B /* SakaiSync.swift */; };
 		B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B89290E1E87000CF95B /* SakaiEvent.swift */; };
 		B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */; };
-		B3B34B8E290E254C000CF95B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* Server.swift */; };
+		B3B34B8E290E254C000CF95B /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* HTTP.swift */; };
 		B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8F290E31E0000CF95B /* SakaiUser.swift */; };
 		B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = B3B34B9329119E89000CF95B /* CalendarKit */; };
 		B3B34B962911A096000CF95B /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B952911A096000CF95B /* CalendarDay.swift */; };
@@ -61,7 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B3C318712925F66F000CD0B6 /* PBXContainerItemProxy */ = {
+		B33243C32927F6860096D96E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B39BE60A290DFC6E00850A5A /* Project object */;
 			proxyType = 1;
@@ -95,7 +97,7 @@
 		B34683D7292714B700FF69FE /* DeadlineMgr_watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DeadlineMgr_watch Watch App.entitlements"; sourceTree = "<group>"; };
 		B34683D8292714E400FF69FE /* DeadlineMgr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlineMgr.entitlements; sourceTree = "<group>"; };
 		B34683DA292732A600FF69FE /* DeadlineMgr-watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DeadlineMgr-watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		B34683E22927357900FF69FE /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B34683E22927357900FF69FE /* FirebaseWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseWatch.swift; sourceTree = "<group>"; };
 		B34683E62927565D00FF69FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B39BE612290DFC6E00850A5A /* DeadlineMgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadlineMgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineMgrApp.swift; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		B3B34B86290E1B54000CF95B /* SakaiSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSync.swift; sourceTree = "<group>"; };
 		B3B34B89290E1E87000CF95B /* SakaiEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiEvent.swift; sourceTree = "<group>"; };
 		B3B34B8B290E1EAF000CF95B /* SakaiSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiSite.swift; sourceTree = "<group>"; };
-		B3B34B8D290E254C000CF95B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		B3B34B8D290E254C000CF95B /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		B3B34B8F290E31E0000CF95B /* SakaiUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiUser.swift; sourceTree = "<group>"; };
 		B3B34B952911A096000CF95B /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
 		B3B34B972911A0AE000CF95B /* CalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */,
 				B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */,
 				B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */,
+				B33243C62928562A0096D96E /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +154,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32634DA2929584000F06C6D /* SwiftyJSON in Frameworks */,
 				B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */,
-				B34683DE292732C100FF69FE /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +177,13 @@
 				2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B32634D52929545100F06C6D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B33243C22927EAAB0096D96E /* Calendar */ = {
@@ -257,7 +267,7 @@
 		B3A6E129290DFCB000F9767B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B3B34B8D290E254C000CF95B /* Server.swift */,
+				B3B34B8D290E254C000CF95B /* HTTP.swift */,
 				E4713B42290F280F004531B7 /* CalendarHelper.swift */,
 				E4713B48290F3E3A004531B7 /* MonthStruct.swift */,
 				B34683CE2926CAF700FF69FE /* Firebase.swift */,
@@ -291,6 +301,7 @@
 		B3C3185F29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B32634D52929545100F06C6D /* Helpers */,
 				B34683DA292732A600FF69FE /* DeadlineMgr-watch-Watch-App-Info.plist */,
 				B33243C029275B260096D96E /* GoogleService-Info.plist */,
 				B34683D7292714B700FF69FE /* DeadlineMgr_watch Watch App.entitlements */,
@@ -324,7 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C318782925FB3A000CD0B6 /* ModelData.swift */,
-				B34683E22927357900FF69FE /* Firebase.swift */,
+				B34683E22927357900FF69FE /* FirebaseWatch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,13 +376,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				B3C318722925F66F000CD0B6 /* PBXTargetDependency */,
+				B33243C42927F6860096D96E /* PBXTargetDependency */,
 			);
 			name = DeadlineMgr;
 			packageProductDependencies = (
 				B3B34B9329119E89000CF95B /* CalendarKit */,
 				B34683C42926CAC100FF69FE /* FirebaseAuth */,
 				B34683C62926CAC100FF69FE /* FirebaseFirestore */,
+				B33243C52928562A0096D96E /* FirebaseFirestoreSwift */,
 			);
 			productName = DeadlineMgr;
 			productReference = B39BE612290DFC6E00850A5A /* DeadlineMgr.app */;
@@ -392,7 +404,7 @@
 			name = "DeadlineMgr_watch Watch App";
 			packageProductDependencies = (
 				B34683DB292732C100FF69FE /* FirebaseAuth */,
-				B34683DD292732C100FF69FE /* FirebaseFirestore */,
+				B32634D92929584000F06C6D /* SwiftyJSON */,
 			);
 			productName = "DeadlineMgr_watch Watch App";
 			productReference = B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */;
@@ -428,6 +440,8 @@
 			packageReferences = (
 				B3B34B9229119E89000CF95B /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B33243CD29287FD00096D96E /* XCRemoteSwiftPackageReference "CodableFirebase" */,
+				B32634D62929582A00F06C6D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = B39BE613290DFC6E00850A5A /* Products */;
 			projectDirPath = "";
@@ -491,7 +505,7 @@
 				E4713B45290F2DC5004531B7 /* CalendarMonthTitle.swift in Sources */,
 				E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
-				B3B34B8E290E254C000CF95B /* Server.swift in Sources */,
+				B3B34B8E290E254C000CF95B /* HTTP.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
 				E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
@@ -509,8 +523,9 @@
 				B3C3186329257FDF000CD0B6 /* ContentView.swift in Sources */,
 				B3C3186129257FDF000CD0B6 /* DeadlineMgr_watchApp.swift in Sources */,
 				B3C3186E292586DC000CD0B6 /* WatchChannel.swift in Sources */,
+				B33243CA292857E00096D96E /* HTTP.swift in Sources */,
 				B3C3187F2925FDDE000CD0B6 /* EventRow.swift in Sources */,
-				B34683E32927357900FF69FE /* Firebase.swift in Sources */,
+				B34683E32927357900FF69FE /* FirebaseWatch.swift in Sources */,
 				B3C318752925F6F1000CD0B6 /* Event.swift in Sources */,
 				B3C3187A2925FB3A000CD0B6 /* ModelData.swift in Sources */,
 			);
@@ -519,10 +534,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B3C318722925F66F000CD0B6 /* PBXTargetDependency */ = {
+		B33243C42927F6860096D96E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B3C3185D29257FDF000CD0B6 /* DeadlineMgr_watch Watch App */;
-			targetProxy = B3C318712925F66F000CD0B6 /* PBXContainerItemProxy */;
+			targetProxy = B33243C32927F6860096D96E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -806,6 +821,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B32634D62929582A00F06C6D /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B33243CD29287FD00096D96E /* XCRemoteSwiftPackageReference "CodableFirebase" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alickbass/CodableFirebase";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
 		B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -825,6 +856,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B32634D92929584000F06C6D /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B32634D62929582A00F06C6D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		B33243C52928562A0096D96E /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
 		B34683C42926CAC100FF69FE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -839,11 +880,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		B34683DD292732C100FF69FE /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
 		};
 		B3B34B9329119E89000CF95B /* CalendarKit */ = {
 			isa = XCSwiftPackageProductDependency;

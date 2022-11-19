@@ -9,20 +9,9 @@ import Foundation
 import SwiftUI
 
 final class ModelData: ObservableObject {
-    var lastDatabaseUpdate: Date = .init()
-    @Published var dataBase: [String: Event] = [:] {
-        didSet {
-            Task {
-                // debounce with 1 second
-                try! await Task.sleep(nanoseconds: 1 * 1000 * 1000 * 1000)
-                if lastDatabaseUpdate < Date() - 1 {
-                    lastDatabaseUpdate = Date()
-                    saveData()
-                    WatchChannel.shared.push(action: .sync)
-                }
-            }
-        }
-    }
+    var lastDatabaseUpdate: Date = .distantPast
+    var localDocLastUpdate: Date = .distantPast
+    @Published var dataBase: [String: Event] = [:]
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
@@ -33,6 +22,7 @@ final class ModelData: ObservableObject {
     }
     
     func saveData() {
+        print("saved")
         var outputData = Data()
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(Array(dataBase.values)) {
@@ -46,8 +36,14 @@ final class ModelData: ObservableObject {
                 try outputData.write(to: ModelData.ArchiveURL)
             } catch let error as NSError {
                 print(error)
+                return
             }
+        } else {
+            return
         }
+        localDocLastUpdate = .now
+        let defaults = UserDefaults.standard
+        defaults.set(localDocLastUpdate, forKey: "localDocLastUpdate")
     }
     
     func loadData() {
@@ -83,6 +79,9 @@ final class ModelData: ObservableObject {
                 print("First time save to sandbox")
             }
         }
+        let defaults = UserDefaults.standard
+        localDocLastUpdate = defaults.object(forKey: "localDocLastUpdate") as? Date ?? Date()
+        print("localDocLastUpdate", localDocLastUpdate)
     }
     
     func addUpdatdEvent(id: String,
@@ -115,6 +114,7 @@ final class ModelData: ObservableObject {
                      sourceId: sourceId,
                      color: color)
         }
+        save()
     }
     
     func eventIsCompletedToggle(id: String) {
@@ -126,6 +126,7 @@ final class ModelData: ObservableObject {
             dataBase[id]!.isCompleted = true
             dataBase[id]!.completedAt = Date()
         }
+        save()
     }
     
     func addEvent(title: String,
@@ -148,6 +149,7 @@ final class ModelData: ObservableObject {
                              sourceId: sourceId,
                              color: color)
         dataBase[newEvent.id] = newEvent
+        save()
     }
     
     func updateEvent(id: String,
@@ -166,5 +168,20 @@ final class ModelData: ObservableObject {
         dataBase[id]!.description = description
         dataBase[id]!.location = location
         dataBase[id]!.color = color
+        save()
+    }
+    
+    // save locally and remotelly
+    func save() {
+        Task {
+            // debounce with 200ms
+            try! await Task.sleep(nanoseconds: 200 * 1000 * 1000)
+            if lastDatabaseUpdate < Date() - 0.2 {
+                lastDatabaseUpdate = Date()
+                saveData()
+                await Firebase.shared.saveEvents(events: dataBase)
+                WatchChannel.shared.push(action: .sync)
+            }
+        }
     }
 }

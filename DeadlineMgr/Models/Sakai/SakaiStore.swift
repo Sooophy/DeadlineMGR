@@ -80,11 +80,11 @@ class SakaiStore: ObservableObject {
     }
 
     private func request(_ endpoint: SakaiAPIEndpoint,
-                         _ method: Server.Method,
+                         _ method: HTTP.Method,
                          _ args: CVarArg...) async -> (Data?, HTTPURLResponse?, Error?)
     {
         let url = getUrl(endpoint, args)
-        return await Server.request(url, method)
+        return await HTTP.request(url, method)
     }
 
     func genUser() async -> SakaiUser? {
