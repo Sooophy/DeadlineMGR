@@ -14,6 +14,7 @@ import Foundation
 class Firebase {
     static let shared: Firebase = .init()
     var user: User?
+    var initCallbacks: [() -> Void] = []
 
     private init() {
         DispatchQueue.main.async {
@@ -31,11 +32,20 @@ class Firebase {
                     self.user = user
                     print("user uid:", user.uid)
                     try await Firestore.firestore().collection("users").document(user.uid).setData(["uid": user.uid, "last_login": Date()], merge: true)
+                    for callback in self.initCallbacks {
+                        DispatchQueue.main.async {
+                            callback()
+                        }
+                    }
                 } catch {
                     print(error)
                 }
             }
         }
+    }
+
+    func onInitCompleted(callback: @escaping () -> Void) {
+        initCallbacks.append(callback)
     }
 
     func getUser() -> User? {

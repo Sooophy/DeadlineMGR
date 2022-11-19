@@ -40,6 +40,18 @@ struct ContentView: View {
                 let isCompleted = msg["isCompleted"] as! Bool
                 modelData.dataBase[eventId]!.isCompleted = isCompleted
             }
+            Firebase.shared.onInitCompleted {
+                Task {
+                    let (lastUpdate, events) = await Firebase.shared.fetchEvents()
+                    print("lastRemoteUpdate: ", lastUpdate, "lastLocalUpdate", modelData.localDocLastUpdate)
+                    if lastUpdate - 0.1 > modelData.localDocLastUpdate {
+                        print("update local data from remote")
+                        modelData.localDocLastUpdate = lastUpdate
+                        modelData.dataBase = events
+                        modelData.saveData()
+                    }
+                }
+            }
         }
     }
 }

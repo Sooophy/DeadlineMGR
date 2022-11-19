@@ -69,7 +69,7 @@ struct EventList: View {
                         }
                     }
                 }
-        }
+        }.navigationViewStyle(.stack)
     }
 
     func filterTodayEvents() -> [[Event]] {

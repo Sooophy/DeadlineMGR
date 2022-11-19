@@ -41,7 +41,6 @@ final class ModelData: ObservableObject {
         } else {
             return
         }
-        localDocLastUpdate = .now
         let defaults = UserDefaults.standard
         defaults.set(localDocLastUpdate, forKey: "localDocLastUpdate")
     }
@@ -80,7 +79,7 @@ final class ModelData: ObservableObject {
             }
         }
         let defaults = UserDefaults.standard
-        localDocLastUpdate = defaults.object(forKey: "localDocLastUpdate") as? Date ?? Date()
+        localDocLastUpdate = defaults.object(forKey: "localDocLastUpdate") as? Date ?? Date.distantPast
         print("localDocLastUpdate", localDocLastUpdate)
     }
     
@@ -114,7 +113,7 @@ final class ModelData: ObservableObject {
                      sourceId: sourceId,
                      color: color)
         }
-        save()
+        saveLocalAndRemote()
     }
     
     func eventIsCompletedToggle(id: String) {
@@ -126,7 +125,7 @@ final class ModelData: ObservableObject {
             dataBase[id]!.isCompleted = true
             dataBase[id]!.completedAt = Date()
         }
-        save()
+        saveLocalAndRemote()
     }
     
     func addEvent(title: String,
@@ -149,7 +148,7 @@ final class ModelData: ObservableObject {
                              sourceId: sourceId,
                              color: color)
         dataBase[newEvent.id] = newEvent
-        save()
+        saveLocalAndRemote()
     }
     
     func updateEvent(id: String,
@@ -168,16 +167,16 @@ final class ModelData: ObservableObject {
         dataBase[id]!.description = description
         dataBase[id]!.location = location
         dataBase[id]!.color = color
-        save()
+        saveLocalAndRemote()
     }
     
     // save locally and remotelly
-    func save() {
+    func saveLocalAndRemote() {
         Task {
             // debounce with 200ms
             try! await Task.sleep(nanoseconds: 200 * 1000 * 1000)
             if lastDatabaseUpdate < Date() - 0.2 {
-                lastDatabaseUpdate = Date()
+                lastDatabaseUpdate = .now
                 saveData()
                 await Firebase.shared.saveEvents(events: dataBase)
                 WatchChannel.shared.push(action: .sync)
