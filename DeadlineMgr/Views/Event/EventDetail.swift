@@ -18,6 +18,7 @@ struct EventDetail: View {
     @State private var description: String = ""
     @State private var isCompleted: Bool = false
     @State private var eventColor: Color = .blue
+    @State private var location: Location = Location()
     
     var body: some View {
         Group {
@@ -41,6 +42,15 @@ struct EventDetail: View {
 //                        .padding(.leading, 50)
                         
                         ColorPicker("event color:", selection: $eventColor)
+                        
+                        NavigationLink(destination: EventLocation(location: $location)) {
+                            HStack {
+                                Text("Location:")
+                                Spacer(minLength: 5)
+                                TextField("Location", text: $location.locationName)
+                            }
+                            .foregroundColor(.blue)
+                        }
                     }
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -57,7 +67,7 @@ struct EventDetail: View {
             }
         }
         .onAppear {
-            (eventTitle, tag, due, description, isCompleted, eventColor) = showEventDetail(event: event)
+            (eventTitle, tag, due, description, isCompleted, eventColor, location) = showEventDetail(event: event)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
@@ -78,7 +88,7 @@ struct EventDetail: View {
                                  dueAt: due,
                                  tag: tag,
                                  description: description,
-                                 location: nil,
+                                 location: location,
                                  source: event.source,
                                  sourceUrl: event.sourceUrl,
                                  sourceId: event.sourceId,
@@ -86,8 +96,9 @@ struct EventDetail: View {
         presentationMode.wrappedValue.dismiss()
     }
     
-    func showEventDetail(event: Event) -> (String, String, Date, String, Bool, Color) {
-        return (event.title, event.tag.joined(separator: ","), event.dueAt, event.description, event.isCompleted, Color: event.color)
+    func showEventDetail(event: Event) -> (String, String, Date, String, Bool, Color, Location) {
+        let eventLocation = event.location ?? Location()
+        return (event.title, event.tag.joined(separator: ","), event.dueAt, event.description, event.isCompleted, Color: event.color, eventLocation)
     }
 }
 

@@ -27,6 +27,12 @@ struct Location: Codable {
     
     private enum CodingKeys: String, CodingKey { case locationName, latitude, longitude }
     
+    init()
+    {
+        self.locationName = "N/A"
+        self.coordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0 )
+    }
+    
     init(locationName: String,
          latitude: CLLocationDegrees,
          longitude: CLLocationDegrees)
