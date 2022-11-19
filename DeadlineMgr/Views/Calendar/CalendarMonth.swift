@@ -17,21 +17,24 @@ struct CalendarMonth: View {
                     // will add environment object later
                     .padding()
                 dayOfWeekStack
-                calendarGrid
+                    .padding(.bottom, 40)
+//            Spacer()
+            calendarGrid
             }
         }
     }
 
     var dayOfWeekStack: some View {
-        HStack {
-            Text("Sun").dayOfWeek()
-            Text("Mon").dayOfWeek()
-            Text("Tue").dayOfWeek()
-            Text("Wed").dayOfWeek()
-            Text("Thu").dayOfWeek()
-            Text("Fri").dayOfWeek()
-            Text("Sat").dayOfWeek()
+        HStack(){
+            Text("Sun").fontWeight(.black).dayOfWeek()
+            Text("Mon").fontWeight(.black).dayOfWeek()
+            Text("Tue").fontWeight(.black).dayOfWeek()
+            Text("Wed").fontWeight(.black).dayOfWeek()
+            Text("Thu").fontWeight(.black).dayOfWeek()
+            Text("Fri").fontWeight(.black).dayOfWeek()
+            Text("Sat").fontWeight(.black).dayOfWeek()
         }
+        
     }
 
     var calendarGrid: some View {
@@ -41,8 +44,8 @@ struct CalendarMonth: View {
             let startingSpace = CalendarHelper().weekDay(firstDayInMonth)
             let prevMonth = CalendarHelper().minusMonth(date)
             let daysCountLastMonth = CalendarHelper().daysCountInMonth(prevMonth)
-
-            ForEach(0..<6) {
+            
+            ForEach(0..<5){
                 row in
                 HStack {
                     ForEach(1..<8) {

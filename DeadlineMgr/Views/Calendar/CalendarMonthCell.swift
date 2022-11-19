@@ -26,11 +26,13 @@ struct CalendarMonthCell: View {
                 Text(monthStruct().day())
                     .foregroundColor(textColor(type: monthStruct().monthType))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(height:10)
                 VStack(alignment: .leading) {
                     ForEach(filteredEvents) { tempEvent in
                         CalendarMonthEventCell(event: tempEvent)
                     }
                 }
+                Spacer()
             }
         }
     }
@@ -91,13 +93,13 @@ struct CalendarMonthCell: View {
             day = count - start
         }
 //        let cellDate = Calendar.current.date(bySetting: .day, value: day, of: tempDate) ?? Date()
-//        print(tempDate)
-//        print(cellDate)
+        
         var dateComponents = Calendar.current.dateComponents([.hour, .minute, .second, .month, .year], from: tempDate)
 
         dateComponents.day = day
 
         let cellDate = Calendar.current.date(from: dateComponents) ?? Date()
+//        print(cellDate)
         return cellDate
     }
 }

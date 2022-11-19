@@ -13,6 +13,7 @@ struct CalendarMonthEventCell: View {
     var body: some View {
         Text(event.title)
             .background(event.color)
+            .lineLimit(1)
         
     }
     
