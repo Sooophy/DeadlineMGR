@@ -7,14 +7,16 @@
 
 import FirebaseAuth
 import FirebaseCore
-import FirebaseFirestore
-import FirebaseFirestoreSwift
+import FirebaseDatabase
+import FirebaseDatabaseSwift
 import Foundation
 
 class Firebase {
     static let shared: Firebase = .init()
     var user: User?
     var initCallbacks: [() -> Void] = []
+    var databaseRef: DatabaseReference?
+    var eventsRef: DatabaseReference?
 
     private init() {
         DispatchQueue.main.async {
@@ -31,12 +33,24 @@ class Firebase {
 
                     self.user = user
                     print("user uid:", user.uid)
-                    try await Firestore.firestore().collection("users").document(user.uid).setData(["uid": user.uid, "last_login": Date()], merge: true)
+                    self.databaseRef = Database.database().reference(fromURL: "https://duke-deadlinemgr-default-rtdb.firebaseio.com/")
+                    self.eventsRef = self.databaseRef?.child("events").child(user.uid)
+                    class UserLoginData: Encodable {
+                        var uid: String
+                        var last_login: Date
+                        init(uid: String, last_login: Date) {
+                            self.uid = uid
+                            self.last_login = last_login
+                        }
+                    }
+                    let data = UserLoginData(uid: user.uid, last_login: Date())
+                    try self.databaseRef?.child("users").child(user.uid).setValue(from: data)
                     for callback in self.initCallbacks {
                         DispatchQueue.main.async {
                             callback()
                         }
                     }
+
                 } catch {
                     print(error)
                 }
@@ -53,13 +67,11 @@ class Firebase {
     }
 
     class FirebaseEventData: Codable {
-        var json: String
         var data: [String: Event]
         var lastUpdate: Date
 
         init(_ data: [String: Event]) {
             self.data = data
-            self.json = String(data: try! JSONEncoder().encode(data), encoding: .utf8)!
             self.lastUpdate = .now
         }
     }
@@ -70,7 +82,7 @@ class Firebase {
             return
         }
         do {
-            try Firestore.firestore().collection("events").document(user?.uid ?? "undefined").setData(from: FirebaseEventData(events))
+            try eventsRef?.setValue(from: FirebaseEventData(events))
         } catch {
             print(error)
         }
@@ -78,8 +90,8 @@ class Firebase {
 
     func fetchEvents() async -> (Date, [String: Event]) {
         do {
-            let data = try await Firestore.firestore().collection("events").document(user!.uid).getDocument().data(as: FirebaseEventData.self)
-            return (data.lastUpdate, data.data)
+            let data = try await eventsRef?.getData().data(as: FirebaseEventData.self)
+            return (data!.lastUpdate, data!.data)
         } catch {
             print("fetchEvents error: ", error)
             return (Date.distantPast, [:])

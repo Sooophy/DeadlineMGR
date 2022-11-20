@@ -27,10 +27,9 @@ struct Location: Codable {
     
     private enum CodingKeys: String, CodingKey { case locationName, latitude, longitude }
     
-    init()
-    {
+    init() {
         self.locationName = "N/A"
-        self.coordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0 )
+        self.coordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     }
     
     init(locationName: String,
@@ -62,6 +61,7 @@ struct Event: Codable, Identifiable {
     var title: String = ""
     var createdAt: Date
     var dueAt: Date
+    var lastUpdate: Date
     var completedAt: Date?
     var tag: [String] = []
     var description: String = ""
@@ -73,13 +73,14 @@ struct Event: Codable, Identifiable {
     var sourceId: String?
     var color: Color = .blue
     
-    private enum CodingKeys: String, CodingKey { case id, title, createdAt, dueAt, completedAt, tag, description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color }
+    private enum CodingKeys: String, CodingKey { case id, title, createdAt, dueAt, completedAt, tag, description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color, lastUpdate }
     
     init() {
         self.id = UUID().uuidString
         self.createdAt = Date()
         self.dueAt = Calendar.current.startOfDay(for: Date()) + 86399
         self.source = .Default
+        self.lastUpdate = Date()
     }
     
     init(title: String,
@@ -103,6 +104,7 @@ struct Event: Codable, Identifiable {
         self.sourceUrl = sourceUrl
         self.sourceId = sourceId
         self.color = color ?? .blue
+        self.lastUpdate = .now
     }
     
     init(from decoder: Decoder) throws {
@@ -181,6 +183,12 @@ struct Event: Codable, Identifiable {
         } catch {
             self.color = .blue
         }
+        do {
+            let lastUpdateInterval = try container.decode(TimeInterval.self, forKey: .lastUpdate)
+            self.lastUpdate = Date(timeIntervalSince1970: lastUpdateInterval)
+        } catch {
+            self.lastUpdate = Date()
+        }
     }
     
     func encode(to encoder: Encoder) throws {
@@ -190,6 +198,7 @@ struct Event: Codable, Identifiable {
         try container.encode(self.createdAt.timeIntervalSince1970, forKey: .createdAt)
         try container.encode(self.dueAt.timeIntervalSince1970, forKey: .dueAt)
         try container.encode(self.completedAt?.timeIntervalSince1970, forKey: .completedAt)
+        try container.encode(self.lastUpdate.timeIntervalSince1970, forKey: .lastUpdate)
         try container.encode(self.tag, forKey: .tag)
         try container.encode(self.description, forKey: .description)
         try container.encode(self.location, forKey: .location)

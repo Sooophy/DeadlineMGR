@@ -10,7 +10,6 @@ import SwiftUI
 
 final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
-    var localDocLastUpdate: Date = .distantPast
     @Published var dataBase: [String: Event] = [:]
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -41,8 +40,6 @@ final class ModelData: ObservableObject {
         } else {
             return
         }
-        let defaults = UserDefaults.standard
-        defaults.set(localDocLastUpdate, forKey: "localDocLastUpdate")
     }
     
     func loadData() {
@@ -79,8 +76,6 @@ final class ModelData: ObservableObject {
             }
         }
         let defaults = UserDefaults.standard
-        localDocLastUpdate = defaults.object(forKey: "localDocLastUpdate") as? Date ?? Date.distantPast
-        print("localDocLastUpdate", localDocLastUpdate)
     }
     
     func addUpdatdEvent(id: String,
@@ -125,6 +120,7 @@ final class ModelData: ObservableObject {
             dataBase[id]!.isCompleted = true
             dataBase[id]!.completedAt = Date()
         }
+        dataBase[id]!.lastUpdate = .now
         saveLocalAndRemote()
     }
     
@@ -167,7 +163,13 @@ final class ModelData: ObservableObject {
         dataBase[id]!.description = description
         dataBase[id]!.location = location
         dataBase[id]!.color = color
+        dataBase[id]!.lastUpdate = .now
         saveLocalAndRemote()
+    }
+    
+    func updateLocal(database: [String: Event], updateTime: Date) {
+        dataBase = database
+        saveData()
     }
     
     // save locally and remotelly
@@ -179,7 +181,6 @@ final class ModelData: ObservableObject {
                 lastDatabaseUpdate = .now
                 saveData()
                 await Firebase.shared.saveEvents(events: dataBase)
-                WatchChannel.shared.push(action: .sync)
             }
         }
     }

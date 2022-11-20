@@ -41,16 +41,32 @@ struct ContentView: View {
                 modelData.dataBase[eventId]!.isCompleted = isCompleted
             }
             Firebase.shared.onInitCompleted {
-                Task {
-                    let (lastUpdate, events) = await Firebase.shared.fetchEvents()
-                    print("lastRemoteUpdate: ", lastUpdate, "lastLocalUpdate", modelData.localDocLastUpdate)
-                    if lastUpdate - 0.1 > modelData.localDocLastUpdate {
-                        print("update local data from remote")
-                        modelData.localDocLastUpdate = lastUpdate
-                        modelData.dataBase = events
-                        modelData.saveData()
+                Firebase.shared.eventsRef?.child("data").observe(.childChanged, with: { snapshot in
+                    print("changed", snapshot)
+                    let event = try! snapshot.data(as: Event.self)
+                    let eventId = event.id
+                    if let existingEvent = modelData.dataBase[eventId] {
+                        if existingEvent.lastUpdate > event.lastUpdate {
+                            return
+                        }
                     }
-                }
+                    var newDatabase = modelData.dataBase
+                    newDatabase[eventId] = event
+                    modelData.updateLocal(database: newDatabase, updateTime: .now)
+                })
+                Firebase.shared.eventsRef?.child("data").observe(.childAdded, with: { snapshot in
+                    print("added", snapshot)
+                    let event = try! snapshot.data(as: Event.self)
+                    let eventId = event.id
+                    if let existingEvent = modelData.dataBase[eventId] {
+                        if existingEvent.lastUpdate > event.lastUpdate {
+                            return
+                        }
+                    }
+                    var newDatabase = modelData.dataBase
+                    newDatabase[eventId] = event
+                    modelData.updateLocal(database: newDatabase, updateTime: .now)
+                })
             }
         }
     }

@@ -12,11 +12,13 @@
 		2ECF38132911A61400A6E6E0 /* DefaultEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */; };
 		B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */; };
 		B32634DA2929584000F06C6D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B32634D92929584000F06C6D /* SwiftyJSON */; };
+		B32634DD2929988400F06C6D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B32634DC2929988400F06C6D /* FirebaseDatabase */; };
+		B32634DF2929988400F06C6D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */; };
+		B32634E12929B6DC00F06C6D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B32634E02929B6DC00F06C6D /* FirebaseDatabase */; };
+		B32634E32929B6DC00F06C6D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B32634E22929B6DC00F06C6D /* FirebaseDatabaseSwift */; };
 		B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33243C029275B260096D96E /* GoogleService-Info.plist */; };
-		B33243C62928562A0096D96E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B33243C52928562A0096D96E /* FirebaseFirestoreSwift */; };
 		B33243CA292857E00096D96E /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* HTTP.swift */; };
 		B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C42926CAC100FF69FE /* FirebaseAuth */; };
-		B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C62926CAC100FF69FE /* FirebaseFirestore */; };
 		B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683CE2926CAF700FF69FE /* Firebase.swift */; };
 		B34683D52926EBC000FF69FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34683D42926EBC000FF69FE /* GoogleService-Info.plist */; };
 		B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683DB292732C100FF69FE /* FirebaseAuth */; };
@@ -143,10 +145,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32634DF2929988400F06C6D /* FirebaseDatabaseSwift in Frameworks */,
+				B32634DD2929988400F06C6D /* FirebaseDatabase in Frameworks */,
 				B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */,
-				B34683C72926CAC100FF69FE /* FirebaseFirestore in Frameworks */,
 				B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */,
-				B33243C62928562A0096D96E /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32634E32929B6DC00F06C6D /* FirebaseDatabaseSwift in Frameworks */,
+				B32634E12929B6DC00F06C6D /* FirebaseDatabase in Frameworks */,
 				B32634DA2929584000F06C6D /* SwiftyJSON in Frameworks */,
 				B34683DC292732C100FF69FE /* FirebaseAuth in Frameworks */,
 			);
@@ -382,8 +386,8 @@
 			packageProductDependencies = (
 				B3B34B9329119E89000CF95B /* CalendarKit */,
 				B34683C42926CAC100FF69FE /* FirebaseAuth */,
-				B34683C62926CAC100FF69FE /* FirebaseFirestore */,
-				B33243C52928562A0096D96E /* FirebaseFirestoreSwift */,
+				B32634DC2929988400F06C6D /* FirebaseDatabase */,
+				B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */,
 			);
 			productName = DeadlineMgr;
 			productReference = B39BE612290DFC6E00850A5A /* DeadlineMgr.app */;
@@ -405,6 +409,8 @@
 			packageProductDependencies = (
 				B34683DB292732C100FF69FE /* FirebaseAuth */,
 				B32634D92929584000F06C6D /* SwiftyJSON */,
+				B32634E02929B6DC00F06C6D /* FirebaseDatabase */,
+				B32634E22929B6DC00F06C6D /* FirebaseDatabaseSwift */,
 			);
 			productName = "DeadlineMgr_watch Watch App";
 			productReference = B3C3185E29257FDF000CD0B6 /* DeadlineMgr_watch Watch App.app */;
@@ -861,20 +867,30 @@
 			package = B32634D62929582A00F06C6D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		B33243C52928562A0096D96E /* FirebaseFirestoreSwift */ = {
+		B32634DC2929988400F06C6D /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
+			productName = FirebaseDatabase;
+		};
+		B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		B32634E02929B6DC00F06C6D /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B32634E22929B6DC00F06C6D /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
 		};
 		B34683C42926CAC100FF69FE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		B34683C62926CAC100FF69FE /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
 		};
 		B34683DB292732C100FF69FE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
