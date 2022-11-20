@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftyJSON
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
