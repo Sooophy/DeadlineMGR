@@ -167,6 +167,16 @@ final class ModelData: ObservableObject {
         saveData()
     }
     
+    func addUpdateSakaiEvent(sakaiEvent: SakaiEvent) {
+        if sourceIdMap[sakaiEvent.id] != nil {
+            updateSakaiEvent(sakaiEvent: sakaiEvent)
+        }
+        else {
+            addSakaiEvent(sakaiEvent: sakaiEvent)
+        }
+        
+    }
+    
     func addSakaiEvent(sakaiEvent: SakaiEvent) {
         let newSakaiEvent = Event(title: sakaiEvent.title,
                                   dueAt: sakaiEvent.dueDate,
@@ -179,6 +189,14 @@ final class ModelData: ObservableObject {
                                   color: .blue)
         dataBase[newSakaiEvent.id] = newSakaiEvent
         sourceIdMap[newSakaiEvent.sourceId!] = newSakaiEvent.id
+        saveLocalAndRemote()
+    }
+    
+    func updateSakaiEvent(sakaiEvent: SakaiEvent) {
+        let id = sourceIdMap[sakaiEvent.id]!
+        dataBase[id]!.title = sakaiEvent.title
+        dataBase[id]!.dueAt = sakaiEvent.dueDate
+        dataBase[id]!.createdAt = sakaiEvent.openDate
         saveLocalAndRemote()
     }
     
