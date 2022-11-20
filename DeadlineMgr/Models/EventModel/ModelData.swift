@@ -10,7 +10,10 @@ import SwiftUI
 
 final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
+    let sakaiStore = SakaiStore.shared
     @Published var dataBase: [String: Event] = [:]
+    
+    var sourceIdMap: [String: String] = [:]
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
@@ -68,6 +71,9 @@ final class ModelData: ObservableObject {
             }
             for event in eventArray {
                 dataBase[event.id] = event
+                if event.source == .Sakai {
+                    sourceIdMap[event.sourceId!] = event.id
+                }
             }
             
             if firstLoad {
@@ -77,15 +83,12 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func addUpdatdEvent(id: String,
+    func addUpdateEvent(id: String,
                         title: String,
                         dueAt: Date?,
                         tag: String,
                         description: String,
                         location: Location?,
-                        source: Source,
-                        sourceUrl: String?,
-                        sourceId: String?,
                         color: Color)
     {
         if dataBase[id] != nil {
@@ -102,9 +105,6 @@ final class ModelData: ObservableObject {
                      tag: tag,
                      description: description,
                      location: location,
-                     source: source,
-                     sourceUrl: sourceUrl,
-                     sourceId: sourceId,
                      color: color)
         }
         saveLocalAndRemote()
@@ -128,19 +128,16 @@ final class ModelData: ObservableObject {
                   tag: String,
                   description: String,
                   location: Location?,
-                  source: Source,
-                  sourceUrl: String?,
-                  sourceId: String?,
-                  color: Color)
+                  color: Color = .blue)
     {
         let newEvent = Event(title: title,
                              dueAt: dueAt,
                              tag: tag.components(separatedBy: ","),
                              description: description,
                              location: location,
-                             source: source,
-                             sourceUrl: sourceUrl,
-                             sourceId: sourceId,
+                             source: .Default,
+                             sourceUrl: nil,
+                             sourceId: nil,
                              color: color)
         dataBase[newEvent.id] = newEvent
         saveLocalAndRemote()
@@ -167,8 +164,56 @@ final class ModelData: ObservableObject {
     }
     
     func updateLocal(database: [String: Event], updateTime: Date) {
-        dataBase = database
+        self.dataBase = database
+        self.sourceIdMap = [:]
+        for event in self.dataBase.values {
+            if event.source == .Sakai {
+                sourceIdMap[event.sourceId!] = event.id
+            }
+        }
         saveData()
+    }
+    
+    func processSakaiEvent() {
+        print(dataBase)
+        for eventList in sakaiStore.filteredEvents.values {
+            for event in eventList {
+                addUpdateSakaiEvent(sakaiEvent: event)
+            }
+        }
+    }
+    
+    func addUpdateSakaiEvent(sakaiEvent: SakaiEvent) {
+        if sourceIdMap[sakaiEvent.id] != nil {
+            updateSakaiEvent(sakaiEvent: sakaiEvent)
+        }
+        else {
+            addSakaiEvent(sakaiEvent: sakaiEvent)
+        }
+        
+    }
+    
+    func addSakaiEvent(sakaiEvent: SakaiEvent) {
+        let newSakaiEvent = Event(title: sakaiEvent.title,
+                                  dueAt: sakaiEvent.dueDate,
+                                  tag: ["Sakai"],
+                                  description: "",
+                                  location: nil,
+                                  source: .Sakai,
+                                  sourceUrl: sakaiEvent.url,
+                                  sourceId: sakaiEvent.id,
+                                  color: .blue)
+        dataBase[newSakaiEvent.id] = newSakaiEvent
+        sourceIdMap[newSakaiEvent.sourceId!] = newSakaiEvent.id
+        saveLocalAndRemote()
+    }
+    
+    func updateSakaiEvent(sakaiEvent: SakaiEvent) {
+        let id = sourceIdMap[sakaiEvent.id]!
+        dataBase[id]!.title = sakaiEvent.title
+        dataBase[id]!.dueAt = sakaiEvent.dueDate
+        dataBase[id]!.createdAt = sakaiEvent.openDate
+        saveLocalAndRemote()
     }
     
     // save locally and remotelly
