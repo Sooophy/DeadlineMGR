@@ -10,6 +10,7 @@ import SwiftUI
 
 final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
+    let sakaiStore = SakaiStore.shared
     @Published var dataBase: [String: Event] = [:]
     
     var sourceIdMap: [String: String] = [:]
@@ -163,8 +164,23 @@ final class ModelData: ObservableObject {
     }
     
     func updateLocal(database: [String: Event], updateTime: Date) {
-        dataBase = database
+        self.dataBase = database
+        self.sourceIdMap = [:]
+        for event in self.dataBase.values {
+            if event.source == .Sakai {
+                sourceIdMap[event.sourceId!] = event.id
+            }
+        }
         saveData()
+    }
+    
+    func processSakaiEvent() {
+        print(dataBase)
+        for eventList in sakaiStore.filteredEvents.values {
+            for event in eventList {
+                addUpdateSakaiEvent(sakaiEvent: event)
+            }
+        }
     }
     
     func addUpdateSakaiEvent(sakaiEvent: SakaiEvent) {

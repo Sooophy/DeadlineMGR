@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SakaiSync: View {
+    @EnvironmentObject var modelData: ModelData
     @StateObject var sakaiStore: SakaiStore
     @State var isLoginModalShow = false
     @State var isDetailWebView = false
@@ -50,6 +51,11 @@ struct SakaiSync: View {
                                     }
                                 }
                             }
+                        }
+                        Button {
+                            modelData.processSakaiEvent()
+                        } label: {
+                            Text("Sync sakai event to local database")
                         }
                     }.listStyle(.insetGrouped)
                         .blur(radius: sakaiStore.isLoading ? 5 : 0, opaque: sakaiStore.isLoading ? true : false).disabled(sakaiStore.isLoading)
