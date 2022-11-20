@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyJSON
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
@@ -13,15 +14,21 @@ struct ContentView: View {
         VStack {
             EventList()
         }.task {
-            FirebaseWatch.shared.onInitCompleted {
-                modelData.fetchEvents()
-            }
             WatchChannel.shared.push(action: .hello, message: ["msg": "hello from watch"])
             WatchChannel.shared.registerReceiver(receiveAction: .hello) { msg, _ in
                 print("received!", msg)
             }
-            WatchChannel.shared.registerReceiver(receiveAction: .sync) { _, _ in
-                modelData.fetchEvents()
+            WatchChannel.shared.registerReceiver(receiveAction: .sync) { data, _ in
+                let decoder = JSONDecoder()
+                let event = try! decoder.decode(Event.self, from: data["json"] as! Data)
+                if let existingEvent = modelData.dataBase[event.id] {
+                    if existingEvent.lastUpdate >= event.lastUpdate {
+                        return
+                    }
+                }
+                print("sync event:", event.id)
+                modelData.dataBase[event.id] = event
+                modelData.saveData()
             }
         }
     }

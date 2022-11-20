@@ -34,35 +34,48 @@ struct ContentView: View {
             WatchChannel.shared.push(action: .hello, message: ["msg": "hello world from ios"])
             WatchChannel.shared.registerReceiver(receiveAction: .hello) { msg, _ in
                 print("received!", msg)
+                let events = modelData.dataBase.values
+                for event in events {
+                    let json = try! JSONEncoder().encode(event)
+                    WatchChannel.shared.push(action: .sync, message: ["json": json])
+                }
             }
             WatchChannel.shared.registerReceiver(receiveAction: .update_complete_status) { msg, _ in
                 let eventId = msg["id"] as! String
                 let isCompleted = msg["isCompleted"] as! Bool
-                modelData.dataBase[eventId]!.isCompleted = isCompleted
+                if modelData.dataBase[eventId]!.isCompleted != isCompleted {
+                    modelData.eventIsCompletedToggle(id: eventId)
+                }
             }
             Firebase.shared.onInitCompleted {
                 Firebase.shared.eventsRef?.child("data").observe(.childChanged, with: { snapshot in
-                    print("changed", snapshot)
                     let event = try! snapshot.data(as: Event.self)
+                    let json = try! JSONEncoder().encode(event)
+                    WatchChannel.shared.push(action: .sync, message: ["json": json])
                     let eventId = event.id
                     if let existingEvent = modelData.dataBase[eventId] {
-                        if existingEvent.lastUpdate > event.lastUpdate {
+                        if existingEvent.lastUpdate >= event.lastUpdate {
                             return
                         }
                     }
+                    print("event changed")
                     var newDatabase = modelData.dataBase
                     newDatabase[eventId] = event
                     modelData.updateLocal(database: newDatabase, updateTime: .now)
+
                 })
                 Firebase.shared.eventsRef?.child("data").observe(.childAdded, with: { snapshot in
-                    print("added", snapshot)
+
                     let event = try! snapshot.data(as: Event.self)
                     let eventId = event.id
+                    let json = try! JSONEncoder().encode(event)
+                    WatchChannel.shared.push(action: .sync, message: ["json": json])
                     if let existingEvent = modelData.dataBase[eventId] {
-                        if existingEvent.lastUpdate > event.lastUpdate {
+                        if existingEvent.lastUpdate >= event.lastUpdate {
                             return
                         }
                     }
+                    print("added event")
                     var newDatabase = modelData.dataBase
                     newDatabase[eventId] = event
                     modelData.updateLocal(database: newDatabase, updateTime: .now)

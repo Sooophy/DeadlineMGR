@@ -75,7 +75,6 @@ final class ModelData: ObservableObject {
                 print("First time save to sandbox")
             }
         }
-        let defaults = UserDefaults.standard
     }
     
     func addUpdatdEvent(id: String,
