@@ -12,6 +12,8 @@ Calendar view is built with the help of this tutorial: https://www.youtube.com/w
 
 ## Firebase
 
+Sync between devices demo: https://drive.google.com/file/d/1iKjoxApPIIkFu_pGanktD_6zHsT3MeLb/view
+
 In this project, we use Firebase Realtime Database to persist user data on the cloud and sync for users' different devices in realtime. We use Keychain to sync user credentials between devices, which works on real devices.
 
 If you want to test the data syncing between devices (e.g., different iPhone, iPad) on simulators, here is the solution:
