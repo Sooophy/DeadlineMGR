@@ -83,15 +83,12 @@ struct EventDetail: View {
     
     func saveEvent(event: Event) {
         // save event
-        modelData.addUpdatdEvent(id: event.id,
+        modelData.addUpdateEvent(id: event.id,
                                  title: eventTitle,
                                  dueAt: due,
                                  tag: tag,
                                  description: description,
                                  location: location,
-                                 source: event.source,
-                                 sourceUrl: event.sourceUrl,
-                                 sourceId: event.sourceId,
                                  color: eventColor)
         presentationMode.wrappedValue.dismiss()
     }

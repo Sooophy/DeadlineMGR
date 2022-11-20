@@ -77,15 +77,12 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func addUpdatdEvent(id: String,
+    func addUpdateEvent(id: String,
                         title: String,
                         dueAt: Date?,
                         tag: String,
                         description: String,
                         location: Location?,
-                        source: Source,
-                        sourceUrl: String?,
-                        sourceId: String?,
                         color: Color)
     {
         if dataBase[id] != nil {
@@ -102,9 +99,6 @@ final class ModelData: ObservableObject {
                      tag: tag,
                      description: description,
                      location: location,
-                     source: source,
-                     sourceUrl: sourceUrl,
-                     sourceId: sourceId,
                      color: color)
         }
         saveLocalAndRemote()
@@ -128,19 +122,16 @@ final class ModelData: ObservableObject {
                   tag: String,
                   description: String,
                   location: Location?,
-                  source: Source,
-                  sourceUrl: String?,
-                  sourceId: String?,
-                  color: Color)
+                  color: Color = .blue)
     {
         let newEvent = Event(title: title,
                              dueAt: dueAt,
                              tag: tag.components(separatedBy: ","),
                              description: description,
                              location: location,
-                             source: source,
-                             sourceUrl: sourceUrl,
-                             sourceId: sourceId,
+                             source: .Default,
+                             sourceUrl: nil,
+                             sourceId: nil,
                              color: color)
         dataBase[newEvent.id] = newEvent
         saveLocalAndRemote()

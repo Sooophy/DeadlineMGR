@@ -84,6 +84,7 @@ struct Event: Codable, Identifiable {
     }
     
     init(title: String,
+         createdAt: Date = Date(),
          dueAt: Date?,
          tag: [String],
          description: String,
@@ -95,7 +96,7 @@ struct Event: Codable, Identifiable {
     {
         self.id = UUID().uuidString
         self.title = title
-        self.createdAt = Date()
+        self.createdAt = createdAt
         self.dueAt = dueAt ?? Calendar.current.startOfDay(for: Date()) + 86399
         self.tag = tag
         self.description = description
