@@ -12,6 +12,8 @@ final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
     @Published var dataBase: [String: Event] = [:]
     
+    var sourceIdMap: [String: String] = [:]
+    
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
     static let DefaultURL = Bundle.main.url(forResource: "DefaultEvent", withExtension: "json")!
@@ -68,6 +70,9 @@ final class ModelData: ObservableObject {
             }
             for event in eventArray {
                 dataBase[event.id] = event
+                if event.source == .Sakai {
+                    sourceIdMap[event.sourceId!] = event.id
+                }
             }
             
             if firstLoad {
@@ -160,6 +165,21 @@ final class ModelData: ObservableObject {
     func updateLocal(database: [String: Event], updateTime: Date) {
         dataBase = database
         saveData()
+    }
+    
+    func addSakaiEvent(sakaiEvent: SakaiEvent) {
+        let newSakaiEvent = Event(title: sakaiEvent.title,
+                                  dueAt: sakaiEvent.dueDate,
+                                  tag: ["Sakai"],
+                                  description: "",
+                                  location: nil,
+                                  source: .Sakai,
+                                  sourceUrl: sakaiEvent.url,
+                                  sourceId: sakaiEvent.id,
+                                  color: .blue)
+        dataBase[newSakaiEvent.id] = newSakaiEvent
+        sourceIdMap[newSakaiEvent.sourceId!] = newSakaiEvent.id
+        saveLocalAndRemote()
     }
     
     // save locally and remotelly
