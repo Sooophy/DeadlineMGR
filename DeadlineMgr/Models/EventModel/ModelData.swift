@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import EventKit
 
 final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
@@ -21,7 +22,7 @@ final class ModelData: ObservableObject {
     
     init() {
         loadData()
-        dataBase.values.first?.addToCalendar()
+        addEventToCalendar(event: Event())
     }
     
     func saveData() {
@@ -226,6 +227,27 @@ final class ModelData: ObservableObject {
                 lastDatabaseUpdate = .now
                 saveData()
                 await Firebase.shared.saveEvents(events: dataBase)
+            }
+        }
+    }
+    
+    func addEventToCalendar(event: Event) {
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
+            guard granted else {
+                print("Access to calendar not granted")
+                return
+            }
+            let newEKEvent = EKEvent(eventStore: eventStore)
+            newEKEvent.title = event.title
+            newEKEvent.startDate = event.createdAt
+            newEKEvent.endDate = event.dueAt
+            newEKEvent.location = event.location?.locationName
+            newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+            do {
+                try eventStore.save(newEKEvent, span: .thisEvent)
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

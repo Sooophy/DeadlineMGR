@@ -218,16 +218,4 @@ struct Event: Codable, Identifiable {
         let colorCode = ColorCode(r: r, g: g, b: b, alpha: alpha)
         try container.encode(colorCode, forKey: .color)
     }
-    
-    func addToCalendar() {
-        let eventStore = EKEventStore()
-        eventStore.requestAccess(to: .reminder) { granted, error in
-            if granted {
-                print("granted")
-            }
-            else {
-                print("no granted")
-            }
-        }
-    }
 }
