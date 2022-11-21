@@ -16,13 +16,23 @@ final class ModelData: ObservableObject {
     
     var sourceIdMap: [String: String] = [:]
     
+    var alarmOffset: TimeInterval = 3600
+    
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
     static let DefaultURL = Bundle.main.url(forResource: "DefaultEvent", withExtension: "json")!
     
     init() {
         loadData()
-        addEventToCalendar(event: Event())
+        addEventToCalendar(event: Event(title: "test event",
+                                        dueAt:nil,
+                                        tag: [],
+                                        description: "",
+                                        location: nil,
+                                        source: .Default,
+                                        sourceUrl: nil,
+                                        sourceId: nil,
+                                        color: nil))
     }
     
     func saveData() {
@@ -231,7 +241,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func addEventToCalendar(event: Event) {
+    func addEventToCalendar(event: Event){
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
             guard granted else {
@@ -244,6 +254,7 @@ final class ModelData: ObservableObject {
             newEKEvent.endDate = event.dueAt
             newEKEvent.location = event.location?.locationName
             newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+            newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
             do {
                 try eventStore.save(newEKEvent, span: .thisEvent)
             } catch {
