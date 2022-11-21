@@ -73,8 +73,9 @@ struct Event: Codable, Identifiable {
     var sourceUrl: String?
     var sourceId: String?
     var color: Color = .blue
+    var calendarIdentifier: String? = nil
     
-    private enum CodingKeys: String, CodingKey { case id, title, createdAt, dueAt, completedAt, tag, description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color, lastUpdate }
+    private enum CodingKeys: String, CodingKey { case id, title, createdAt, dueAt, completedAt, tag, description, location, isCompleted, isDeleted, source, sourceUrl, sourceId, color, lastUpdate, calendarIdentifier }
     
     init() {
         self.id = UUID().uuidString
@@ -191,6 +192,7 @@ struct Event: Codable, Identifiable {
         } catch {
             self.lastUpdate = Date()
         }
+        self.calendarIdentifier = try? container.decode(String.self, forKey: .calendarIdentifier)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -217,5 +219,6 @@ struct Event: Codable, Identifiable {
         uiColor.getRed(&r, green: &g, blue: &b, alpha: &alpha)
         let colorCode = ColorCode(r: r, g: g, b: b, alpha: alpha)
         try container.encode(colorCode, forKey: .color)
+        try container.encode(calendarIdentifier, forKey: .calendarIdentifier)
     }
 }

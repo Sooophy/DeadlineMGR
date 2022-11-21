@@ -257,6 +257,9 @@ final class ModelData: ObservableObject {
             newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
             do {
                 try eventStore.save(newEKEvent, span: .thisEvent)
+                if self.dataBase[event.id] != nil {
+                    self.dataBase[event.id]!.calendarIdentifier = newEKEvent.eventIdentifier
+                }
             } catch {
                 print(error.localizedDescription)
             }
