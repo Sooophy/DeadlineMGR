@@ -21,6 +21,7 @@ final class ModelData: ObservableObject {
     
     init() {
         loadData()
+        dataBase.values.first?.addToCalendar()
     }
     
     func saveData() {
