@@ -16,7 +16,12 @@ final class ModelData: ObservableObject {
     
     var sourceIdMap: [String: String] = [:]
     
-    var alarmOffset: TimeInterval = 3600
+    var alarmOffset: TimeInterval = 3600 {
+        didSet {
+            print("alarm time offset changed")
+            //Update all events in calendar
+        }
+    }
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("events")
@@ -24,15 +29,19 @@ final class ModelData: ObservableObject {
     
     init() {
         loadData()
-        addEventToCalendar(event: Event(title: "test event",
-                                        dueAt:nil,
-                                        tag: [],
-                                        description: "",
-                                        location: nil,
-                                        source: .Default,
-                                        sourceUrl: nil,
-                                        sourceId: nil,
-                                        color: nil))
+        let testEvent = Event(title: "test event",
+                              dueAt:nil,
+                              tag: [],
+                              description: "",
+                              location: Location(locationName: "some location",
+                                                 latitude: 36,
+                                                 longitude: 36),
+                              source: .Default,
+                              sourceUrl: nil,
+                              sourceId: nil,
+                              color: nil)
+        dataBase[testEvent.id] = testEvent
+        addEventToCalendar(event: testEvent)
     }
     
     func saveData() {
@@ -244,24 +253,54 @@ final class ModelData: ObservableObject {
     func addEventToCalendar(event: Event){
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
+            DispatchQueue.main.async {
+                guard granted else {
+                    print("Access to calendar not granted")
+                    return
+                }
+                let newEKEvent = EKEvent(eventStore: eventStore)
+                newEKEvent.title = event.title
+                newEKEvent.startDate = event.createdAt
+                newEKEvent.endDate = event.dueAt
+                newEKEvent.location = event.location?.locationName
+                newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+                newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
+                do {
+                    try eventStore.save(newEKEvent, span: .thisEvent)
+                    if self.dataBase[event.id] != nil {
+                        self.dataBase[event.id]!.calendarIdentifier = newEKEvent.eventIdentifier
+                    }
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func updateEventInCalendar(event: Event) {
+        guard event.calendarIdentifier != nil else {
+            return
+        }
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
             guard granted else {
                 print("Access to calendar not granted")
                 return
             }
-            let newEKEvent = EKEvent(eventStore: eventStore)
-            newEKEvent.title = event.title
-            newEKEvent.startDate = event.createdAt
-            newEKEvent.endDate = event.dueAt
-            newEKEvent.location = event.location?.locationName
-            newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
-            newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
-            do {
-                try eventStore.save(newEKEvent, span: .thisEvent)
-                if self.dataBase[event.id] != nil {
-                    self.dataBase[event.id]!.calendarIdentifier = newEKEvent.eventIdentifier
+            if let updateEvent = eventStore.event(withIdentifier: event.calendarIdentifier!) {
+                updateEvent.title = event.title
+                updateEvent.startDate = updateEvent.startDate
+                updateEvent.endDate = updateEvent.endDate
+                updateEvent.location = event.location?.locationName
+                do {
+                    try eventStore.save(updateEvent, span: .thisEvent)
+                } catch {
+                    print(error.localizedDescription)
                 }
-            } catch {
-                print(error.localizedDescription)
+            }
+            else {
+                print("Event not found in calendar")
             }
         }
     }
