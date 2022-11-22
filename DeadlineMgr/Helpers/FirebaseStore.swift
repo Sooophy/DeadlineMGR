@@ -1,5 +1,5 @@
 //
-//  Firebase.swift
+//  FirebaseStore.swift
 //  DeadlineMgr
 //
 //  Created by Tianjun Mo on 2022/11/17.
@@ -11,9 +11,9 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 import Foundation
 
-class Firebase {
-    static let shared: Firebase = .init()
-    var user: User?
+class FirebaseStore: ObservableObject {
+    static let shared: FirebaseStore = .init()
+    @Published var user: User?
     var initCallbacks: [() -> Void] = []
     var databaseRef: DatabaseReference?
     var eventsRef: DatabaseReference?

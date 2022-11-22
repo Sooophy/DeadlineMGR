@@ -28,6 +28,7 @@ struct CalendarDayView: View, UIViewRepresentable {
         let dayView = DayViewController().dayView
         dayView.delegate = context.coordinator
         dayView.dataSource = dataSource
+        dayView.autoScrollToFirstEvent = true
         dayView.reloadData()
         
         return dayView

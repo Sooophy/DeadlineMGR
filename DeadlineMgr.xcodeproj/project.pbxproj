@@ -13,10 +13,12 @@
 		B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */; };
 		B32634DD2929988400F06C6D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B32634DC2929988400F06C6D /* FirebaseDatabase */; };
 		B32634DF2929988400F06C6D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */; };
+		B3263522292C6AEF00F06C6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3263521292C6AEF00F06C6D /* Settings.swift */; };
+		B3263526292C757200F06C6D /* UserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3263525292C757200F06C6D /* UserRow.swift */; };
 		B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33243C029275B260096D96E /* GoogleService-Info.plist */; };
 		B33243CA292857E00096D96E /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* HTTP.swift */; };
 		B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C42926CAC100FF69FE /* FirebaseAuth */; };
-		B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683CE2926CAF700FF69FE /* Firebase.swift */; };
+		B34683CF2926CAF700FF69FE /* FirebaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34683CE2926CAF700FF69FE /* FirebaseStore.swift */; };
 		B34683D52926EBC000FF69FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34683D42926EBC000FF69FE /* GoogleService-Info.plist */; };
 		B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE615290DFC6E00850A5A /* DeadlineMgrApp.swift */; };
 		B39BE618290DFC6E00850A5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39BE617290DFC6E00850A5A /* ContentView.swift */; };
@@ -54,7 +56,6 @@
 		E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */; };
 		E4713B502926C304004531B7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4F2926C304004531B7 /* ColorHelper.swift */; };
 		E4713B52292946B3004531B7 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B51292946B3004531B7 /* EventLocation.swift */; };
-		E4713B55292D441B004531B7 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B54292D441B004531B7 /* UserSetting.swift */; };
 		E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C6290ECCE6008DDFF3 /* EventRow.swift */; };
 		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
 		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
@@ -89,8 +90,10 @@
 		2E7EB22C290F3581002DC982 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		2ECF38122911A5E800A6E6E0 /* DefaultEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultEvent.json; sourceTree = "<group>"; };
 		B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiDetail.swift; sourceTree = "<group>"; };
+		B3263521292C6AEF00F06C6D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B3263525292C757200F06C6D /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRow.swift; sourceTree = "<group>"; };
 		B33243C029275B260096D96E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B34683CE2926CAF700FF69FE /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B34683CE2926CAF700FF69FE /* FirebaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStore.swift; sourceTree = "<group>"; };
 		B34683D42926EBC000FF69FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B34683D7292714B700FF69FE /* DeadlineMgr_watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DeadlineMgr_watch Watch App.entitlements"; sourceTree = "<group>"; };
 		B34683D8292714E400FF69FE /* DeadlineMgr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlineMgr.entitlements; sourceTree = "<group>"; };
@@ -130,7 +133,6 @@
 		E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthEventCell.swift; sourceTree = "<group>"; };
 		E4713B4F2926C304004531B7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		E4713B51292946B3004531B7 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
-		E4713B54292D441B004531B7 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		E4E559C6290ECCE6008DDFF3 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		E4E559C8290ECDA2008DDFF3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
@@ -180,6 +182,15 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B3263520292C6AD700F06C6D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B3263521292C6AEF00F06C6D /* Settings.swift */,
+				B3263525292C757200F06C6D /* UserRow.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		B33243C22927EAAB0096D96E /* Calendar */ = {
@@ -243,7 +254,7 @@
 		B39BE623290DFC7900850A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E4713B53292D43F5004531B7 /* Setting */,
+				B3263520292C6AD700F06C6D /* Settings */,
 				B33243C22927EAAB0096D96E /* Calendar */,
 				E4E559C0290EC565008DDFF3 /* Event */,
 				B3B34B7F290E1AA9000CF95B /* Sync */,
@@ -267,7 +278,7 @@
 				B3B34B8D290E254C000CF95B /* HTTP.swift */,
 				E4713B42290F280F004531B7 /* CalendarHelper.swift */,
 				E4713B48290F3E3A004531B7 /* MonthStruct.swift */,
-				B34683CE2926CAF700FF69FE /* Firebase.swift */,
+				B34683CE2926CAF700FF69FE /* FirebaseStore.swift */,
 				E4713B4F2926C304004531B7 /* ColorHelper.swift */,
 			);
 			path = Helpers;
@@ -344,14 +355,6 @@
 				B3C318802925FDF6000CD0B6 /* EventDetail.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E4713B53292D43F5004531B7 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				E4713B54292D441B004531B7 /* UserSetting.swift */,
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		E4E559C0290EC565008DDFF3 /* Event */ = {
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3263522292C6AEF00F06C6D /* Settings.swift in Sources */,
 				E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */,
 				E4713B47290F3890004531B7 /* CalendarMonthCell.swift in Sources */,
 				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
@@ -503,15 +507,15 @@
 				B3B34B85290E1ACA000CF95B /* SakaiStore.swift in Sources */,
 				E4713B3F290EFAE6004531B7 /* CalendarMonth.swift in Sources */,
 				E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */,
-				B34683CF2926CAF700FF69FE /* Firebase.swift in Sources */,
+				B34683CF2926CAF700FF69FE /* FirebaseStore.swift in Sources */,
 				E4713B45290F2DC5004531B7 /* CalendarMonthTitle.swift in Sources */,
 				E4713B43290F280F004531B7 /* CalendarHelper.swift in Sources */,
 				B3B34B87290E1B54000CF95B /* SakaiSync.swift in Sources */,
 				B3B34B8E290E254C000CF95B /* HTTP.swift in Sources */,
 				B3B34B90290E31E0000CF95B /* SakaiUser.swift in Sources */,
-				E4713B55292D441B004531B7 /* UserSetting.swift in Sources */,
 				E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */,
 				B39BE616290DFC6E00850A5A /* DeadlineMgrApp.swift in Sources */,
+				B3263526292C757200F06C6D /* UserRow.swift in Sources */,
 				B3C3186D292586DC000CD0B6 /* WatchChannel.swift in Sources */,
 				B31E77F42923CD9700CDC9BB /* SakaiDetail.swift in Sources */,
 			);

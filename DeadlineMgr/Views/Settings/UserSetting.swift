@@ -10,7 +10,7 @@ import SwiftUI
 struct UserSetting: View {
     @State var username = "ECE564 User"
     @State var email = "Example@duke.edu"
-    @State var remindBefore = "15 min"
+    
     
     var body: some View {
         NavigationView {

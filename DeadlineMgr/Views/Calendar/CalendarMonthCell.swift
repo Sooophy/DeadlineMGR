@@ -26,9 +26,9 @@ struct CalendarMonthCell: View {
                 Text(monthStruct().day())
                     .foregroundColor(textColor(type: monthStruct().monthType))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .frame(height:10)
+                    .frame(height: 10)
                 VStack(alignment: .leading) {
-                    ForEach(filteredEvents) { tempEvent in
+                    ForEach(filteredEvents[...min(2, filteredEvents.count - 1)]) { tempEvent in
                         CalendarMonthEventCell(event: tempEvent)
                     }
                 }

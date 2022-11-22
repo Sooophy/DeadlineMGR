@@ -26,7 +26,7 @@ struct ContentView: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                 Text("Sync")
             }.tag(3)
-            Text("Settings").tabItem {
+            Settings().tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
             }
@@ -47,8 +47,8 @@ struct ContentView: View {
                     modelData.eventIsCompletedToggle(id: eventId)
                 }
             }
-            Firebase.shared.onInitCompleted {
-                Firebase.shared.eventsRef?.child("data").observe(.childChanged, with: { snapshot in
+            FirebaseStore.shared.onInitCompleted {
+                FirebaseStore.shared.eventsRef?.child("data").observe(.childChanged, with: { snapshot in
                     let event = try! snapshot.data(as: Event.self)
                     let json = try! JSONEncoder().encode(event)
                     WatchChannel.shared.push(action: .sync, message: ["json": json])
@@ -64,7 +64,7 @@ struct ContentView: View {
                     modelData.updateLocal(database: newDatabase, updateTime: .now)
 
                 })
-                Firebase.shared.eventsRef?.child("data").observe(.childAdded, with: { snapshot in
+                FirebaseStore.shared.eventsRef?.child("data").observe(.childAdded, with: { snapshot in
 
                     let event = try! snapshot.data(as: Event.self)
                     let eventId = event.id

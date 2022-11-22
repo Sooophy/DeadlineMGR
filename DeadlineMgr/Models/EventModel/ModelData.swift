@@ -5,9 +5,9 @@
 //  Created by Loaner on 10/30/22.
 //
 
+import EventKit
 import Foundation
 import SwiftUI
-import EventKit
 
 final class ModelData: ObservableObject {
     var lastDatabaseUpdate: Date = .distantPast
@@ -19,7 +19,7 @@ final class ModelData: ObservableObject {
     var alarmOffset: TimeInterval = 3600 {
         didSet {
             print("alarm time offset changed")
-            //Update all events in calendar
+            // Update all events in calendar
         }
     }
     
@@ -29,19 +29,6 @@ final class ModelData: ObservableObject {
     
     init() {
         loadData()
-        let testEvent = Event(title: "test event",
-                              dueAt:nil,
-                              tag: [],
-                              description: "",
-                              location: Location(locationName: "some location",
-                                                 latitude: 36,
-                                                 longitude: 36),
-                              source: .Default,
-                              sourceUrl: nil,
-                              sourceId: nil,
-                              color: nil)
-        dataBase[testEvent.id] = testEvent
-        addEventToCalendar(event: testEvent)
     }
     
     func saveData() {
@@ -185,9 +172,9 @@ final class ModelData: ObservableObject {
     }
     
     func updateLocal(database: [String: Event], updateTime: Date) {
-        self.dataBase = database
-        self.sourceIdMap = [:]
-        for event in self.dataBase.values {
+        dataBase = database
+        sourceIdMap = [:]
+        for event in dataBase.values {
             if event.source == .Sakai {
                 sourceIdMap[event.sourceId!] = event.id
             }
@@ -207,11 +194,9 @@ final class ModelData: ObservableObject {
     func addUpdateSakaiEvent(sakaiEvent: SakaiEvent) {
         if sourceIdMap[sakaiEvent.id] != nil {
             updateSakaiEvent(sakaiEvent: sakaiEvent)
-        }
-        else {
+        } else {
             addSakaiEvent(sakaiEvent: sakaiEvent)
         }
-        
     }
     
     func addSakaiEvent(sakaiEvent: SakaiEvent) {
@@ -245,12 +230,12 @@ final class ModelData: ObservableObject {
             if lastDatabaseUpdate < Date() - 0.2 {
                 lastDatabaseUpdate = .now
                 saveData()
-                await Firebase.shared.saveEvents(events: dataBase)
+                await FirebaseStore.shared.saveEvents(events: dataBase)
             }
         }
     }
     
-    func addEventToCalendar(event: Event){
+    func addEventToCalendar(event: Event) {
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
             DispatchQueue.main.async {
@@ -298,8 +283,7 @@ final class ModelData: ObservableObject {
                 } catch {
                     print(error.localizedDescription)
                 }
-            }
-            else {
+            } else {
                 print("Event not found in calendar")
             }
         }
