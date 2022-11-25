@@ -5,6 +5,9 @@
 //  Created by Sophie on 10/30/22.
 //
 
+import CoreLocation
+import LocationPicker
+import MapKit
 import SwiftUI
 
 struct EventDetail: View {
@@ -18,8 +21,19 @@ struct EventDetail: View {
     @State private var description: String = ""
     @State private var isCompleted: Bool = false
     @State private var eventColor: Color = .blue
-    @State private var location: Location = Location()
+    @State private var location: Location = .init()
+    var currentLocation: LocationItem? {
+        if location.coordinate.latitude == 0.0 && location.coordinate.longitude == 0.0 {
+            return nil
+        }
+        let mapItem = MKMapItem(placemark: .init(coordinate: location.coordinate))
+        mapItem.name = location.locationName
+        let locationItem = LocationItem(mapItem: mapItem)
+        return locationItem
+    }
     
+    @State private var showLocationPicker: Bool = false
+    @State private var selectedLocationItem: LocationItem? = nil
     var body: some View {
         Group {
             ScrollView {
@@ -32,24 +46,48 @@ struct EventDetail: View {
                         DatePicker(selection: $due) {
                             Text("Due:")
                         }
-
-//                        Spacer()
-                        
                         HStack {
                             Text("Tag:")
                             TextField("Tag", text: $tag)
                         }
-//                        .padding(.leading, 50)
-                        
                         ColorPicker("event color:", selection: $eventColor)
                         
-                        NavigationLink(destination: EventLocation(location: $location)) {
-                            HStack {
-                                Text("Location:")
-                                Spacer(minLength: 5)
-                                TextField("Location", text: $location.locationName)
-                            }
-                            .foregroundColor(.blue)
+                        HStack {
+                            Text("Location:")
+                            Spacer(minLength: 5)
+                            Text(location.locationName).onTapGesture {
+                                showLocationPicker = true
+                            }.sheet(isPresented: $showLocationPicker) {
+//                                LocationPickerView { locationItem in
+//                                    print(locationItem)
+//                                }.frame(minHeight: 200)
+                                NavigationView {
+                                    LocationPickerView(currentLocation: currentLocation) { locationItem in
+                                        selectedLocationItem = locationItem
+                                    }
+                                    .toolbar {
+                                        ToolbarItem(placement: .navigationBarLeading) {
+                                            Button("Cancel") {
+                                                showLocationPicker = false
+                                            }
+                                        }
+                                        ToolbarItem(placement: .navigationBarTrailing) {
+                                            Button("OK") {
+                                                showLocationPicker = false
+                                                if selectedLocationItem == nil {
+                                                    return
+                                                }
+                                                var coordinate = CLLocationCoordinate2D()
+                                                coordinate.latitude = selectedLocationItem!.coordinate!.latitude
+                                                coordinate.longitude = selectedLocationItem!.coordinate!.longitude
+                                                location.coordinate = coordinate
+                                                location.locationName = selectedLocationItem!.name
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }.foregroundColor(.blue)
                         }
                     }
                     .font(.subheadline)
@@ -60,7 +98,6 @@ struct EventDetail: View {
                     Text("Description:")
                         .padding(.bottom, 10)
                     TextField("Description", text: $description, axis: .vertical)
-                        //                    .textFieldStyle(.roundedBorder)
                         .multilineTextAlignment(.leading)
                 }
                 .padding()

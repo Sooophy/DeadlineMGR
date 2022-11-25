@@ -8,5 +8,7 @@
 	<string></string>
 	<key>KeychainAccessGroup</key>
 	<string>$(AppIdentifierPrefix)edu.duke.DeadlineMgr</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>DeadlineMgr wants to get your current location for event editing.</string>
 </dict>
 </plist>

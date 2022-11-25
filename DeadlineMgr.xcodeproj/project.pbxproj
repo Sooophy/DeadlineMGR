@@ -15,6 +15,8 @@
 		B32634DF2929988400F06C6D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */; };
 		B3263522292C6AEF00F06C6D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3263521292C6AEF00F06C6D /* Settings.swift */; };
 		B3263526292C757200F06C6D /* UserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3263525292C757200F06C6D /* UserRow.swift */; };
+		B326352C2930290F00F06C6D /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326352B2930290F00F06C6D /* LocationPickerView.swift */; };
+		B326352F29302A4500F06C6D /* LocationPicker in Frameworks */ = {isa = PBXBuildFile; productRef = B326352E29302A4500F06C6D /* LocationPicker */; };
 		B33243C129275B260096D96E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B33243C029275B260096D96E /* GoogleService-Info.plist */; };
 		B33243CA292857E00096D96E /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B34B8D290E254C000CF95B /* HTTP.swift */; };
 		B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B34683C42926CAC100FF69FE /* FirebaseAuth */; };
@@ -55,7 +57,6 @@
 		E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B48290F3E3A004531B7 /* MonthStruct.swift */; };
 		E4713B4E29241C6A004531B7 /* CalendarMonthEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */; };
 		E4713B502926C304004531B7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B4F2926C304004531B7 /* ColorHelper.swift */; };
-		E4713B52292946B3004531B7 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713B51292946B3004531B7 /* EventLocation.swift */; };
 		E4E559C7290ECCE6008DDFF3 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C6290ECCE6008DDFF3 /* EventRow.swift */; };
 		E4E559C9290ECDA2008DDFF3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559C8290ECDA2008DDFF3 /* EventList.swift */; };
 		E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */; };
@@ -92,6 +93,7 @@
 		B31E77F32923CD9700CDC9BB /* SakaiDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakaiDetail.swift; sourceTree = "<group>"; };
 		B3263521292C6AEF00F06C6D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B3263525292C757200F06C6D /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRow.swift; sourceTree = "<group>"; };
+		B326352B2930290F00F06C6D /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
 		B33243C029275B260096D96E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B34683CE2926CAF700FF69FE /* FirebaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStore.swift; sourceTree = "<group>"; };
 		B34683D42926EBC000FF69FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -132,7 +134,6 @@
 		E4713B48290F3E3A004531B7 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		E4713B4D29241C6A004531B7 /* CalendarMonthEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthEventCell.swift; sourceTree = "<group>"; };
 		E4713B4F2926C304004531B7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		E4713B51292946B3004531B7 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		E4E559C6290ECCE6008DDFF3 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		E4E559C8290ECDA2008DDFF3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 			files = (
 				B32634DF2929988400F06C6D /* FirebaseDatabaseSwift in Frameworks */,
 				B32634DD2929988400F06C6D /* FirebaseDatabase in Frameworks */,
+				B326352F29302A4500F06C6D /* LocationPicker in Frameworks */,
 				B3B34B9429119E89000CF95B /* CalendarKit in Frameworks */,
 				B34683C52926CAC100FF69FE /* FirebaseAuth in Frameworks */,
 			);
@@ -363,7 +365,7 @@
 				E4E559C6290ECCE6008DDFF3 /* EventRow.swift */,
 				E4E559C8290ECDA2008DDFF3 /* EventList.swift */,
 				E4E559CA290ECDB1008DDFF3 /* EventDetail.swift */,
-				E4713B51292946B3004531B7 /* EventLocation.swift */,
+				B326352B2930290F00F06C6D /* LocationPickerView.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -391,6 +393,7 @@
 				B34683C42926CAC100FF69FE /* FirebaseAuth */,
 				B32634DC2929988400F06C6D /* FirebaseDatabase */,
 				B32634DE2929988400F06C6D /* FirebaseDatabaseSwift */,
+				B326352E29302A4500F06C6D /* LocationPicker */,
 			);
 			productName = DeadlineMgr;
 			productReference = B39BE612290DFC6E00850A5A /* DeadlineMgr.app */;
@@ -445,8 +448,8 @@
 			packageReferences = (
 				B3B34B9229119E89000CF95B /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				B33243CD29287FD00096D96E /* XCRemoteSwiftPackageReference "CodableFirebase" */,
 				B32634D62929582A00F06C6D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				B326352D29302A4500F06C6D /* XCRemoteSwiftPackageReference "LocationPicker" */,
 			);
 			productRefGroup = B39BE613290DFC6E00850A5A /* Products */;
 			projectDirPath = "";
@@ -493,11 +496,11 @@
 				E4713B47290F3890004531B7 /* CalendarMonthCell.swift in Sources */,
 				E4E559CB290ECDB1008DDFF3 /* EventDetail.swift in Sources */,
 				2E7EB22D290F3581002DC982 /* ModelData.swift in Sources */,
-				E4713B52292946B3004531B7 /* EventLocation.swift in Sources */,
 				B3B34B8C290E1EAF000CF95B /* SakaiSite.swift in Sources */,
 				B3B34B8A290E1E87000CF95B /* SakaiEvent.swift in Sources */,
 				2E7EB22B290EF97B002DC982 /* Event.swift in Sources */,
 				E4713B49290F3E3A004531B7 /* MonthStruct.swift in Sources */,
+				B326352C2930290F00F06C6D /* LocationPickerView.swift in Sources */,
 				B3B34B82290E1AB7000CF95B /* WebView.swift in Sources */,
 				E4713B502926C304004531B7 /* ColorHelper.swift in Sources */,
 				B3B34B982911A0AE000CF95B /* CalendarDayView.swift in Sources */,
@@ -835,12 +838,12 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		B33243CD29287FD00096D96E /* XCRemoteSwiftPackageReference "CodableFirebase" */ = {
+		B326352D29302A4500F06C6D /* XCRemoteSwiftPackageReference "LocationPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alickbass/CodableFirebase";
+			repositoryURL = "https://github.com/zhuorantan/LocationPicker.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.2;
+				branch = master;
+				kind = branch;
 			};
 		};
 		B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -871,6 +874,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B34683BF2926CAC100FF69FE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		B326352E29302A4500F06C6D /* LocationPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B326352D29302A4500F06C6D /* XCRemoteSwiftPackageReference "LocationPicker" */;
+			productName = LocationPicker;
 		};
 		B34683C42926CAC100FF69FE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

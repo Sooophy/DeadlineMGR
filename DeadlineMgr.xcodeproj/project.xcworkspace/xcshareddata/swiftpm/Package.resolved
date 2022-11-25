@@ -28,15 +28,6 @@
       }
     },
     {
-      "identity" : "codablefirebase",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/alickbass/CodableFirebase",
-      "state" : {
-        "revision" : "a4cda89948db93ec21249a35ecdacab8c489a116",
-        "version" : "0.2.2"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
@@ -97,6 +88,15 @@
       "state" : {
         "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
         "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "locationpicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zhuorantan/LocationPicker.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8022e7195f56f17d330fcf315acd12ca3a327657"
       }
     },
     {
