@@ -57,6 +57,9 @@ struct SakaiSync: View {
                         } label: {
                             Text("Sync sakai event to local database")
                         }
+                        //Strange warning "Publishing changes from within view updates"
+                        //Solution from https://developer.apple.com/forums/thread/711899
+                        .buttonStyle(BorderlessButtonStyle())
                     }.listStyle(.insetGrouped)
                         .blur(radius: sakaiStore.isLoading ? 5 : 0, opaque: sakaiStore.isLoading ? true : false).disabled(sakaiStore.isLoading)
 

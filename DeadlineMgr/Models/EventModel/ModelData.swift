@@ -168,6 +168,7 @@ final class ModelData: ObservableObject {
         dataBase[id]!.location = location
         dataBase[id]!.color = color
         dataBase[id]!.lastUpdate = .now
+        updateEventInCalendar(event: dataBase[id]!)
         saveLocalAndRemote()
     }
     
@@ -183,7 +184,6 @@ final class ModelData: ObservableObject {
     }
     
     func processSakaiEvent() {
-        print(dataBase)
         for eventList in sakaiStore.filteredEvents.values {
             for event in eventList {
                 addUpdateSakaiEvent(sakaiEvent: event)
@@ -219,6 +219,7 @@ final class ModelData: ObservableObject {
         dataBase[id]!.title = sakaiEvent.title
         dataBase[id]!.dueAt = sakaiEvent.dueDate
         dataBase[id]!.createdAt = sakaiEvent.openDate
+        updateEventInCalendar(event: dataBase[id]!)
         saveLocalAndRemote()
     }
     
@@ -270,7 +271,6 @@ final class ModelData: ObservableObject {
     
     func updateEventInCalendar(event: Event) {
         guard event.calendarIdentifier != nil else {
-            print("Access to calendar not granted")
             return
         }
         let eventStore = EKEventStore()
@@ -281,8 +281,8 @@ final class ModelData: ObservableObject {
             }
             if let updateEvent = eventStore.event(withIdentifier: event.calendarIdentifier!) {
                 updateEvent.title = event.title
-                updateEvent.startDate = updateEvent.startDate
-                updateEvent.endDate = event.dueAt - self.alarmOffset
+                updateEvent.startDate = event.dueAt - self.alarmOffset
+                updateEvent.endDate = event.dueAt
                 updateEvent.location = event.location?.locationName
                 if let alarm = updateEvent.alarms?.first {
                     updateEvent.removeAlarm(alarm)
