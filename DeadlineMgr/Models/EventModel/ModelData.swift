@@ -168,6 +168,7 @@ final class ModelData: ObservableObject {
         dataBase[id]!.location = location
         dataBase[id]!.color = color
         dataBase[id]!.lastUpdate = .now
+        updateEventInCalendar(event: dataBase[id]!)
         saveLocalAndRemote()
     }
     
@@ -183,7 +184,6 @@ final class ModelData: ObservableObject {
     }
     
     func processSakaiEvent() {
-        print(dataBase)
         for eventList in sakaiStore.filteredEvents.values {
             for event in eventList {
                 addUpdateSakaiEvent(sakaiEvent: event)
@@ -219,6 +219,7 @@ final class ModelData: ObservableObject {
         dataBase[id]!.title = sakaiEvent.title
         dataBase[id]!.dueAt = sakaiEvent.dueDate
         dataBase[id]!.createdAt = sakaiEvent.openDate
+        updateEventInCalendar(event: dataBase[id]!)
         saveLocalAndRemote()
     }
     
@@ -235,6 +236,18 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func addUpdateEventInCalendar(event:Event) {
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
+            if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+                self.updateEventInCalendar(event: event)
+            }
+            else {
+                self.addEventToCalendar(event: event)
+            }
+        }
+    }
+    
     func addEventToCalendar(event: Event) {
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
@@ -243,17 +256,22 @@ final class ModelData: ObservableObject {
                     print("Access to calendar not granted")
                     return
                 }
+                if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+                    print("Event already exist in calendar")
+                    return
+                }
                 let newEKEvent = EKEvent(eventStore: eventStore)
                 newEKEvent.title = event.title
-                newEKEvent.startDate = event.createdAt
+                newEKEvent.startDate = event.dueAt - self.alarmOffset
                 newEKEvent.endDate = event.dueAt
                 newEKEvent.location = event.location?.locationName
                 newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
-                newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
+                newEKEvent.addAlarm(EKAlarm())
                 do {
                     try eventStore.save(newEKEvent, span: .thisEvent)
                     if self.dataBase[event.id] != nil {
                         self.dataBase[event.id]!.calendarIdentifier = newEKEvent.eventIdentifier
+                        self.saveLocalAndRemote()
                     }
                     
                 } catch {
@@ -275,9 +293,13 @@ final class ModelData: ObservableObject {
             }
             if let updateEvent = eventStore.event(withIdentifier: event.calendarIdentifier!) {
                 updateEvent.title = event.title
-                updateEvent.startDate = updateEvent.startDate
-                updateEvent.endDate = updateEvent.endDate
+                updateEvent.startDate = event.dueAt - self.alarmOffset
+                updateEvent.endDate = event.dueAt
                 updateEvent.location = event.location?.locationName
+                if let alarm = updateEvent.alarms?.first {
+                    updateEvent.removeAlarm(alarm)
+                }
+                updateEvent.addAlarm(EKAlarm())
                 do {
                     try eventStore.save(updateEvent, span: .thisEvent)
                 } catch {
