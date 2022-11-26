@@ -113,9 +113,14 @@ struct EventDetail: View {
                 Text("Cancel")
             },
             trailing:
-            Button(action: { saveEvent(event: event) }) {
-                Text("Save")
-            })
+                HStack {
+                    Button(action: { modelData.addEventToCalendar(event: event) }) {
+                        Text("Add to Calendar")
+                    }
+                    Button(action: { saveEvent(event: event) }) {
+                        Text("Save")
+                    }
+                })
     }
     
     func saveEvent(event: Event) {

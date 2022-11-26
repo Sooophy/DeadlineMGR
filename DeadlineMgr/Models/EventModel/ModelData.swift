@@ -243,17 +243,22 @@ final class ModelData: ObservableObject {
                     print("Access to calendar not granted")
                     return
                 }
+                if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+                    print("Event already exist in calendar")
+                    return
+                }
                 let newEKEvent = EKEvent(eventStore: eventStore)
                 newEKEvent.title = event.title
-                newEKEvent.startDate = event.createdAt
+                newEKEvent.startDate = event.dueAt - self.alarmOffset
                 newEKEvent.endDate = event.dueAt
                 newEKEvent.location = event.location?.locationName
                 newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
-                newEKEvent.addAlarm(EKAlarm(absoluteDate: event.dueAt - self.alarmOffset))
+                newEKEvent.addAlarm(EKAlarm())
                 do {
                     try eventStore.save(newEKEvent, span: .thisEvent)
                     if self.dataBase[event.id] != nil {
                         self.dataBase[event.id]!.calendarIdentifier = newEKEvent.eventIdentifier
+                        self.saveLocalAndRemote()
                     }
                     
                 } catch {
@@ -265,6 +270,7 @@ final class ModelData: ObservableObject {
     
     func updateEventInCalendar(event: Event) {
         guard event.calendarIdentifier != nil else {
+            print("Access to calendar not granted")
             return
         }
         let eventStore = EKEventStore()
@@ -276,8 +282,12 @@ final class ModelData: ObservableObject {
             if let updateEvent = eventStore.event(withIdentifier: event.calendarIdentifier!) {
                 updateEvent.title = event.title
                 updateEvent.startDate = updateEvent.startDate
-                updateEvent.endDate = updateEvent.endDate
+                updateEvent.endDate = event.dueAt - self.alarmOffset
                 updateEvent.location = event.location?.locationName
+                if let alarm = updateEvent.alarms?.first {
+                    updateEvent.removeAlarm(alarm)
+                }
+                updateEvent.addAlarm(EKAlarm())
                 do {
                     try eventStore.save(updateEvent, span: .thisEvent)
                 } catch {
