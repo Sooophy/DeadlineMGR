@@ -20,6 +20,9 @@ final class ModelData: ObservableObject {
         didSet {
             print("alarm time offset changed")
             // Update all events in calendar
+            for event in dataBase.values {
+                updateEventInCalendar(event: event)
+            }
         }
     }
     
