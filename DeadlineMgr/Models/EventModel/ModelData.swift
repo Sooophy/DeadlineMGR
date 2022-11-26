@@ -236,6 +236,18 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func addUpdateEventInCalendar(event:Event) {
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
+            if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+                self.updateEventInCalendar(event: event)
+            }
+            else {
+                self.addEventToCalendar(event: event)
+            }
+        }
+    }
+    
     func addEventToCalendar(event: Event) {
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
