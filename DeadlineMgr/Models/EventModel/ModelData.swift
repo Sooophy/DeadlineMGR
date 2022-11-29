@@ -222,6 +222,7 @@ final class ModelData: ObservableObject {
         dataBase[id]!.title = sakaiEvent.title
         dataBase[id]!.dueAt = sakaiEvent.dueDate
         dataBase[id]!.createdAt = sakaiEvent.openDate
+        dataBase[id]!.lastUpdate = .now
         updateEventInCalendar(event: dataBase[id]!)
         saveLocalAndRemote()
     }
@@ -239,13 +240,12 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func addUpdateEventInCalendar(event:Event) {
+    func addUpdateEventInCalendar(event: Event) {
         let eventStore = EKEventStore()
-        eventStore.requestAccess(to: .event) { granted, error in
-            if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+        eventStore.requestAccess(to: .event) { _, _ in
+            if event.calendarIdentifier != nil, eventStore.event(withIdentifier: event.calendarIdentifier!) != nil {
                 self.updateEventInCalendar(event: event)
-            }
-            else {
+            } else {
                 self.addEventToCalendar(event: event)
             }
         }
@@ -259,7 +259,7 @@ final class ModelData: ObservableObject {
                     print("Access to calendar not granted")
                     return
                 }
-                if event.calendarIdentifier != nil && (eventStore.event(withIdentifier: event.calendarIdentifier!) != nil) {
+                if event.calendarIdentifier != nil, eventStore.event(withIdentifier: event.calendarIdentifier!) != nil {
                     print("Event already exist in calendar")
                     return
                 }
@@ -320,6 +320,7 @@ final class ModelData: ObservableObject {
                 return
             }
             dataBase[id]!.isDeleted = true
+            dataBase[id]!.lastUpdate = .now
             saveLocalAndRemote()
             deleteEventFromCalendar(event: event)
         }
