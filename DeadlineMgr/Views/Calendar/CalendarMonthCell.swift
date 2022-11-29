@@ -40,6 +40,9 @@ struct CalendarMonthCell: View {
     func filterEvents(date: Date) -> [Event] {
         var filteredEvents: [Event] = []
         for (_, tempEvent) in modelData.dataBase {
+            if tempEvent.isDeleted {
+                continue
+            }
             let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
             let fromDate = Calendar.current.startOfDay(for: date)
             let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)

@@ -43,7 +43,7 @@ struct CalendarDayView: View, UIViewRepresentable {
         func eventsForDate(_ date: Date) -> [CalendarKit.EventDescriptor] {
             let mapped = events.filter {
                 event in
-                Calendar.current.isDate(date, inSameDayAs: event.dueAt)
+                Calendar.current.isDate(date, inSameDayAs: event.dueAt) && !event.isDeleted
             }.map { event in
                 let ckEvent = CalendarKit.Event()
                 ckEvent.dateInterval = DateInterval(start: event.dueAt.addingTimeInterval(TimeInterval(-3600)), duration: TimeInterval(3600))
