@@ -313,4 +313,37 @@ final class ModelData: ObservableObject {
             }
         }
     }
+    
+    func deteleEvent(id: String) {
+        if var event = dataBase[id] {
+            if event.isDeleted {
+                return
+            }
+            event.isDeleted = true
+            saveLocalAndRemote()
+            deleteEventFromCalendar(event: event)
+        }
+    }
+    
+    func deleteEventFromCalendar(event: Event) {
+        guard event.calendarIdentifier != nil else {
+            return
+        }
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { granted, error in
+            guard granted else {
+                print("Access to calendar not granted")
+                return
+            }
+            if let deleteEvent = eventStore.event(withIdentifier: event.calendarIdentifier!) {
+                do {
+                    try eventStore.remove(deleteEvent, span: .thisEvent)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            } else {
+                print("Event not found in calendar")
+            }
+        }
+    }
 }
