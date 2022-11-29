@@ -21,6 +21,14 @@ struct EventList: View {
                             NavigationLink(destination: EventDetail(event: event)) {
                                 EventRow(event: event)
                             }
+                            .swipeActions(edge: .trailing) {
+                                Button() {
+                                    modelData.deleteEvent(id:event.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
+                            }
                         }
                     }
                 }
@@ -29,6 +37,14 @@ struct EventList: View {
                         ForEach(currentEvents[1]) { event in
                             NavigationLink(destination: EventDetail(event: event)) {
                                 EventRow(event: event)
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button() {
+                                    modelData.deleteEvent(id:event.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
                             }
                         }
                     }
@@ -39,6 +55,14 @@ struct EventList: View {
                             NavigationLink(destination: EventDetail(event: event)) {
                                 EventRow(event: event)
                             }
+                            .swipeActions(edge: .trailing) {
+                                Button() {
+                                    modelData.deleteEvent(id:event.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
+                            }
                         }
                     }
                 }
@@ -48,6 +72,14 @@ struct EventList: View {
                             NavigationLink(destination: EventDetail(event: event)) {
                                 EventRow(event: event)
                             }
+                            .swipeActions(edge: .trailing) {
+                                Button() {
+                                    modelData.deleteEvent(id:event.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
+                            }
                         }
                     }
                 }
@@ -56,6 +88,14 @@ struct EventList: View {
                         ForEach(currentEvents[4]) { event in
                             NavigationLink(destination: EventDetail(event: event)) {
                                 EventRow(event: event)
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button() {
+                                    modelData.deleteEvent(id:event.id)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
                             }
                         }
                     }

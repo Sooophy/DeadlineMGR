@@ -109,9 +109,17 @@ struct EventDetail: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading:
-            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                Text("Cancel")
-            },
+                HStack {
+                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                    Text("Cancel")
+                    }
+                    Button(action: { /*delete func here */
+                        modelData.deleteEvent(id:event.id)
+                    }) {
+                    Text("Delete")
+                            .foregroundColor(.red)
+                    }
+                },
             trailing:
                 HStack {
                     Button(action: { modelData.addEventToCalendar(event: event) }) {

@@ -314,12 +314,12 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func deteleEvent(id: String) {
+    func deleteEvent(id: String) {
         if var event = dataBase[id] {
             if event.isDeleted {
                 return
             }
-            event.isDeleted = true
+            dataBase[id]!.isDeleted = true
             saveLocalAndRemote()
             deleteEventFromCalendar(event: event)
         }
