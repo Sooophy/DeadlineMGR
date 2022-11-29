@@ -77,6 +77,9 @@ struct EventList: View {
         var currentEvents: [[Event]] = [[], [], [], [], []]
 
         for (_, tempEvent) in modelData.dataBase {
+            if tempEvent.isDeleted {
+                continue
+            }
             let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
             let fromDate = Calendar.current.startOfDay(for: current)
             let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
