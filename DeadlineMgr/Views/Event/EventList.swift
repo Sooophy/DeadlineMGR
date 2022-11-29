@@ -26,8 +26,8 @@ struct EventList: View {
                                     modelData.deleteEvent(id:event.id)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
-                                        .tint(.red)
                                 }
+                                .tint(.red)
                             }
                         }
                     }
@@ -43,8 +43,8 @@ struct EventList: View {
                                     modelData.deleteEvent(id:event.id)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
-                                        .tint(.red)
                                 }
+                                .tint(.red)
                             }
                         }
                     }
@@ -60,8 +60,8 @@ struct EventList: View {
                                     modelData.deleteEvent(id:event.id)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
-                                        .tint(.red)
                                 }
+                                .tint(.red)
                             }
                         }
                     }
@@ -77,8 +77,8 @@ struct EventList: View {
                                     modelData.deleteEvent(id:event.id)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
-                                        .tint(.red)
                                 }
+                                .tint(.red)
                             }
                         }
                     }
@@ -94,8 +94,8 @@ struct EventList: View {
                                     modelData.deleteEvent(id:event.id)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
-                                        .tint(.red)
                                 }
+                                .tint(.red)
                             }
                         }
                     }
