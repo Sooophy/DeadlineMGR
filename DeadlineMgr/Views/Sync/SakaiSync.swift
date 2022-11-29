@@ -23,7 +23,7 @@ struct SakaiSync: View {
             ZStack {
                 if sakaiStore.user == nil {
                     VStack {
-                        Text("Please Authenticate Sakai to Synchronize Events.")
+                        Text("Please Authenticate Sakai to Sync Deadlines.")
                         Button("Log In") {
                             isLoginModalShow = true
                         }
@@ -39,14 +39,10 @@ struct SakaiSync: View {
                                 ForEach(events, id: \.self.id) {
                                     event in
 
-                                    VStack {
-                                        NavigationLink(destination: SakaiDetail(event.url)) {
-                                            HStack {
-                                                Text(event.title)
-                                                Spacer()
-                                            }
-
-                                            Text("Due: \(event.dueDate.description(with: Locale.current))").font(.caption2).multilineTextAlignment(.leading)
+                                    NavigationLink(destination: SakaiDetail(event.url)) {
+                                        VStack(alignment: .leading) {
+                                            Text(event.title)
+                                            Text("Due: \(event.dueDate.formatted(date: .abbreviated, time: .shortened))").font(.caption2).multilineTextAlignment(.leading).foregroundColor(.secondary)
                                         }
                                     }
                                 }
@@ -57,8 +53,8 @@ struct SakaiSync: View {
                         } label: {
                             Text("Sync sakai event to local database")
                         }
-                        //Strange warning "Publishing changes from within view updates"
-                        //Solution from https://developer.apple.com/forums/thread/711899
+                        // Strange warning "Publishing changes from within view updates"
+                        // Solution from https://developer.apple.com/forums/thread/711899
                         .buttonStyle(BorderlessButtonStyle())
                     }.listStyle(.insetGrouped)
                         .blur(radius: sakaiStore.isLoading ? 5 : 0, opaque: sakaiStore.isLoading ? true : false).disabled(sakaiStore.isLoading)
