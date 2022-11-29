@@ -50,7 +50,7 @@ struct EventDetail: View {
                             Text("Tag:")
                             TextField("Tag", text: $tag)
                         }
-                        ColorPicker("event color:", selection: $eventColor)
+                        ColorPicker("Event color:", selection: $eventColor)
                         
                         HStack {
                             Text("Location:")

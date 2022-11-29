@@ -123,7 +123,7 @@ struct EventList: View {
             let toDate = Calendar.current.startOfDay(for: tempEvent.dueAt)
             let fromDate = Calendar.current.startOfDay(for: current)
             let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
-            if numberOfDays.day! < 0 {
+            if numberOfDays.day! < 0 /*&& !tempEvent.isCompleted*/ {
                 // Past due
                 currentEvents[3].append(tempEvent)
             } else if numberOfDays.day! == 0 {
