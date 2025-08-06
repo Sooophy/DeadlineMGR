@@ -6,6 +6,20 @@ A personal deadline and task management iOS app built as the final project for *
 
 ---
 
+## 📝 Overview
+
+**Deadline Manager** is an iOS productivity app designed to help students and professionals stay on top of deadlines across courses, assignments, and recurring tasks. It integrates with Sakai for automatic assignment syncing, supports cross-device data sync via Firebase, and offers Apple Watch support for on-the-go reminders. With intuitive views, location tagging, and push notifications, users can easily manage what’s due today, plan for the near future, and never miss a deadline again.
+
+![Interface](images/interface.png)
+
+*Interface overview: The app displays synced events across iPad, iPhone, and Apple Watch, with categorized deadlines and a clean tab-based navigation for Events, Calendar, Sync, and Settings.*
+
+![Sync Structure](images/sync.png)
+
+*Synchronization structure: Events and user data are stored in a local JSON database and synchronized across devices using Firebase Realtime Database. iCloud Keychain securely shares credentials, while Apple Watch fetches data from the iPhone via WatchConnectivity. Sakai assignments are fetched via HTTP and integrated into the system calendar.*
+
+---
+
 ## ✨ Features
 
 Stay focused on the present and prepared for the future:
@@ -20,6 +34,8 @@ Stay focused on the present and prepared for the future:
 - **Location-aware Tasks**: Add event locations using built-in map search.
 - **Apple Watch Support**: View and sync tasks directly from your wrist.
 - **Quick Edit**: Just tap to view, update, or edit task details.
+
+- 
 
 ---
 
